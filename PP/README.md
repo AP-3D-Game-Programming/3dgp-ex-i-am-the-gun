@@ -60,7 +60,11 @@ Als een speler geen levens meer heeft ligt deze buiten het spel en is die verlor
 
 
 
-##### Wanneer ben je gewonnen?
+##### Wanneer heb je gewonnen?
 
-Als alle andere spelers al hun levens kwijt zijn ben je gewonnen.
+Als alle andere spelers al hun levens kwijt zijn heb je gewonnen.
+
+
+
+### Spelvoorbeeldfoto's:
 
