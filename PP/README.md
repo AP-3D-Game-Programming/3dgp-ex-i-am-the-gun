@@ -35,7 +35,7 @@ Elke speler plaatst een van hun kegels voor zich. Deze kegel stelt één level v
 
 
 ### Verloop van het spel:
-
+![alt text](gunhead.png)
 
 
 ##### Voorbeeld ronde:
