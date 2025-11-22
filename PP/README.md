@@ -29,7 +29,7 @@ Het papieren prototype wordt hier gebruikt om te testen of het idee van je eigen
 ##### Startposities:
 
 Elke speler plaatst een van hun kegels voor zich. Deze kegel stelt één level voor. Achter deze kegels plaatst de speler een lijnstuk als indicator voor waar hun kogels op moeten staat. Natuurlijk plaatst de speler dan hun 7 kogels volgens dit lijnstuk.
-![Startpositie spelervoorbeeld](Foto's\PP_tekeningen-Player_setup.drawio.png) ![Startposities voorbeeld](Foto's\PP_tekeningen-Game_setup.drawio.png)
+![Startpositie spelervoorbeeld](/Foto's/PP_tekeningen-Player_setup.drawio.png) ![Startposities voorbeeld](/Foto's/PP_tekeningen-Game_setup.drawio.png)
 
 
 
@@ -43,14 +43,14 @@ De jongste speler is eerst aan de beurt en elke speler komt aan de beurt in wijz
 
 * Of de speler hun doel raakt of niet, de gebruikte kogel ligt nu buiten het spel.
 * Als de speler de kegel van een andere speler omstoot, is deze andere speler één leven verloren.
-![Raken kegel](Foto's\PP_tekeningen-Voorbeeld_kegel_geraakt.drawio.png) ![Resultaat kegel raken](Foto's\PP_tekeningen-Voorbeeld_kegel_verloren.drawio.png)
+![Raken kegel](/Foto's/PP_tekeningen-Voorbeeld_kegel_geraakt.drawio.png) ![Resultaat kegel raken](/Foto's/PP_tekeningen-Voorbeeld_kegel_verloren.drawio.png)
 * Als de speler de ammunitie van de andere speler raakt en kogels van het lijnstuk af stoot, krijgt de eerste speler deze kogels om mee te schieten.
-![Ammunitie raken](Foto's\PP_tekeningen-Voorbeeld_kogels_geraakt.drawio.png) ![Ammunitie nemen](Foto's\PP_tekeningen-Voorbeeld_kogels_genomen.drawio.png)
-![Ammunitie raken 2](Foto's\PP_tekeningen-Voorbeeld_kogels_geraakt_2.drawio.png) ![Ammunitie nemen 2](Foto's\PP_tekeningen-Voorbeeld_kogels_genomen_2.drawio.png)
+![Ammunitie raken](/Foto's/PP_tekeningen-Voorbeeld_kogels_geraakt.drawio.png) ![Ammunitie nemen](/Foto's/PP_tekeningen-Voorbeeld_kogels_genomen.drawio.png)
+![Ammunitie raken 2](/Foto's/PP_tekeningen-Voorbeeld_kogels_geraakt_2.drawio.png) ![Ammunitie nemen 2](/Foto's/PP_tekeningen-Voorbeeld_kogels_genomen_2.drawio.png)
 
 
 Wanneer een speler geen kogels heeft om te schieten zal deze een leven in de plaats moeten gebruiken. De speler zal dan een van hun kegels gebruiken als kogel. Ook deze ligt buiten het spel wanneer gebruikt.
-![Kegel shieten als kogel](Foto's\PP_tekeningen-Voorbeeld_kegel_shieten.drawio.png) ![Ammunitie nemen bijvullen na kegelschot](Foto's\PP_tekeningen-Voorbeeld_kegel_geraakt.drawio.png)
+![Kegel shieten als kogel](/Foto's/PP_tekeningen-Voorbeeld_kegel_shieten.drawio.png) ![Ammunitie nemen bijvullen na kegelschot](/Foto's/PP_tekeningen-Voorbeeld_kegel_geraakt.drawio.png)
 
 
 
@@ -66,5 +66,5 @@ Als een speler geen levens meer heeft ligt deze buiten het spel en is die verlor
 Als alle andere spelers al hun levens kwijt zijn heb je gewonnen.
 
 ##### Mogelijke eindsituatie:
-![Voorbeeld eindsituatie](Foto's\PP_tekeningen-Voorbeeld_eindsituatie.drawio.png)
+![Voorbeeld eindsituatie](/Foto's/PP_tekeningen-Voorbeeld_eindsituatie.drawio.png)
 
