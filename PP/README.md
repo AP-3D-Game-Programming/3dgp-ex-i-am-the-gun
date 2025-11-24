@@ -4,13 +4,13 @@
 
 ### Samenvatting:
 
-Je speelt met 4 spelers, waarbij iedereen drie levens heeft en wat ammunitie. Elke ronde zullen de spelers proberen elkaars levens af te nemen door hun ammunitie naar elkaar te schieten met hun vinger. Maar pas op want als je geen ammunitie meer hebt, heb je enkel nog je levels op te geven. Gelukkig kan je op draconische wijze je jezelf meer ammunitie geven door die te stelen van andere spelers. Laatste speler met levens over wint.
+Je speelt met 4 spelers, waarbij iedereen drie levens heeft en ammunitie. Elke ronde zullen de spelers proberen elkaars levens af te nemen door hun ammunitie naar elkaar te schieten met hun vinger. Maar pas op want als je geen ammunitie meer hebt, heb je enkel nog je levens om mee te schieten. Gelukkig kan je op draconische wijze jezelf meer ammunitie geven door die te stelen van andere spelers. Laatste speler met levens over wint.
 
 
 
 ### Onderzoeksdoel:
 
-Het papieren prototype wordt hier gebruikt om te testen of het idee van je eigen "levels" gebruiken als ammunitie en dan ook het daarvan nemen van ammunitie van andere een leuke gameloop is. Het is de bedoeling dat het riskant is, dat je met je level speelt omdat je ammunitie werken als een timer waar je op moet letten. De enige manier om te zorgen dat deze "timer" niet uitloopt is door meer ammunitie van andere te nemen.
+Het papieren prototype wordt hier gebruikt om te testen of het idee van je eigen "levens" gebruiken als ammunitie en dan ook het daarvan nemen van ammunitie van anderen een leuke gameloop is. Het is de bedoeling dat het riskant is, dat je met je leven speelt omdat je ammunitie werkt als een timer waar je op moet letten. De enige manier om te zorgen dat deze "timer" niet uitloopt is door meer ammunitie van andere te nemen.
 
 
 
@@ -28,7 +28,7 @@ Het papieren prototype wordt hier gebruikt om te testen of het idee van je eigen
 
 ##### Startposities:
 
-Elke speler plaatst een van hun kegels voor zich. Deze kegel stelt één level voor. Achter deze kegels plaatst de speler een lijnstuk als indicator voor waar hun kogels op moeten staat. Natuurlijk plaatst de speler dan hun 7 kogels volgens dit lijnstuk.
+Elke speler plaatst één van hun kegels voor zich. Deze kegel stelt één leven voor. Achter deze kegel plaatst de speler een lijnstuk als indicator voor waar hun ammunitie gelegd moet worden. De speler plaatst hun 7 stukken ammunitie volgens dit lijnstuk.
 ![Startpositie spelervoorbeeld](/PP/Foto's/PP_tekeningen-Player_setup.drawio.png) ![Startposities voorbeeld](/PP/Foto's/PP_tekeningen-Game_setup.drawio.png)
 
 
@@ -39,17 +39,17 @@ Elke speler plaatst een van hun kegels voor zich. Deze kegel stelt één level v
 
 ##### Voorbeeld ronde:
 
-De jongste speler is eerst aan de beurt en elke speler komt aan de beurt in wijzerzin volgorde. De speler mag bij hun beurt één kogel gebruiken om te schieten op een andere speler naar keuze.
+De jongste speler is eerst aan de beurt en elke speler komt aan de beurt in wijzerzin volgorde. De speler mag bij hun beurt van hun ammunitie één kogel pakken en gebruiken om te schieten op een andere speler naar keuze.
 
-* Of de speler hun doel raakt of niet, de gebruikte kogel ligt nu buiten het spel.
-* Als de speler de kegel van een andere speler omstoot, is deze andere speler één leven verloren.
+* Of de speler hun doel wel raakt of niet, de gebruikte kogel ligt nu buiten het spel.
+* Als de speler de kegel van een andere speler omstoot, heeft deze andere speler één leven verloren.
 ![Raken kegel](/PP/Foto's/PP_tekeningen-Voorbeeld_kegel_geraakt.drawio.png) ![Resultaat kegel raken](/PP/Foto's/PP_tekeningen-Voorbeeld_kegel_verloren.drawio.png)
 * Als de speler de ammunitie van de andere speler raakt en kogels van het lijnstuk af stoot, krijgt de eerste speler deze kogels om mee te schieten.
 ![Ammunitie raken](/PP/Foto's/PP_tekeningen-Voorbeeld_kogels_geraakt.drawio.png) ![Ammunitie nemen](/PP/Foto's/PP_tekeningen-Voorbeeld_kogels_genomen.drawio.png)
 ![Ammunitie raken 2](/PP/Foto's/PP_tekeningen-Voorbeeld_kogels_geraakt_2.drawio.png) ![Ammunitie nemen 2](/PP/Foto's/PP_tekeningen-Voorbeeld_kogels_genomen_2.drawio.png)
 
 
-Wanneer een speler geen kogels heeft om te schieten zal deze een leven in de plaats moeten gebruiken. De speler zal dan een van hun kegels gebruiken als kogel. Ook deze ligt buiten het spel wanneer gebruikt.
+Wanneer een speler geen kogels meer heeft om te schieten zal deze een van hun levens in de plaats moeten gebruiken. De speler zal dan een van hun kegels gebruiken als kogel. Deze liggen buiten het spel wanneer gebruikt.
 ![Kegel shieten als kogel](/PP/Foto's/PP_tekeningen-Voorbeeld_kegel_shieten.drawio.png) ![Ammunitie nemen bijvullen na kegelschot](/PP/Foto's/PP_tekeningen-Voorbeeld_kegel_geraakt.drawio.png)
 
 
@@ -57,7 +57,7 @@ Wanneer een speler geen kogels heeft om te schieten zal deze een leven in de pla
 
 ##### Wanneer ligt een speler buiten?
 
-Als een speler geen levens meer heeft ligt deze buiten het spel en is die verloren. Hun kogels blijven liggen en kunnen nog altijd geraakt worden door de andere spelers om hun ammunitie bij te vullen.
+Wanneer een speler geen levens meer heeft, ligt die speler buiten het spel en heeft die verloren. Hun achtergebleven kogels blijven liggen en kunnen nog altijd geraakt worden door de andere spelers om hun ammunitie bij te vullen.
 
 
 
