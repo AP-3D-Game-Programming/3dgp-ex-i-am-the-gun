@@ -3,7 +3,10 @@ using UnityEngine;
 public class GunMovement : MonoBehaviour
 {
     //Speed
-    float speed = 10f;
+    float speed = 100f;
+
+    //State
+    bool ragdol = false;
 
     //Dependincies
     private Rigidbody gunRb;
@@ -17,11 +20,16 @@ public class GunMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //TODO: Make this actually function every from
+            //No clue why it does not fire every frame but it only works when Move() is called
+        if (!ragdol && gunRb.position.y < 1.5)
+        {
+            gunRb.position = new Vector3(gunRb.position.x, 1.5f, gunRb.position.z);
+        }
     }
 
     public void Move(Vector3 move)
     {
-        gunRb.linearVelocity = move * speed * Time.deltaTime;
+        gunRb.linearVelocity = (move * speed * Time.deltaTime);
     }
 }

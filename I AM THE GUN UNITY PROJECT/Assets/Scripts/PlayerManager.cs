@@ -4,10 +4,8 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     //Input
-    private float horizontalInput;
-    private float verticalInput;
-    private bool leftMouse;
-    private bool rightMouse;
+    [SerializeField] float horizontalInput;
+    [SerializeField] float verticalInput;
 
     //Dependencies
     [SerializeField] GameObject gun;
@@ -22,10 +20,8 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxisRaw("horizontal");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        leftMouse = Input.GetMouseButtonDown(0);
-        rightMouse = Input.GetMouseButtonDown(1);
 
         Vector3 move = new Vector3(verticalInput, 0f, horizontalInput).normalized;
 
@@ -34,12 +30,14 @@ public class PlayerManager : MonoBehaviour
             movement.Move(move);
         }
 
-        if (leftMouse)
+        //LeftMouse
+        if (Input.GetMouseButtonDown(0))
         {
             //Shoot gun mechanic
         }
 
-        if (rightMouse)
+        //RightMouse
+        if (Input.GetMouseButtonDown(1))
         {
             //Aim gun mechanic
         }
