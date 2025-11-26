@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerUpgradeManager : MonoBehaviour
 {
     // public PlayerStats PlayerStats;
-    // public PlayerMovement PlayerMovement;
+    // public PlayerManager PlayerManager;
 
     private List<MidGameUpgrade> midGameUpgrades = new List<MidGameUpgrade>();
     private List<PreGameUpgrade> preGameUpgrades = new List<PreGameUpgrade>();

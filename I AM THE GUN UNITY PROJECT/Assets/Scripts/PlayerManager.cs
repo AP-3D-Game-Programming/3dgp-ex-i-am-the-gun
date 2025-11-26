@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
     private bool leftMouse;
+    private bool rightMouse;
 
     //Dependencies
     [SerializeField] GameObject gun;
@@ -23,6 +24,8 @@ public class PlayerManager : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+        leftMouse = Input.GetMouseButtonDown(0);
+        rightMouse = Input.GetMouseButtonDown(1);
 
         Vector3 move = new Vector3(verticalInput, 0f, horizontalInput).normalized;
 
@@ -31,10 +34,14 @@ public class PlayerManager : MonoBehaviour
             movement.Move(move);
         }
 
-
-        if (true)
+        if (leftMouse)
         {
+            //Shoot gun mechanic
+        }
 
+        if (rightMouse)
+        {
+            //Aim gun mechanic
         }
     }
 
