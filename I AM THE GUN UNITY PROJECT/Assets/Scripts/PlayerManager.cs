@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -5,6 +6,7 @@ public class PlayerManager : MonoBehaviour
     //Input
     private float horizontalInput;
     private float verticalInput;
+    private bool leftMouse;
 
     //Dependencies
     [SerializeField] GameObject gun;
@@ -27,6 +29,12 @@ public class PlayerManager : MonoBehaviour
         if (move != Vector3.zero)
         {
             movement.Move(move);
+        }
+
+
+        if (true)
+        {
+
         }
     }
 
