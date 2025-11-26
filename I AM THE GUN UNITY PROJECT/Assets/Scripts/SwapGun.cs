@@ -3,12 +3,12 @@ using UnityEngine;
 public class SwapGun : MonoBehaviour
 {
     //PlayerMovement
-    private PlayerMovement player;
+    private PlayerManager player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        player = GameObject.Find("Player").GetComponent<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -19,10 +19,9 @@ public class SwapGun : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (true)
+        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.R))
         {
-            GameObject newGun = other.gameObject;
-            player.ChangeWeapon(newGun);
+            player.ChangeWeapon(this.gameObject);
         }
     }
 }
