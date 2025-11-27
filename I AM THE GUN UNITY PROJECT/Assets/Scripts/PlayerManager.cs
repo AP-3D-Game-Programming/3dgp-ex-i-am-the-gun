@@ -10,6 +10,13 @@ public class PlayerManager : MonoBehaviour
     //Dependencies
     [SerializeField] GameObject gun;
     private GunMovement movement;
+    public GameObject Gun 
+    {
+        get
+        {
+            return gun;
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
