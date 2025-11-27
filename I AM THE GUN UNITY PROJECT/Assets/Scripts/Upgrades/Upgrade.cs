@@ -3,7 +3,9 @@ using UnityEngine;
 public abstract class Upgrade : ScriptableObject
 {
     public string upgradeName;
-    public string description;
+    [TextArea] public string description;
 
     public abstract void OnApply(PlayerUpgradeManager manager);
+
+    public virtual void OnUpdate(PlayerUpgradeManager manager) { }
 }

@@ -4,20 +4,25 @@ using UnityEngine;
 public class PlayerUpgradeManager : MonoBehaviour
 {
     // public PlayerStats PlayerStats;
-    // public PlayerManager PlayerManager;
 
-    private List<MidGameUpgrade> midGameUpgrades = new List<MidGameUpgrade>();
-    private List<PreGameUpgrade> preGameUpgrades = new List<PreGameUpgrade>();
+    private List<MidGameUpgrade> midGameUpgrades = new();
 
-    public void AddUpgrade(Upgrade upgrade)
+    public void ApplyUpgrade(Upgrade upgrade)
     {
-        //upgrades.Add(upgrade);
         upgrade.OnApply(this);
+
+        if (upgrade is MidGameUpgrade mid)
+            midGameUpgrades.Add(mid);
     }
 
     private void Update()
     {
         foreach (var u in midGameUpgrades)
             u.OnUpdate(this);
+    }
+
+    private void ClearMidGame()
+    {
+        midGameUpgrades.Clear();
     }
 }
