@@ -22,7 +22,7 @@ public class GunMovement : MonoBehaviour
     {
         //TODO: Make this actually function every from
             //No clue why it does not fire every frame but it only works when Move() is called
-        if (!ragdol && gunRb.position.y < 1.5)
+        if (!ragdol && gunRb.position.y <= 1.5)
         {
             gunRb.position = new Vector3(gunRb.position.x, 1.5f, gunRb.position.z);
         }
@@ -31,5 +31,10 @@ public class GunMovement : MonoBehaviour
     public void Move(Vector3 move)
     {
         gunRb.linearVelocity = (move * speed * Time.deltaTime);
+    }
+
+    public void Look(Quaternion direction)
+    {
+        gunRb.rotation = direction;
     }
 }
