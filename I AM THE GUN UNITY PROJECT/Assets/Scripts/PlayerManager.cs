@@ -53,7 +53,7 @@ public class PlayerManager : MonoBehaviour
         movement.Look(look);
 
         //LeftMouse
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             //Firing mechanic
             usage.FireWeapon();
