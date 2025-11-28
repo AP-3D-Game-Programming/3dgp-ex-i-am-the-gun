@@ -4,8 +4,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public bool gameIsActive {  get; private set; }
-    public bool gameStarted { get; private set; }
+    public bool gameIsActive {  get;  private set; } = false;
+    public bool gameStarted { get; private set; } = false;
+    public bool gameIsPaused { get; private set; } = false;
     [SerializeField] int currentLevel;
     void Awake()
     {
@@ -16,7 +17,11 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+        gameIsActive = false;
+
     }
+
+
     public async void LoadLevel(int level)
     {
         if (currentLevel != -1 && currentLevel != SceneManager.sceneCountInBuildSettings - 1)
@@ -27,5 +32,17 @@ public class GameManager : MonoBehaviour
         gameIsActive = true;
         gameStarted = true;
     }
+
+    public void TogglePause()
+    {
+        if (!gameIsActive) 
+        {
+            return;
+        }
+
+        gameIsPaused = !gameIsPaused;
+        
+    }
+
 }
 
