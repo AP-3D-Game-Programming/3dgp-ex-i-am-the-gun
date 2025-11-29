@@ -25,7 +25,8 @@ public class PlayerManager : MonoBehaviour
     }
 
     //Stats
-    [SerializeField] int Cartridges;
+    [SerializeField] int cartridgesCount;
+    public int CartridgesCapacity;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -62,9 +63,9 @@ public class PlayerManager : MonoBehaviour
             usage.FireWeapon();
             if (usage.BulletCount <= 0)
             {
-                if (Cartridges > 0)
+                if (cartridgesCount > 0)
                 {
-                    Cartridges -= 1;
+                    cartridgesCount -= 1;
                     usage.BulletCount = usage.BulletCapacity;
                 }
                 else
@@ -91,5 +92,6 @@ public class PlayerManager : MonoBehaviour
     {
         gun = newGun;
         movement = gun.GetComponent<GunMovement>();
+        cartridgesCount = CartridgesCapacity;
     }
 }
