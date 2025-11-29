@@ -691,12 +691,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd937894fbec6a478e56cd471a001e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  bulletPrefab: {fileID: 547539737}
-  bulletSpawn: {fileID: 868533986}
-  bulletVelocity: 30
-  bulletPrefabLifeTime: 3
-  bulletCapacity: 10
-  bulletCount: 10
+  BulletPrefab: {fileID: 547539737}
+  BulletSpawn: {fileID: 868533986}
+  BulletVelocity: 30
+  BulletPrefabLifeTime: 3
+  BulletCapacity: 10
+  BulletCount: 0
 --- !u!1 &772159547
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +890,7 @@ MonoBehaviour:
   ySensitivity: 15
   gun: {fileID: 657820143}
   camera: {fileID: 534546006}
+  Cartridges: 3
 --- !u!4 &1459080909
 Transform:
   m_ObjectHideFlags: 0

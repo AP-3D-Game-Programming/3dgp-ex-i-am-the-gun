@@ -3,32 +3,32 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    public Transform bulletSpawn;
-    public float bulletVelocity = 30;
-    public float bulletPrefabLifeTime = 3f;
-    public int bulletCapacity;
-    public int bulletCount;
+    public GameObject BulletPrefab;
+    public Transform BulletSpawn;
+    public float BulletVelocity = 30;
+    public float BulletPrefabLifeTime = 3f;
+    public int BulletCapacity;
+    public int BulletCount;
     private void Start()
     {
-        bulletCount = bulletCapacity;
+        BulletCount = BulletCapacity;
     }
 
     public void FireWeapon()
     {
-        if (bulletCount <= 0) return;
+        if (BulletCount <= 0) return;
 
         // Instantiate the bullet
-        GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
+        GameObject bullet = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity);
 
         // Shoot the bullet
-        bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.forward.normalized * bulletVelocity, ForceMode.Impulse);
+        bullet.GetComponent<Rigidbody>().AddForce(BulletSpawn.forward.normalized * BulletVelocity, ForceMode.Impulse);
 
        // Decrease ammo
-       bulletCount--;
+       BulletCount--;
 
        // Destroy the bullet after some time
-       StartCoroutine(DestroyBulletAfterTime(bullet, bulletPrefabLifeTime));
+       StartCoroutine(DestroyBulletAfterTime(bullet, BulletPrefabLifeTime));
     }
 
     private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)

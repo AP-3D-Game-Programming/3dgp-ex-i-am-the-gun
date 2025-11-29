@@ -24,6 +24,9 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    //Stats
+    [SerializeField] int Cartridges;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -57,6 +60,18 @@ public class PlayerManager : MonoBehaviour
         {
             //Firing mechanic
             usage.FireWeapon();
+            if (usage.BulletCount <= 0)
+            {
+                if (Cartridges > 0)
+                {
+                    Cartridges -= 1;
+                    usage.BulletCount = usage.BulletCapacity;
+                }
+                else
+                {
+                    //death mechanic
+                }
+            }
         }
 
         //RightMouse
