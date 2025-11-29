@@ -35,6 +35,6 @@ public class GunMovement : MonoBehaviour
 
     public void Look(Quaternion direction)
     {
-        gunRb.rotation = direction;
+        gunRb.transform.rotation *= direction;
     }
 }

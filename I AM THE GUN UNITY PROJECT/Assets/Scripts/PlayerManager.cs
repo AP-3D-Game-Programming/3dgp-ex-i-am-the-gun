@@ -43,7 +43,7 @@ public class PlayerManager : MonoBehaviour
         yMouse = Input.GetAxis("Mouse Y") * ySensitivity;
 
         Vector3 move = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-        Quaternion look = new Quaternion(xMouse, yMouse, 0, 0);
+        Quaternion look = Quaternion.Euler(xMouse, yMouse, 0);
 
         if (move != Vector3.zero)
         {
