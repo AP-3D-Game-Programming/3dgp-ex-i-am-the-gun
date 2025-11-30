@@ -13,9 +13,14 @@ public class PlayerManager : MonoBehaviour
 
     //Dependencies
     [SerializeField] GameObject gun;
+    [SerializeField] GameObject camera;
     private GunMovement movement;
     private Gun usage;
-    [SerializeField] GameObject camera;
+
+    //Stats
+    [SerializeField] int cartridgesCount;
+    public int CartridgesCapacity;
+
     public GameObject Gun 
     {
         get
@@ -24,9 +29,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    //Stats
-    [SerializeField] int cartridgesCount;
-    public int CartridgesCapacity;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,25 +41,35 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //get inputs
-            //keyboard
+        Inputs();
+        Movement();
+        MouseLooking();
+        LeftMouseFire();
+        RightMouseAiming();
+    }
+    void Inputs()
+    {    //get inputs
+        //keyboard
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         //mouse
         xMouse = Input.GetAxis("Mouse X") * xSensitivity;
         yMouse = Input.GetAxis("Mouse Y") * ySensitivity;
+    }
 
-        Vector3 move = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-        Quaternion look = Quaternion.Euler(xMouse, yMouse, 0);
-
-        if (move != Vector3.zero)
-        {
-            movement.Move(move);
-        }
-
-        movement.Look(look);
-
-        //LeftMouse
+    void Movement()
+    {
+        Vector3 move = new(horizontalInput, 0f, verticalInput);
+        movement.Move(move);
+    }
+    void MouseLooking()
+    {
+    Quaternion look = Quaternion.Euler(xMouse, yMouse, 0);
+    movement.Look(look);
+    }
+    void LeftMouseFire()
+    {
+            //LeftMouse
         if (Input.GetMouseButtonDown(0))
         {
             //Firing mechanic
@@ -74,7 +87,10 @@ public class PlayerManager : MonoBehaviour
                 }
             }
         }
+    }
 
+    void RightMouseAiming()
+    {
         //RightMouse
         if (Input.GetMouseButton(1))
         {
@@ -86,9 +102,8 @@ public class PlayerManager : MonoBehaviour
             camera.GetComponent<PlayerCamera>().isAiming = false;
         }
     }
-
-    //When player switches weapon
-    public void ChangeWeapon(GameObject newGun)
+//When player switches weapon}
+public void ChangeWeapon(GameObject newGun)
     {
         gun = newGun;
         movement = gun.GetComponent<GunMovement>();

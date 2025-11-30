@@ -3,8 +3,9 @@ using UnityEngine;
 public class GunMovement : MonoBehaviour
 {
     //Speed
-    float speed = 100f;
-
+    [SerializeField] float speed = 7f;
+    [SerializeField] float deceleration = 10f;
+    Vector3 currentVelocity;
     //State
     bool ragdol = false;
 
@@ -28,9 +29,28 @@ public class GunMovement : MonoBehaviour
         }
     }
 
-    public void Move(Vector3 move)
+    public void Move(Vector3 input)
     {
-        gunRb.linearVelocity = (move * speed * Time.deltaTime);
+        //Fix velocity
+        if (input.sqrMagnitude > 0.0001f)
+        {
+            Vector3 targetVelocity = input.normalized * speed;
+            currentVelocity = targetVelocity;
+        }
+        else
+        {
+            //Smoothinggg
+            currentVelocity = Vector3.Lerp(
+                currentVelocity,
+                Vector3.zero,
+                deceleration * Time.deltaTime
+            );
+        }
+
+        //Fix Physics conflicten
+        gunRb.MovePosition(
+            gunRb.position + currentVelocity * Time.deltaTime
+        );
     }
 
     public void Look(Quaternion direction)
