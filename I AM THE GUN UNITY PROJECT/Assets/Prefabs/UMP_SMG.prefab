@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd937894fbec6a478e56cd471a001e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  BulletPrefab: {fileID: 0}
+  BulletPrefab: {fileID: 7317326929509857554, guid: 4d91607bd1e2354429af254e2d3cbf35, type: 3}
   BulletSpawn: {fileID: 2909907904670480674}
   BulletVelocity: 30
   BulletPrefabLifeTime: 3
