@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public bool gameStarted { get; private set; } = false;
     public bool gameIsPaused { get; private set; } = false;
     [SerializeField] int currentLevel;
+
     void Awake()
     {
         currentLevel = -1;
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
         gameIsPaused = !gameIsPaused;
         
     }
+
 
 }
 
