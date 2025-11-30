@@ -9,7 +9,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject startButton;
     [SerializeField] GameObject pauseButton;
 
-    bool paused = GameManager.Instance.gameIsPaused;
+    private bool paused => GameManager.Instance.gameIsPaused;
+
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class MenuManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             PauseToggle();
+            Debug.Log($"Scene is paused: {GameManager.Instance.gameIsPaused}");
         }
     }
     public void StartGame()
@@ -28,15 +30,12 @@ public class MenuManager : MonoBehaviour
 
         GameManager.Instance.LoadLevel(0);
         startButton.SetActive(false);
-
-
-
     }
 
     public void PauseToggle()
     {
         menuScreen.gameObject.SetActive(true);
-        if (!paused)
+        if (!GameManager.Instance.gameIsPaused)
         {
             if (!GameManager.Instance.gameIsActive)
             {
@@ -44,15 +43,29 @@ public class MenuManager : MonoBehaviour
             }
             GameManager.Instance.TogglePause();
             pauseButton.SetActive(true);
-            paused = true;
         }
     }
     public void ResumeToggle()
     {
-        if (paused)
+        if (GameManager.Instance.gameIsPaused)
         {
             menuScreen.gameObject.SetActive(false);
+            GameManager.Instance.TogglePause();
         }
+    }
+
+    public async void Quit()
+    {
+        await SceneManager.LoadSceneAsync(0);
+        ResetUI();
+    }
+
+    private void ResetUI()
+    {
+        GameManager.Instance.TogglePause();
+        startButton.SetActive(true);
+        pauseButton.SetActive(false);
+        menuScreen.gameObject.SetActive(true);
     }
 
 }
