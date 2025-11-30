@@ -3,11 +3,12 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     //Dependencies
-    private PlayerManager player;
+    [SerializeField] private PlayerManager player;
 
     //Offset
-    [SerializeField] Vector3 offset = new Vector3(-2f, 1f, -4f);
-    [SerializeField] Vector3 aimOffset = new Vector3(0, 0.5f, -1f);
+    [SerializeField] Vector3 offset = new Vector3(0.5f, -0.5f, 1f);
+    [SerializeField] Vector3 aimOffset = new Vector3(0, -0.2f, 0.5f);
+    Vector3 targetPosition;
 
     //Aiming
     public bool isAiming;
@@ -15,22 +16,35 @@ public class PlayerCamera : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerManager>();
+        if (player == null)
+        {
+            Debug.LogError("PlayerCamera mist de PlayerManager. Sleep in de inspector AUB.");
+        }
+        transform.localPosition = Vector3.zero;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = player.Gun.transform.rotation;
-        transform.position = player.Gun.transform.position;
+        if (player == null) 
+            return;
+
+        transform.localPosition = Vector3.zero;
+        
 
         if (isAiming)
         {
-            transform.position += aimOffset;
+            targetPosition = aimOffset;
         }
         else
         {
-            transform.position += offset;
+            targetPosition = offset;
         }
+
+        player.Gun.transform.localPosition = Vector3.Lerp(
+            player.Gun.transform.localPosition,
+            targetPosition,
+            Time.deltaTime * 10f //smooooth
+        );
     }
 }

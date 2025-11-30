@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class GunMovement : MonoBehaviour
 {
-    //Speed
-    [SerializeField] float speed = 7f;
-    [SerializeField] float deceleration = 10f;
-    Vector3 currentVelocity;
     //State
     bool ragdol = false;
 
@@ -31,30 +27,6 @@ public class GunMovement : MonoBehaviour
 
     public void Move(Vector3 input)
     {
-        //Fix velocity
-        if (input.sqrMagnitude > 0.0001f)
-        {
-            Vector3 targetVelocity = input.normalized * speed;
-            currentVelocity = targetVelocity;
-        }
-        else
-        {
-            //Smoothinggg
-            currentVelocity = Vector3.Lerp(
-                currentVelocity,
-                Vector3.zero,
-                deceleration * Time.deltaTime
-            );
-        }
-
-        //Fix Physics conflicten
-        gunRb.MovePosition(
-            gunRb.position + currentVelocity * Time.deltaTime
-        );
-    }
-
-    public void Look(Quaternion direction)
-    {
-        gunRb.transform.rotation *= direction;
+        //Empty cus playermanager now handles movement
     }
 }

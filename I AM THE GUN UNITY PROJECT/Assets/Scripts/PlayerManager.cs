@@ -4,12 +4,17 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     //Input
+    [SerializeField] float speed = 7f;
     [SerializeField] float horizontalInput;
     [SerializeField] float verticalInput;
+    [SerializeField] float xSensitivity = 5f;
+    [SerializeField] float ySensitivity = 5f;
+    [SerializeField] float deceleration = 10f;
     private float xMouse;
     private float yMouse;
-    [SerializeField] float xSensitivity = 15f;
-    [SerializeField] float ySensitivity = 15f;
+    private float xRotation = 0f;
+    private Vector3 currentVelocity;
+    
 
     //Dependencies
     [SerializeField] GameObject gun;
@@ -21,13 +26,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] int cartridgesCount;
     public int CartridgesCapacity;
 
-    public GameObject Gun 
-    {
-        get
-        {
-            return gun;
-        }
-    }
+    public GameObject Gun => gun;
 
 
 
@@ -36,10 +35,16 @@ public class PlayerManager : MonoBehaviour
     {
         movement = gun.GetComponent<GunMovement>();
         usage = gun.GetComponent<Gun>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
+    {
+        RunGameLogic();
+    }
+
+    void RunGameLogic()
     {
         Inputs();
         Movement();
@@ -60,12 +65,37 @@ public class PlayerManager : MonoBehaviour
     void Movement()
     {
         Vector3 move = new(horizontalInput, 0f, verticalInput);
-        movement.Move(move);
+
+        Vector3 targetDirection = transform.TransformDirection(move);
+
+        //SMOOOTHING
+        if (targetDirection.sqrMagnitude > 0.001f)
+        {
+            currentVelocity = targetDirection * speed;
+        }
+        else
+        {
+            //SLOW DOWN
+            currentVelocity = Vector3.Lerp(
+                currentVelocity,
+                Vector3.zero,
+                deceleration * Time.deltaTime
+            );
+        }
+
+        //Actual movement.
+        transform.position += currentVelocity * Time.deltaTime;
     }
     void MouseLooking()
     {
-    Quaternion look = Quaternion.Euler(xMouse, yMouse, 0);
-    movement.Look(look);
+        transform.rotation *= Quaternion.Euler(0, xMouse, 0);
+
+        xRotation -= yMouse;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+        camera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+        gun.transform.localRotation = Quaternion.identity;
     }
     void LeftMouseFire()
     {
