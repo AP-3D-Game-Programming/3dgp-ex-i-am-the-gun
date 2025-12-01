@@ -28,15 +28,15 @@ public class MenuManager : MonoBehaviour
         menuScreen.gameObject.SetActive(false);
 
         GameManager.Instance.LoadLevel(0);
-        if (startButton != null)
-        {
-            startButton.SetActive(false);
-        }
+        //if (startButton != null)
+        //{
+        //    startButton.SetActive(false);
+        //}
+        // Below example of
+        // shortening the if statement
+        startButton?.SetActive(false);
 
-        if (resumeButton != null)
-        {
-            resumeButton.SetActive(false);
-        }
+        resumeButton?.SetActive(false);
     }
 
     public void PauseToggle()
@@ -52,31 +52,25 @@ public class MenuManager : MonoBehaviour
                 return;
             }
             GameManager.Instance.TogglePause();
-            if (resumeButton != null)
-            {
-                resumeButton.SetActive(true);
-            }
+
+            resumeButton?.SetActive(true);
         }
     }
     public void ResumeToggle()
     {
         if (GameManager.Instance.gameIsPaused)
         {
-            if (menuScreen != null)
-            {
-                menuScreen.gameObject.SetActive(false);
-            }
+            menuScreen?.gameObject.SetActive(false);
+
             GameManager.Instance.TogglePause();
-            if (resumeButton != null) { resumeButton.SetActive(false); }
+
+            resumeButton?.SetActive(false);
         }
     }
 
     public async void Quit()
     {
-        if (menuScreen != null)
-        {
-            menuScreen.gameObject.SetActive(false);
-        }
+        menuScreen?.gameObject.SetActive(false);
 
         if (GameManager.Instance != null && GameManager.Instance.gameIsPaused)
         {
@@ -88,25 +82,18 @@ public class MenuManager : MonoBehaviour
 
     private void ResetUI()
     {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.TogglePause();
-        }
+        //if (GameManager.Instance != null)
+        //{
+        //    GameManager.Instance.TogglePause();
+        //}
+        GameManager.Instance?.TogglePause();
 
-        if (startButton != null)
-        {
-            startButton.SetActive(true);
-        }
+        startButton?.SetActive(true);
 
-        if (resumeButton != null)
-        {
-            resumeButton.SetActive(false);
-        }
+        resumeButton?.SetActive(false);
 
-        if (menuScreen != null)
-        {
-            menuScreen.gameObject.SetActive(true);
-        }
+        menuScreen?.gameObject.SetActive(true);
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }

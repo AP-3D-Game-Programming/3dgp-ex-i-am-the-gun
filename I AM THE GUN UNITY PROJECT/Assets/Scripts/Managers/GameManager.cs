@@ -6,8 +6,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public bool gameIsActive {  get;  private set; } = false;
     public bool gameStarted { get; private set; } = false;
-    public bool gameIsPaused { get; private set; } = false;
+    //public bool gameIsPaused { get; private set; } = false;
     [SerializeField] int currentLevel;
+    [SerializeField] public bool gameIsPaused = false;
 
     void Awake()
     {
@@ -37,10 +38,8 @@ public class GameManager : MonoBehaviour
 
     public void TogglePause()
     {
-        if (!gameIsActive) 
-        {
+        if (!gameIsActive)
             return;
-        }
 
         gameIsPaused = !gameIsPaused;
 
