@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
         await SceneManager.LoadSceneAsync(currentLevel + 1, LoadSceneMode.Additive);
         gameIsActive = true;
         gameStarted = true;
+        Time.timeScale = 1f;
     }
 
     public void TogglePause()
@@ -46,10 +47,14 @@ public class GameManager : MonoBehaviour
         if (gameIsPaused)
         {
             Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None; // Unlock cursor to interact with menu
+            Cursor.visible = true;
         }
         else
         {
             Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked; // Lock cursor for FPS control
+            Cursor.visible = false;
         }
 
     }

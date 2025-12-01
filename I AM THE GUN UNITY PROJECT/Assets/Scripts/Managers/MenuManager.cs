@@ -7,9 +7,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Canvas menuScreen;
 
     [SerializeField] GameObject startButton;
-    [SerializeField] GameObject pauseButton;
+    [SerializeField] GameObject resumeButton;
 
-    private bool paused => GameManager.Instance.gameIsPaused;
 
 
     private void Awake()
@@ -29,12 +28,23 @@ public class MenuManager : MonoBehaviour
         menuScreen.gameObject.SetActive(false);
 
         GameManager.Instance.LoadLevel(0);
-        startButton.SetActive(false);
+        if (startButton != null)
+        {
+            startButton.SetActive(false);
+        }
+
+        if (resumeButton != null)
+        {
+            resumeButton.SetActive(false);
+        }
     }
 
     public void PauseToggle()
     {
-        menuScreen.gameObject.SetActive(true);
+        if (menuScreen != null)
+        {
+            menuScreen.gameObject.SetActive(true);
+        }
         if (!GameManager.Instance.gameIsPaused)
         {
             if (!GameManager.Instance.gameIsActive)
@@ -42,30 +52,63 @@ public class MenuManager : MonoBehaviour
                 return;
             }
             GameManager.Instance.TogglePause();
-            pauseButton.SetActive(true);
+            if (resumeButton != null)
+            {
+                resumeButton.SetActive(true);
+            }
         }
     }
     public void ResumeToggle()
     {
         if (GameManager.Instance.gameIsPaused)
         {
-            menuScreen.gameObject.SetActive(false);
+            if (menuScreen != null)
+            {
+                menuScreen.gameObject.SetActive(false);
+            }
             GameManager.Instance.TogglePause();
+            if (resumeButton != null) { resumeButton.SetActive(false); }
         }
     }
 
     public async void Quit()
     {
+        if (menuScreen != null)
+        {
+            menuScreen.gameObject.SetActive(false);
+        }
+
+        if (GameManager.Instance != null && GameManager.Instance.gameIsPaused)
+        {
+            GameManager.Instance.TogglePause();
+        }
         await SceneManager.LoadSceneAsync(0);
         ResetUI();
     }
 
     private void ResetUI()
     {
-        GameManager.Instance.TogglePause();
-        startButton.SetActive(true);
-        pauseButton.SetActive(false);
-        menuScreen.gameObject.SetActive(true);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.TogglePause();
+        }
+
+        if (startButton != null)
+        {
+            startButton.SetActive(true);
+        }
+
+        if (resumeButton != null)
+        {
+            resumeButton.SetActive(false);
+        }
+
+        if (menuScreen != null)
+        {
+            menuScreen.gameObject.SetActive(true);
+        }
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
 }

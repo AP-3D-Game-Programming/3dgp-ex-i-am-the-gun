@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] GameObject camera;
     private GunMovement movement;
     private Gun usage;
+    private CharacterController controller;
 
     //Stats
     [SerializeField] int cartridgesCount;
@@ -28,13 +29,25 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject Gun => gun;
 
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        controller = GetComponent<CharacterController>();
         movement = gun.GetComponent<GunMovement>();
         usage = gun.GetComponent<Gun>();
+        xRotation = 0f;
+
+        // 3. Reset the camera's local rotation to prevent weird initial tilt
+        if (camera != null)
+        {
+            camera.transform.localRotation = Quaternion.identity;
+        }
+        if (gun != null)
+        {
+            gun.transform.SetParent(camera.transform); // Ensure parenting is correct
+            gun.transform.localPosition = Vector3.zero; // The PlayerCamera Update will smooth it from here
+            gun.transform.localRotation = Quaternion.identity;
+        }
     }
 
     // Update is called once per frame
@@ -99,7 +112,14 @@ public class PlayerManager : MonoBehaviour
         }
 
         //Actual movement.
-        transform.position += currentVelocity * Time.deltaTime;
+        if (!controller.isGrounded)
+        {
+            // Simple Gravity
+            currentVelocity.y += -9.81f * Time.deltaTime;
+        }
+
+        // Actual movement. This handles collision correctly.
+        controller.Move(currentVelocity * Time.deltaTime);
     }
     void MouseLooking()
     {
@@ -147,8 +167,10 @@ public class PlayerManager : MonoBehaviour
             camera.GetComponent<PlayerCamera>().isAiming = false;
         }
     }
-//When player switches weapon}
-public void ChangeWeapon(GameObject newGun)
+    //When player switches weapon}
+    // PlayerManager.cs
+
+    public void ChangeWeapon(GameObject newGun)
     {
         gun = newGun;
         movement = gun.GetComponent<GunMovement>();

@@ -25,11 +25,11 @@ public class AttackUpgrade : PreGameUpgrade
     public override void OnApply(PlayerUpgradeManager manager)
     {
         if (FlatAmount != 0)
-        ;
+        return;
             //manager.PlayerStats.AttackDamage += flatAmount;
 
         if (Multiplier != 0f)
-        ;
+        return;
             //manager.PlayerStats.AttackDamageMultiplier *= multiplier;
     }
 }
