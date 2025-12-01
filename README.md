@@ -1,5 +1,6 @@
 ﻿# 3dgp-ex-i-am-the-gun
 
+# Link to game build: https://witmilk.itch.io/i-am-the-gun-1
 #### Developers
 - Behlul
 - Luca
