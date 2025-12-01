@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
     public bool gameIsActive {  get;  private set; } = false;
     public bool gameStarted { get; private set; } = false;
     //public bool gameIsPaused { get; private set; } = false;
-    [SerializeField] int currentLevel;
     [SerializeField] public bool gameIsPaused = false;
+    [SerializeField] int currentLevel;
 
     void Awake()
     {

@@ -1,4 +1,5 @@
-using Unity.VisualScripting;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -14,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     private float yMouse;
     private float xRotation = 0f;
     private Vector3 currentVelocity;
-    
+
 
     //Dependencies
     [SerializeField] GameObject gun;
@@ -134,7 +135,7 @@ public class PlayerManager : MonoBehaviour
     }
     void LeftMouseFire()
     {
-            //LeftMouse
+        //LeftMouse
         if (Input.GetMouseButtonDown(0))
         {
             //Firing mechanic
