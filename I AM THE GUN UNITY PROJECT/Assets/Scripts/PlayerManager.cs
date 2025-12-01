@@ -35,12 +35,27 @@ public class PlayerManager : MonoBehaviour
     {
         movement = gun.GetComponent<GunMovement>();
         usage = gun.GetComponent<Gun>();
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.gameIsPaused)
+        {
+            if (Cursor.lockState != CursorLockMode.None)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            return;
+        }
+
+        if (Cursor.lockState != CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
         RunGameLogic();
     }
 
