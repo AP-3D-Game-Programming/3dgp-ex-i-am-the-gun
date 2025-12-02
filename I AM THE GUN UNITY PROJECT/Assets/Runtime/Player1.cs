@@ -34,9 +34,13 @@ public class Player1 : MonoBehaviour
         {
             Rotation = playerCamera.transform.rotation,
             Move     = input.Move.ReadValue<Vector2>(),
-            Jump     = input.Jump.WasPressedThisFrame()
+            Jump     = input.Jump.WasPressedThisFrame(),
+            Crouch   = input.Crouch.WasPressedThisFrame()
+                ? CrouchInput.Toggle
+                : CrouchInput.None
         };
         playerCharacter.UpdateInput(characterInput);
+        playerCharacter.UpdateBody();
     }
 
     private void LateUpdate()
