@@ -221,11 +221,10 @@ GameObject:
   - component: {fileID: 4586929044294282131}
   - component: {fileID: 1070999944722066276}
   - component: {fileID: 330331766943545423}
-  - component: {fileID: 225702367526851600}
   - component: {fileID: 2976172074856618461}
   - component: {fileID: 6751170501983252991}
-  - component: {fileID: 2784545604328414849}
   - component: {fileID: 935124770086335023}
+  - component: {fileID: 796081175699447516}
   m_Layer: 0
   m_Name: CombatPump_Shotgun
   m_TagString: Untagged
@@ -326,18 +325,6 @@ MonoBehaviour:
   BulletPrefabLifeTime: 3
   BulletCapacity: 5
   BulletCount: 0
---- !u!114 &225702367526851600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6260535967125609021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 410e810ea9793bc489cd0ce1df900d5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunMovement
 --- !u!114 &2976172074856618461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,27 +364,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &2784545604328414849
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6260535967125609021}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.0042880783, y: 0.0011199937, z: 0.0053345263}
-  m_Center: {x: 0.0000000019073487, y: -0.00008002532, z: 0.0012832232}
 --- !u!64 &935124770086335023
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -420,3 +386,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8680105544319819576, guid: d1899fca33d17ad4d95cc7c82148f230, type: 3}
+--- !u!135 &796081175699447516
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6260535967125609021}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0025701514
+  m_Center: {x: 0, y: 0, z: 0.0012832163}

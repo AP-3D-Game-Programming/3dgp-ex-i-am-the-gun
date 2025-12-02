@@ -101,11 +101,10 @@ GameObject:
   - component: {fileID: 7052666163292440670}
   - component: {fileID: 2075089636272922804}
   - component: {fileID: 5111949346639121952}
-  - component: {fileID: 5304756210002276333}
   - component: {fileID: 94746119776162588}
-  - component: {fileID: 3891785189568213992}
   - component: {fileID: 2547687609585533221}
   - component: {fileID: -6857335941848735217}
+  - component: {fileID: 6515406039855205921}
   m_Layer: 0
   m_Name: AK_Rifle
   m_TagString: Untagged
@@ -207,18 +206,6 @@ MonoBehaviour:
   BulletPrefabLifeTime: 3
   BulletCapacity: 20
   BulletCount: 0
---- !u!114 &5304756210002276333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2105061281010239327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 410e810ea9793bc489cd0ce1df900d5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunMovement
 --- !u!114 &94746119776162588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,27 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e639db274d5efa24ca84713d2b88bc89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwapGun
---- !u!65 &3891785189568213992
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2105061281010239327}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.00410481, y: 0.0016385706, z: 0.0066560833}
-  m_Center: {x: -0.00010068107, y: -0.00008026207, z: 0.001014391}
 --- !u!64 &2547687609585533221
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -301,6 +267,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &6515406039855205921
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105061281010239327}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0036308812
+  m_Center: {x: 0, y: -7.87108e-18, z: 0.0010190645}
 --- !u!1 &6743536059764550584
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 1892553415330208173}
   - component: {fileID: 97356393121048120}
   - component: {fileID: 3155318255297166617}
-  - component: {fileID: 2185863295601228994}
   - component: {fileID: 7621335575007721031}
   - component: {fileID: 6737202054683781331}
   - component: {fileID: 1988656285577064096}
   - component: {fileID: 6755201248312857386}
-  - component: {fileID: 8448731453335962199}
+  - component: {fileID: 4207259713554063129}
   m_Layer: 0
   m_Name: M14_Sniper
   m_TagString: Untagged
@@ -101,27 +100,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2185863295601228994
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574833526839719160}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.0042187828, y: 0.0009618191, z: 0.004975905}
-  m_Center: {x: 0.000006239772, y: -0.00012756772, z: 0.00084671617}
 --- !u!54 &7621335575007721031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -201,18 +179,27 @@ MonoBehaviour:
   BulletPrefabLifeTime: 3
   BulletCapacity: 10
   BulletCount: 0
---- !u!114 &8448731453335962199
-MonoBehaviour:
+--- !u!135 &4207259713554063129
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574833526839719160}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 410e810ea9793bc489cd0ce1df900d5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunMovement
+  serializedVersion: 3
+  m_Radius: 0.0028796145
+  m_Center: {x: 0, y: -6.9256185e-18, z: 0.0009737533}
 --- !u!1 &2125972602494229009
 GameObject:
   m_ObjectHideFlags: 0

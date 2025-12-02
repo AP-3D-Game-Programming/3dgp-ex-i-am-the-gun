@@ -132,11 +132,10 @@ GameObject:
   - component: {fileID: 7088646920222302395}
   - component: {fileID: 7186467586386078362}
   - component: {fileID: 2437277121947783064}
-  - component: {fileID: 2905025491996763297}
   - component: {fileID: 1664746124055305779}
   - component: {fileID: 4049078192546316898}
   - component: {fileID: 229836482450303619}
-  - component: {fileID: 1538499658954136466}
+  - component: {fileID: 5419943554127154944}
   m_Layer: 0
   m_Name: UMP_SMG
   m_TagString: Untagged
@@ -237,18 +236,6 @@ MonoBehaviour:
   BulletPrefabLifeTime: 3
   BulletCapacity: 30
   BulletCount: 0
---- !u!114 &2905025491996763297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3323877240406010248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 410e810ea9793bc489cd0ce1df900d5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunMovement
 --- !u!114 &1664746124055305779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,8 +297,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1538499658954136466
-BoxCollider:
+--- !u!135 &5419943554127154944
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -329,8 +316,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0042981254, y: 0.0015685149, z: 0.0052910997}
-  m_Center: {x: 8.3446505e-10, y: 0.00009155709, z: 0.0004451144}
+  m_Radius: 0.0033920596
+  m_Center: {x: 0, y: -5.1386126e-18, z: 0.00046130826}
 --- !u!1 &3659488161246132104
 GameObject:
   m_ObjectHideFlags: 0
