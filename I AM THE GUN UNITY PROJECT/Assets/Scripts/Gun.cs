@@ -1,5 +1,7 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
@@ -9,9 +11,18 @@ public class Gun : MonoBehaviour
     public float BulletPrefabLifeTime = 3f;
     public int BulletCapacity;
     public int BulletCount;
+
+    [SerializeField] private Text AmmoCount;
+    [SerializeField] private Text AmmoCap;
     private void Start()
     {
         BulletCount = BulletCapacity;
+    }
+    private void Update()
+    {
+        AmmoCap.text = BulletCapacity.ToString();
+        AmmoCount.text = BulletCount.ToString();
+
     }
 
     public void FireWeapon()

@@ -165,7 +165,7 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
                 height: standHeight,
                 yOffset: standHeight * 0.5f
                 );
-            if(motor.CharacterOverlap)
+            //if (motor.CharacterOverlap)
         }
     }
 
