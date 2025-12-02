@@ -33,6 +33,8 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
     [SerializeField] private float crouchSpeed = 8f;
     [SerializeField] private float walkResponse = 25f;
     [SerializeField] private float crouchResponse = 15f;
+    [SerializeField] private float airSpeed = 15f;
+    [SerializeField] private float airAcceleration = 70f;
     [Space]
     [SerializeField] private float jumpSpeed = 21f;
     [Range(0f, 1f)]
@@ -136,8 +138,34 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
         }
         else
         {
+            if(_requestedMovement.sqrMagnitude > 0f)
+            {
+                var planarMovement = Vector3.ProjectOnPlane
+                    (
+                        vector: _requestedMovement,
+                        planeNormal: motor.CharacterUp
+                    ).normalized * _requestedMovement.magnitude;
+
+                var currentPlanarVelocity = Vector3.ProjectOnPlane
+                    (
+                        vector: currentVelocity,
+                        planeNormal: motor.CharacterUp
+                    );
+
+                var movementForce = planarMovement * airAcceleration * deltaTime;
+
+                var targetPlanarVelocity = currentPlanarVelocity + movementForce;
+
+                targetPlanarVelocity = Vector3.ClampMagnitude(targetPlanarVelocity, airSpeed);
+
+                currentVelocity += targetPlanarVelocity - currentPlanarVelocity;
+            };
+
+
+            //Gravity
             var effectiveGravity = gravity;
-            if (_requestedSustainedJump)
+            var verticalSpeed = Vector3.Dot(currentVelocity, motor.CharacterUp);
+            if (_requestedSustainedJump && verticalSpeed > 0f)
                 effectiveGravity *= jumpSustainGravity;
             
             currentVelocity += motor.CharacterUp * effectiveGravity * deltaTime;
