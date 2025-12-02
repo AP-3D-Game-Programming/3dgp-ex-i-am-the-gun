@@ -24,6 +24,7 @@ public class Player1 : MonoBehaviour
     void Update()
     {
         var input = _inputActions.Gameplay;
+        var deltaTime = Time.deltaTime;
 
         //Get camera input en update the value
         var cameraInput = new CameraInput { Look =  input.Look.ReadValue<Vector2>() };
@@ -32,15 +33,16 @@ public class Player1 : MonoBehaviour
         // Get character input and update it
         var characterInput = new CharacterInput
         {
-            Rotation = playerCamera.transform.rotation,
-            Move     = input.Move.ReadValue<Vector2>(),
-            Jump     = input.Jump.WasPressedThisFrame(),
-            Crouch   = input.Crouch.WasPressedThisFrame()
+            Rotation    = playerCamera.transform.rotation,
+            Move        = input.Move.ReadValue<Vector2>(),
+            Jump        = input.Jump.WasPressedThisFrame(),
+            JumpSustain = input.Jump.IsPressed(),
+            Crouch      = input.Crouch.WasPressedThisFrame()
                 ? CrouchInput.Toggle
                 : CrouchInput.None
         };
         playerCharacter.UpdateInput(characterInput);
-        playerCharacter.UpdateBody();
+        playerCharacter.UpdateBody(deltaTime);
     }
 
     private void LateUpdate()
