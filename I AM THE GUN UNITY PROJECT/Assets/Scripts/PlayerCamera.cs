@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
@@ -46,5 +47,10 @@ public class PlayerCamera : MonoBehaviour
             targetPosition,
             Time.deltaTime * 10f //smooooth
         );
+    }
+
+    internal void Initialize(Transform transform)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -2,16 +2,45 @@ using UnityEngine;
 
 public class Player1 : MonoBehaviour
 {
-    [SerializeField] private PlayerCharacter playerCharacter;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private PlayerCharacter1 playerCharacter;
+    [SerializeField] private PlayerCamera1 playerCamera;
+
+    private PlayerInputActions _inputActions;
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
+        _inputActions = new PlayerInputActions();
+        _inputActions.Enable();
         playerCharacter.Initialize();
+        playerCamera.Initialize(playerCharacter.GetCameraTarget());
     }
 
-    // Update is called once per frame
+    private void OnDestroy()
+    {
+        _inputActions.Dispose();
+    }
+
     void Update()
     {
-        
+        var input = _inputActions.Gameplay;
+
+        //Get camera input en update the value
+        var cameraInput = new CameraInput { Look =  input.Look.ReadValue<Vector2>() };
+        playerCamera.UpdateRotation(cameraInput);
+
+        // Get character input and update it
+        var characterInput = new CharacterInput
+        {
+            Rotation = playerCamera.transform.rotation,
+            Move     = input.Move.ReadValue<Vector2>(),
+            Jump     = input.Jump.WasPressedThisFrame()
+        };
+        playerCharacter.UpdateInput(characterInput);
+    }
+
+    private void LateUpdate()
+    {
+        playerCamera.UpdatePosition(playerCharacter.GetCameraTarget());
     }
 }
