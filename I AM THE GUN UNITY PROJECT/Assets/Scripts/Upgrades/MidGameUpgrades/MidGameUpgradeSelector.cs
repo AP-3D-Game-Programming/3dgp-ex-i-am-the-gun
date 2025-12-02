@@ -3,16 +3,16 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine;
 
-public class PreGameUpgradeSelector : UpgradeSelector
+public class MidGameUpgradeSelector : UpgradeSelector
 {
-    public PreGameUpgrade[] allPreGameUpgrades;
+    public MidGameUpgrade[] allMidGameUpgrades;
 
     [HideInInspector]
-    public PreGameUpgrade[] currentChoices = new PreGameUpgrade[3];
+    public MidGameUpgrade[] currentChoices = new MidGameUpgrade[3];
 
     public void GenerateChoices()
     {
-        currentChoices = allPreGameUpgrades.OrderBy(x => Random.value).Take(3).ToArray();
+        currentChoices = allMidGameUpgrades.OrderBy(x => Random.value).Take(3).ToArray();
 
         // TODO: Update UI visuals for the 3 upgrades
     }
@@ -21,7 +21,7 @@ public class PreGameUpgradeSelector : UpgradeSelector
     {
         if (choiceIndex < 0 || choiceIndex >= currentChoices.Length) return;
 
-        PreGameUpgrade chosen = currentChoices[choiceIndex];
+        MidGameUpgrade chosen = currentChoices[choiceIndex];
         manager.ApplyUpgrade(chosen);
 
         gameObject.SetActive(false);

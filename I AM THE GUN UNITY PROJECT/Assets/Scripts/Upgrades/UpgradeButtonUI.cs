@@ -9,7 +9,7 @@ public class UpgradeButtonUI : MonoBehaviour
     public TMP_Text titleText;
     public TMP_Text descriptionText;
 
-    public void Setup(PreGameUpgrade upgrade, int index, PreGameUpgradeSelector selector, PlayerUpgradeManager manager)
+    public void Setup(Upgrade upgrade, int index, UpgradeSelector selector, PlayerUpgradeManager manager)
     {
         if (titleText != null)
             titleText.text = upgrade.upgradeName;
