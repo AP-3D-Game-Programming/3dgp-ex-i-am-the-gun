@@ -4,7 +4,6 @@ public class SwapGun : MonoBehaviour
 {
     //PlayerMovement
     private PlayerManager player;
-    private bool playerInHitbox = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,29 +14,15 @@ public class SwapGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerInHitbox && (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.E)))
-            {
-            if (player != null)
-            {
-                player.ChangeWeapon(this.gameObject);
-            }
-        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.R))
         {
-            playerInHitbox = true;
-            Debug.Log("Near a gun: Press R or E to swamp.");
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            playerInHitbox = false;
+            Debug.Log("Near a gun: Press R to swamp.");
+            player.ChangeWeapon(gameObject);
+            Destroy(gameObject);
         }
     }
 }

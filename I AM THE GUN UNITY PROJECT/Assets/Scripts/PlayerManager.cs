@@ -18,9 +18,8 @@ public class PlayerManager : MonoBehaviour
 
 
     //Dependencies
-    [SerializeField] GameObject gun;
+    public GameObject Gun;
     [SerializeField] GameObject camera;
-    private GunMovement movement;
     private Gun usage;
     private CharacterController controller;
 
@@ -28,14 +27,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] int cartridgesCount;
     public int CartridgesCapacity;
 
-    public GameObject Gun => gun;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        movement = gun.GetComponent<GunMovement>();
-        usage = gun.GetComponent<Gun>();
+        usage = Gun.GetComponent<Gun>();
         xRotation = 0f;
 
         // 3. Reset the camera's local rotation to prevent weird initial tilt
@@ -43,11 +41,11 @@ public class PlayerManager : MonoBehaviour
         {
             camera.transform.localRotation = Quaternion.identity;
         }
-        if (gun != null)
+        if (Gun != null)
         {
-            gun.transform.SetParent(camera.transform); // Ensure parenting is correct
-            gun.transform.localPosition = Vector3.zero; // The PlayerCamera Update will smooth it from here
-            gun.transform.localRotation = Quaternion.identity;
+            Gun.transform.SetParent(camera.transform); // Ensure parenting is correct
+            Gun.transform.localPosition = Vector3.zero; // The PlayerCamera Update will smooth it from here
+            Gun.transform.localRotation = Quaternion.identity;
         }
     }
 
@@ -131,7 +129,7 @@ public class PlayerManager : MonoBehaviour
 
         camera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
-        gun.transform.localRotation = Quaternion.identity;
+        Gun.transform.localRotation = Quaternion.identity;
     }
     void LeftMouseFire()
     {
@@ -173,8 +171,8 @@ public class PlayerManager : MonoBehaviour
 
     public void ChangeWeapon(GameObject newGun)
     {
-        gun = newGun;
-        movement = gun.GetComponent<GunMovement>();
+        Destroy(camera.transform.GetChild(0));
+        Gun = Instantiate(newGun, camera.transform.position, Quaternion.identity, camera.transform);
         cartridgesCount = CartridgesCapacity;
     }
 }
