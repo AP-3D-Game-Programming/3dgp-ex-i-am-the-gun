@@ -18,11 +18,12 @@ public class LowHealthSpeedUpgrade : MidGameUpgrade
 
     public override void OnApply(PlayerUpgradeManager manager)
     {
-        // Nothing immediate
+        // Nothing on application
     }
 
     public override void OnUpdate(PlayerUpgradeManager manager)
     {
+        // work ts out
         //float hpRatio = manager.PlayerStats.CurrentHealth / manager.PlayerStats.MaxHealth;
 
         /*if (!active && hpRatio <= healthThreshold)

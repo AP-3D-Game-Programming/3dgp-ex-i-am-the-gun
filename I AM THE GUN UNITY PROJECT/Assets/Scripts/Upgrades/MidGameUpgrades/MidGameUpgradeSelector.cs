@@ -1,7 +1,5 @@
 using UnityEngine;
-
 using System.Linq;
-using UnityEngine;
 
 public class MidGameUpgradeSelector : UpgradeSelector
 {
@@ -17,7 +15,7 @@ public class MidGameUpgradeSelector : UpgradeSelector
         // TODO: Update UI visuals for the 3 upgrades
     }
 
-    public void SelectUpgrade(int choiceIndex, PlayerUpgradeManager manager)
+    public override void SelectUpgrade(int choiceIndex, PlayerUpgradeManager manager)
     {
         if (choiceIndex < 0 || choiceIndex >= currentChoices.Length) return;
 
