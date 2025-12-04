@@ -18,6 +18,8 @@ public struct CharacterInput
 
     public bool Jump;
 
+    public bool JumpSustain;
+
     public CrouchInput Crouch;
 }
 
@@ -29,12 +31,19 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
     [Space]
     [SerializeField] private float walkSpeed = 20f;
     [SerializeField] private float crouchSpeed = 8f;
+    [SerializeField] private float walkResponse = 25f;
+    [SerializeField] private float crouchResponse = 15f;
+    [SerializeField] private float airSpeed = 15f;
+    [SerializeField] private float airAcceleration = 70f;
     [Space]
     [SerializeField] private float jumpSpeed = 21f;
+    [Range(0f, 1f)]
+    [SerializeField] private float jumpSustainGravity = 0.4f;
     [SerializeField] private float gravity = -90f;
     [Space]
     [SerializeField] private float standHeight = 2f;
     [SerializeField] private float crouchHeight = 1f;
+    [SerializeField] private float crouchHeightResponse = 15f;
     [Range(0f, 1f)]
     [Space]
     [SerializeField] private float standCameraTargetHeight = 0.9f;
@@ -45,10 +54,14 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
     private Quaternion _requestedRotation;
     private Vector3 _requestedMovement;
     private bool _requestedJump;
+    private bool _requestedSustainedJump;
     private bool _requestedCrouch;
+
+    private Collider[] _uncrouchOverlapResults;
     public void Initialize()
     {
         _stance = Stance.Stand;
+        _uncrouchOverlapResults = new Collider[8];
         motor.CharacterController = this;
     }
 
@@ -59,6 +72,8 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
         _requestedMovement = Vector3.ClampMagnitude(_requestedMovement, 1f);
         _requestedMovement = input.Rotation * _requestedMovement;
         _requestedJump = _requestedJump || input.Jump;
+        _requestedSustainedJump = input.JumpSustain;
+        
         _requestedCrouch = input.Crouch
             switch
         {
@@ -68,7 +83,7 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
         };
     }
 
-    public void UpdateBody()
+    public void UpdateBody(float deltaTime)
     {
         var currentHeight = motor.Capsule.height;
         var normalizedHeight = currentHeight / standHeight;
@@ -81,8 +96,18 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
         //Bean warp
         var rootTargetScale = new Vector3(1f, normalizedHeight, 1f);
 
-        cameraTarget.localPosition = new Vector3(0f, cameraTargetHeight, 0f);
-        root.localScale = rootTargetScale;
+        cameraTarget.localPosition = Vector3.Lerp
+            (
+            a: cameraTarget.localPosition,
+            b: new Vector3(0f, cameraTargetHeight, 0f),
+            t: 1f - Mathf.Exp(-crouchHeightResponse * deltaTime)
+            );
+        root.localScale = Vector3.Lerp
+            (
+            a: root.localScale,
+            b: rootTargetScale,
+            t: 1f - Mathf.Exp(-crouchHeightResponse * deltaTime)
+            );
     }
     public void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
@@ -97,21 +122,60 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
                 ) * _requestedMovement.magnitude;
 
             var speed = _stance is Stance.Stand
-                    ? walkSpeed
-                    : crouchSpeed;
+                ? walkSpeed
+                : crouchSpeed;
+            var response = _stance is Stance.Stand
+                ? walkResponse
+                : crouchResponse;
 
-            currentVelocity = _requestedMovement * walkSpeed;
+            var targetVelocity = groundedMovement * speed;
+            currentVelocity = Vector3.Lerp
+                (
+                    a: currentVelocity,
+                    b: targetVelocity,
+                    t: 1f - Mathf.Exp(-response * deltaTime)
+                );
         }
         else
         {
-            currentVelocity += motor.CharacterUp * gravity * deltaTime;
+            if(_requestedMovement.sqrMagnitude > 0f)
+            {
+                var planarMovement = Vector3.ProjectOnPlane
+                    (
+                        vector: _requestedMovement,
+                        planeNormal: motor.CharacterUp
+                    ).normalized * _requestedMovement.magnitude;
+
+                var currentPlanarVelocity = Vector3.ProjectOnPlane
+                    (
+                        vector: currentVelocity,
+                        planeNormal: motor.CharacterUp
+                    );
+
+                var movementForce = planarMovement * airAcceleration * deltaTime;
+
+                var targetPlanarVelocity = currentPlanarVelocity + movementForce;
+
+                targetPlanarVelocity = Vector3.ClampMagnitude(targetPlanarVelocity, airSpeed);
+
+                currentVelocity += targetPlanarVelocity - currentPlanarVelocity;
+            };
+
+
+            //Gravity
+            var effectiveGravity = gravity;
+            var verticalSpeed = Vector3.Dot(currentVelocity, motor.CharacterUp);
+            if (_requestedSustainedJump && verticalSpeed > 0f)
+                effectiveGravity *= jumpSustainGravity;
+            
+            currentVelocity += motor.CharacterUp * effectiveGravity * deltaTime;
         }
 
         if (_requestedJump)
         {
             _requestedJump = false;
 
-            motor.ForceUnground(time: 0f);
+            motor.ForceUnground(time: 0.01f);
 
             //Infinite jumps?
             //currentVelocity += motor.CharacterUp * jumpSpeed;
@@ -165,7 +229,24 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
                 height: standHeight,
                 yOffset: standHeight * 0.5f
                 );
-            //if (motor.CharacterOverlap)
+
+            var pos = motor.TransientPosition;
+            var rot = motor.TransientRotation;
+            var mask = motor.CollidableLayers;
+            if (motor.CharacterOverlap(pos, rot, _uncrouchOverlapResults, mask, QueryTriggerInteraction.Ignore) > 0)
+            {
+                _requestedCrouch = true;
+                motor.SetCapsuleDimensions
+                    (
+                        radius: motor.Capsule.radius,
+                        height: crouchHeight,
+                        yOffset: crouchHeight * 0.5f
+                    );
+            }
+            else
+            {
+                _stance = Stance.Stand;
+            }
         }
     }
 
