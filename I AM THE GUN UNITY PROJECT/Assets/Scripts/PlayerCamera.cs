@@ -42,8 +42,8 @@ public class PlayerCamera : MonoBehaviour
             targetPosition = offset;
         }
 
-        player.Gun.transform.localPosition = Vector3.Lerp(
-            player.Gun.transform.localPosition,
+        player.Weapon.transform.localPosition = Vector3.Lerp(
+            player.Weapon.transform.localPosition,
             targetPosition,
             Time.deltaTime * 10f //smooooth
         );

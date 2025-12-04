@@ -581,7 +581,7 @@ MonoBehaviour:
   xSensitivity: 5
   ySensitivity: 5
   deceleration: 10
-  Gun: {fileID: 1065295987404566224}
+  Weapon: {fileID: 1065295987404566224}
   camera: {fileID: 534546006}
   cartridgesCount: 3
   CartridgesCapacity: 3

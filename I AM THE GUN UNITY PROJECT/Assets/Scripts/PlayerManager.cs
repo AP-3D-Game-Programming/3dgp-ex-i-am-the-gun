@@ -18,9 +18,9 @@ public class PlayerManager : MonoBehaviour
 
 
     //Dependencies
-    public GameObject Gun;
+    public GameObject Weapon;
     [SerializeField] GameObject camera;
-    private Gun usage;
+    private Gun weaponUtility;
     private CharacterController controller;
 
     //Stats
@@ -33,7 +33,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        usage = Gun.GetComponent<Gun>();
+        weaponUtility = Weapon.GetComponent<Gun>();
         xRotation = 0f;
 
         // 3. Reset the camera's local rotation to prevent weird initial tilt
@@ -41,11 +41,11 @@ public class PlayerManager : MonoBehaviour
         {
             camera.transform.localRotation = Quaternion.identity;
         }
-        if (Gun != null)
+        if (Weapon != null)
         {
-            Gun.transform.SetParent(camera.transform); // Ensure parenting is correct
-            Gun.transform.localPosition = Vector3.zero; // The PlayerCamera Update will smooth it from here
-            Gun.transform.localRotation = Quaternion.identity;
+            Weapon.transform.SetParent(camera.transform); // Ensure parenting is correct
+            Weapon.transform.localPosition = Vector3.zero; // The PlayerCamera Update will smooth it from here
+            Weapon.transform.localRotation = Quaternion.identity;
         }
     }
 
@@ -129,7 +129,7 @@ public class PlayerManager : MonoBehaviour
 
         camera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
-        Gun.transform.localRotation = Quaternion.identity;
+        Weapon.transform.localRotation = Quaternion.identity;
     }
     void LeftMouseFire()
     {
@@ -137,13 +137,13 @@ public class PlayerManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             //Firing mechanic
-            usage.FireWeapon();
-            if (usage.BulletCount <= 0)
+            weaponUtility.FireWeapon();
+            if (weaponUtility.BulletCount <= 0)
             {
                 if (cartridgesCount > 0)
                 {
                     cartridgesCount -= 1;
-                    usage.BulletCount = usage.BulletCapacity;
+                    weaponUtility.BulletCount = weaponUtility.BulletCapacity;
                 }
                 else
                 {
@@ -171,8 +171,10 @@ public class PlayerManager : MonoBehaviour
 
     public void ChangeWeapon(GameObject newGun)
     {
-        Destroy(camera.transform.GetChild(0));
-        Gun = Instantiate(newGun, camera.transform.position, Quaternion.identity, camera.transform);
+        Destroy(Weapon);
+        Weapon = Instantiate(newGun, camera.transform.position, Quaternion.identity, camera.transform);
+        weaponUtility = Weapon.GetComponent<Gun>();
+        weaponUtility.BulletCount = weaponUtility.BulletCapacity;
         cartridgesCount = CartridgesCapacity;
     }
 }
