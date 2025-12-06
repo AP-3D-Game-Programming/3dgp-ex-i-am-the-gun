@@ -18,6 +18,8 @@ public struct CharacterState
     public Stance Stance;
 
     public Vector3 Velocity;
+
+    public Vector3 Acceleration;
 }
 
 public struct CharacterInput
@@ -173,6 +175,8 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
     }
     public void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
+        _state.Acceleration = Vector3.zero;
+
         //If on ground
         if (motor.GroundingStatus.IsStableOnGround)
         {
@@ -232,12 +236,15 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
                     : crouchResponse;
 
                 var targetVelocity = groundedMovement * speed;
-                currentVelocity = Vector3.Lerp
+                var moveVelocity = Vector3.Lerp
                 (
                     a: currentVelocity,
                     b: targetVelocity,
                     t: 1f - Mathf.Exp(-response * deltaTime)
                 );
+                _state.Acceleration = moveVelocity - currentVelocity;
+
+                currentVelocity = moveVelocity;
             }
             //Cont. sliding.
             else
@@ -260,10 +267,16 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
                 {
                     var currentSpeed = currentVelocity.magnitude;
                     var targetVelocity = groundedMovement * currentSpeed;
+                    var steerVelocity = currentVelocity;
                     var steerForce = (targetVelocity - currentVelocity) * slideSteerAcceleration * deltaTime;
-                    //Add steer force, but clamp velocity so slide speed does not increase due to direct movement iput
+                    //Add steer force, but clamp velocity so slide speed does not increase
+                    //due to direct movement iput
                     currentVelocity += steerForce;
-                    currentVelocity = Vector3.ClampMagnitude(currentVelocity, currentSpeed);
+                    steerVelocity = Vector3.ClampMagnitude(steerVelocity, currentSpeed);
+
+                    _state.Acceleration = (steerVelocity - currentVelocity) / deltaTime;
+
+                    currentVelocity = steerVelocity;
                 }
                 //Stop.
                 //CHeck
@@ -492,6 +505,10 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
     }
 
     public Transform GetCameraTarget() => cameraTarget;
+
+    public CharacterState GetState() => _state;
+
+    public CharacterState GetLastState () => _lastState;
 
     public void SetPosition(Vector3 position, bool killVelocity = true)
     {
