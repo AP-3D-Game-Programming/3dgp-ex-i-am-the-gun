@@ -271,7 +271,7 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
                     var steerForce = (targetVelocity - currentVelocity) * slideSteerAcceleration * deltaTime;
                     //Add steer force, but clamp velocity so slide speed does not increase
                     //due to direct movement iput
-                    currentVelocity += steerForce;
+                    steerVelocity += steerForce;
                     steerVelocity = Vector3.ClampMagnitude(steerVelocity, currentSpeed);
 
                     _state.Acceleration = (steerVelocity - currentVelocity) / deltaTime;

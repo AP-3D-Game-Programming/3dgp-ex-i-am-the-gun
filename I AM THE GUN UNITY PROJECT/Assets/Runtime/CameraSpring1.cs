@@ -20,12 +20,15 @@ public class CameraSpring1 : MonoBehaviour
 
     public void UpdateSpring(float deltaTime, Vector3 up)
     {
+        transform.localPosition = Vector3.zero;
+
         Spring(ref _springPosition, ref _springVelocity, transform.position, halfLife, frequency, deltaTime);
     
         var localSpringPosition = _springPosition - transform.position;
         var springHeight = Vector3.Dot(localSpringPosition, up);
 
         transform.localEulerAngles = new Vector3(-springHeight * angularDisplacement, 0f, 0f);
+        transform.localPosition = localSpringPosition * linearDisplacement;
     }
 
 

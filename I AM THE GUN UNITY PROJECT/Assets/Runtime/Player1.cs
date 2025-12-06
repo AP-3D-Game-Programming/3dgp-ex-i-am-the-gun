@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class Player1 : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class Player1 : MonoBehaviour
     [SerializeField] private PlayerCamera1 playerCamera;
     [SerializeField] private CameraSpring1 cameraSpring;
     [SerializeField] private CameraLean1 cameraLean;
+    [Space]
+    [SerializeField] private Volume volume;
+    [SerializeField] private StanceVignette1 stanceVignette;
 
     private PlayerInputActions _inputActions;
     void Start()
@@ -20,6 +24,8 @@ public class Player1 : MonoBehaviour
 
         cameraSpring.Initialize();
         cameraLean.Initialize();
+
+        stanceVignette.Initialize(volume.profile);
     }
 
     private void OnDestroy()
@@ -62,7 +68,7 @@ public class Player1 : MonoBehaviour
         #endif
     }
 
-    private void LateUpdate()
+    void LateUpdate()
     {
         var deltaTime = Time.deltaTime;
         var cameraTarget = playerCharacter.GetCameraTarget();
@@ -78,6 +84,8 @@ public class Player1 : MonoBehaviour
             state.Acceleration, 
             cameraTarget.up
         );
+
+        stanceVignette.UpdateVignette(deltaTime, state.Stance);
     }
 
     public void Teleport(Vector3 position)
