@@ -48,7 +48,7 @@ public class UseWeapon : MonoBehaviour
     public void ChangeWeapon(GameObject newGun)
     {
         Destroy(Weapon);
-        Weapon = Instantiate(newGun, camera.transform.position, Quaternion.identity, camera.transform);
+        Weapon = Instantiate(newGun, camera.transform.position, camera.transform.rotation, camera.transform);
         weaponUtility = Weapon.GetComponent<Gun>();
         weaponUtility.BulletCount = weaponUtility.BulletCapacity;
         cartridgesCount = CartridgesCapacity;
