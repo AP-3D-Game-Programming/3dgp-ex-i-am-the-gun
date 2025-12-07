@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BulletDamageZone : MonoBehaviour
 {
-    public int damageAmount = 1;
+    public int damageAmount = 5;
 
     private void OnTriggerEnter(Collider other)
     {

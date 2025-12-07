@@ -1856,7 +1856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDamageManager
   gun: {fileID: 1659072001}
-  damagePerHit: 1
+  damagePerHit: 5
 --- !u!4 &823559382
 Transform:
   m_ObjectHideFlags: 0

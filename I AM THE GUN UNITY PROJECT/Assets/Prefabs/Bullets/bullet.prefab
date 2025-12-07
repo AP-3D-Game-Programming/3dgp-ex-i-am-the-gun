@@ -84,7 +84,7 @@ PrefabInstance:
       addedObject: {fileID: 2383010859753616344}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2984aeab0220e884fb758f9ded3c2b50, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -1256790880061850242}
+      addedObject: {fileID: 4543434400104841765}
   m_SourcePrefab: {fileID: 100100000, guid: 2984aeab0220e884fb758f9ded3c2b50, type: 3}
 --- !u!1 &7317326929509857554 stripped
 GameObject:
@@ -140,7 +140,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-1256790880061850242
+--- !u!114 &4543434400104841765
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,7 +149,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7317326929509857554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13a8c7afd531d1841b5834cd9d4ea80d, type: 3}
+  m_Script: {fileID: 11500000, guid: c94d980bea96deb4491f8c3e4421c116, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletDamageZone
-  damageAmount: 1
+  m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  shooter: {fileID: 0}
+  damage: 5

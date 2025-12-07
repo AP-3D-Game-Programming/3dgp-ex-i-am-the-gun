@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2939846061877964171}
   - component: {fileID: 3453638175105024512}
   - component: {fileID: -2707710894477419894}
+  - component: {fileID: 297759081710852752}
   m_Layer: 0
   m_Name: ShotgunPellet
   m_TagString: Untagged
@@ -139,3 +140,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &297759081710852752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9127295173015719586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c94d980bea96deb4491f8c3e4421c116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  shooter: {fileID: 0}
+  damage: 1

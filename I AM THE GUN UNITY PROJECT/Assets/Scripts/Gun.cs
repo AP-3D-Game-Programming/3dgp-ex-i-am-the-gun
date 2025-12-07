@@ -32,6 +32,10 @@ public class Gun : MonoBehaviour
         // Instantiate the bullet
         GameObject bullet = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity);
 
+        // Assign shooter to avoid self-damage
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.shooter = gameObject;
+
         // Shoot the bullet
         bullet.GetComponent<Rigidbody>().AddForce(BulletSpawn.forward.normalized * BulletVelocity, ForceMode.Impulse);
 

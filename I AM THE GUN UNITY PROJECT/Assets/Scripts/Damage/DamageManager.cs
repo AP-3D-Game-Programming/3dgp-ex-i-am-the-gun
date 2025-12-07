@@ -6,7 +6,7 @@ public class DamageManager : MonoBehaviour
     public Gun gun;
 
     [Header("Damage Settings")]
-    public int damagePerHit = 1;
+    public int damagePerHit = 5;
 
     protected virtual void Awake()
     {
