@@ -13,13 +13,17 @@ public class UpgradeButtonUI : MonoBehaviour
     {
         if (titleText != null)
             titleText.text = upgrade.upgradeName;
-        if (descriptionText != null)    
+
+        if (descriptionText != null)
             descriptionText.text = upgrade.description;
 
         if (button != null)
         {
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => selector.SelectUpgrade(index, manager));
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(() =>
+            {
+                selector.SelectUpgrade(index, manager);
+            });
         }
     }
 }

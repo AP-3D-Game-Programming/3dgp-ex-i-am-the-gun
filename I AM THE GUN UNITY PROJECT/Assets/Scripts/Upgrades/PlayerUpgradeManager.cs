@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerUpgradeManager : MonoBehaviour
 {
-    // public PlayerStats PlayerStats;
+    public PlayerCharacter1 PlayerStats;
 
     private List<MidGameUpgrade> midGameUpgrades = new();
 
@@ -21,7 +21,7 @@ public class PlayerUpgradeManager : MonoBehaviour
             u.OnUpdate(this);
     }
 
-    private void ClearMidGame()
+    public void ClearMidGame()
     {
         midGameUpgrades.Clear();
     }

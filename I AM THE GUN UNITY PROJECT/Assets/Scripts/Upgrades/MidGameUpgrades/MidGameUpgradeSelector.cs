@@ -8,20 +8,34 @@ public class MidGameUpgradeSelector : UpgradeSelector
     [HideInInspector]
     public MidGameUpgrade[] currentChoices = new MidGameUpgrade[3];
 
-    public void GenerateChoices()
-    {
-        currentChoices = allMidGameUpgrades.OrderBy(x => Random.value).Take(3).ToArray();
+    public MidGameUIManager uiManager;
 
-        // TODO: Update UI visuals for the 3 upgrades
+    private PlayerUpgradeManager playerManager;
+
+    public void GenerateChoices(PlayerUpgradeManager manager)
+    {
+        playerManager = manager;
+
+        currentChoices = allMidGameUpgrades
+            .OrderBy(x => Random.value)
+            .Take(3)
+            .ToArray();
+
+        uiManager.ShowChoices();
     }
 
     public override void SelectUpgrade(int choiceIndex, PlayerUpgradeManager manager)
     {
-        if (choiceIndex < 0 || choiceIndex >= currentChoices.Length) return;
+        if (choiceIndex < 0 || choiceIndex >= currentChoices.Length)
+            return;
 
         MidGameUpgrade chosen = currentChoices[choiceIndex];
+
         manager.ApplyUpgrade(chosen);
 
-        gameObject.SetActive(false);
+        uiManager.Hide();
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

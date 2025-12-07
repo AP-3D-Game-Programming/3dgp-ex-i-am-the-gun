@@ -3,18 +3,20 @@ using UnityEngine.SceneManagement;
 
 public class NextLevelTrigger : MonoBehaviour
 {
+        public MidGameUpgradeSelector midGameSelector;
+public PlayerUpgradeManager playerManager;
     private void OnTriggerEnter(Collider other)
     {
-        // if we want to specifically check for the cube with a tag
-        if (other.CompareTag("Finish"))
+        if (other.CompareTag("Player"))
         {
-            LoadNextLevel();
+            OnLevelEnd();
         }
     }
 
-    void LoadNextLevel()
+    public void OnLevelEnd()
     {
-        int currentScene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentScene + 1);
+        // okay so, shows the midgame upgrade selection UI first, after choosing, goes to next, normally
+        midGameSelector.GenerateChoices(playerManager);
     }
+
 }
