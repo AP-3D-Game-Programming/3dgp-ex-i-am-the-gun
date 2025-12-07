@@ -618,6 +618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7571741034112045129}
   - component: {fileID: 8072231431592062454}
+  - component: {fileID: 3337692063367850816}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -660,6 +661,22 @@ MonoBehaviour:
   cameraLean: {fileID: 4642278820763468793}
   volume: {fileID: 4905523246332516458}
   stanceVignette: {fileID: 6864971354241508969}
+--- !u!114 &3337692063367850816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7562298894066929662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a1a22b22ef9fc4d9dd4db560b4b597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UseWeapon
+  Weapon: {fileID: 0}
+  camera: {fileID: 688678151044476289}
+  cartridgesCount: 3
+  CartridgesCapacity: 0
 --- !u!1 &8116993451673716407
 GameObject:
   m_ObjectHideFlags: 0
