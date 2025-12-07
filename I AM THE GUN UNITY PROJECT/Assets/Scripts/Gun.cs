@@ -30,7 +30,7 @@ public class Gun : MonoBehaviour
         if (BulletCount <= 0) return;
 
         // Instantiate the bullet
-        GameObject bullet = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity);
+        GameObject bullet = Instantiate(BulletPrefab, BulletSpawn.position, transform.rotation);
 
         // Assign shooter to avoid self-damage
         Bullet bulletScript = bullet.GetComponent<Bullet>();
