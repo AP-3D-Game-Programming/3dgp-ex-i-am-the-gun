@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 6466475572569962953}
   m_Layer: 0
   m_Name: CombatPump_Shotgun
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
