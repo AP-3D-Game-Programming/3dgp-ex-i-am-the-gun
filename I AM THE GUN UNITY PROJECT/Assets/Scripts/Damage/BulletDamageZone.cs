@@ -1,8 +1,9 @@
 using UnityEngine;
 
+// damaging zone on a plane, NOT BULLET ITSELF
 public class BulletDamageZone : MonoBehaviour
 {
-    public int damageAmount = 5;
+    public int damageAmount = 1;
 
     private void OnTriggerEnter(Collider other)
     {

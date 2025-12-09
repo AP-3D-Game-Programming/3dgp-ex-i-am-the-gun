@@ -5,8 +5,7 @@ public class DamageManager : MonoBehaviour
     [Header("Attached Gun = Health Source")]
     public Gun gun;
 
-    [Header("Damage Settings")]
-    public int damagePerHit = 5;
+    public GameObject Weapon; 
 
     protected virtual void Awake()
     {
@@ -18,7 +17,7 @@ public class DamageManager : MonoBehaviour
     {
         if (gun == null)
         {
-            Debug.LogError($"{name} has no Gun assigned but uses ammo-as-health!");
+            Debug.LogError($"{name} has no Gun assigned but uses ammo as health!");
             return;
         }
 
@@ -34,6 +33,10 @@ public class DamageManager : MonoBehaviour
     protected virtual void Die()
     {
         Debug.Log($"{name} has died.");
+        // make it drop its weapon (please god, please work)
+        Weapon = GameObject.FindWithTag("Weapon"); // all gun prefabs normally have this 
+        Instantiate(Weapon, transform.position, Quaternion.identity);
+        // destroy enemy :skull_emoji:
         Destroy(gameObject);
     }
 }

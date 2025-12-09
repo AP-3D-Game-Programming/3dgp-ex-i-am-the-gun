@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class NextLevelTrigger : MonoBehaviour
 {
-        public MidGameUpgradeSelector midGameSelector;
+        public MidGameUIManager midGameUiManager;
 public PlayerUpgradeManager playerManager;
     private void OnTriggerEnter(Collider other)
     {
@@ -15,8 +15,9 @@ public PlayerUpgradeManager playerManager;
 
     public void OnLevelEnd()
     {
-        // okay so, shows the midgame upgrade selection UI first, after choosing, goes to next, normally
-        midGameSelector.GenerateChoices(playerManager);
+        midGameUiManager.ShowChoices();
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }

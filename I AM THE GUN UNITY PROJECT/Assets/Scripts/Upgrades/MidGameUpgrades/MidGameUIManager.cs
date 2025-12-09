@@ -13,6 +13,8 @@ public class MidGameUIManager : MonoBehaviour
 {
     root.SetActive(true);
 
+    selector.GenerateChoices(playerManager);
+
     Time.timeScale = 0f;
 
     Cursor.lockState = CursorLockMode.None;

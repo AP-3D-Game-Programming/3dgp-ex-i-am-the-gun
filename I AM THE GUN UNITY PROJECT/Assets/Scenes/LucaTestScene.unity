@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb795aaf2b85d554498eb22883070230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevelTrigger
-  midGameSelector: {fileID: 1150777736}
+  midGameUiManager: {fileID: 0}
   playerManager: {fileID: 1620579077}
 --- !u!1 &347428068
 GameObject:
@@ -1725,8 +1725,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ec59a6902cdf46aa340b11db3b211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDamageManager
-  gun: {fileID: 1659072001}
-  damagePerHit: 5
+  gun: {fileID: 0}
+  Weapon: {fileID: 0}
+  upgradeManager: {fileID: 1620579077}
+  playerManager: {fileID: 0}
 --- !u!4 &823559382
 Transform:
   m_ObjectHideFlags: 0
@@ -2718,17 +2720,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8027828794721651741, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}
   m_PrefabInstance: {fileID: 1771045969}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1659072001 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2225514771772088254, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}
-  m_PrefabInstance: {fileID: 1771045969}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659072000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cd937894fbec6a478e56cd471a001e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Gun
 --- !u!4 &1659072002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2342646635014902266, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}
@@ -3217,6 +3208,10 @@ PrefabInstance:
     - target: {fileID: 8027828794721651741, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}
       propertyPath: m_Name
       value: 1911_Body (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249861367452269997, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7695277782340693429, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}
