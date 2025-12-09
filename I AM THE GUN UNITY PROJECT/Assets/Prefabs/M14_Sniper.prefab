@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7621335575007721031}
   - component: {fileID: 6737202054683781331}
   - component: {fileID: 1988656285577064096}
-  - component: {fileID: 6755201248312857386}
   - component: {fileID: 4207259713554063129}
+  - component: {fileID: 3665432588472953065}
   m_Layer: 0
   m_Name: M14_Sniper
   m_TagString: Untagged
@@ -161,24 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e639db274d5efa24ca84713d2b88bc89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwapGun
---- !u!114 &6755201248312857386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574833526839719160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cd937894fbec6a478e56cd471a001e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Gun
-  BulletPrefab: {fileID: 3896305785312621774, guid: 184fe9373e5f01c4986874972e49d69b, type: 3}
-  BulletSpawn: {fileID: 5065336312502922684}
-  BulletVelocity: 30
-  BulletPrefabLifeTime: 3
-  BulletCapacity: 10
-  BulletCount: 0
 --- !u!135 &4207259713554063129
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -200,6 +182,26 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.0028796145
   m_Center: {x: 0, y: -6.9256185e-18, z: 0.0009737533}
+--- !u!114 &3665432588472953065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574833526839719160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d894be5812f9c1446ab40f1c875899a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sniper
+  BulletPrefab: {fileID: 3896305785312621774, guid: 184fe9373e5f01c4986874972e49d69b, type: 3}
+  BulletSpawn: {fileID: 5065336312502922684}
+  BulletVelocity: 30
+  BulletPrefabLifeTime: 3
+  BulletCapacity: 12
+  BulletCount: 0
+  AmmoCount: {fileID: 0}
+  AmmoCap: {fileID: 0}
 --- !u!1 &2125972602494229009
 GameObject:
   m_ObjectHideFlags: 0

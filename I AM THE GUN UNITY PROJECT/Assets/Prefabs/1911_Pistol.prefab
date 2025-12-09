@@ -309,11 +309,11 @@ GameObject:
   - component: {fileID: 2342646635014902266}
   - component: {fileID: 5264321943074923634}
   - component: {fileID: 6807110098412335268}
-  - component: {fileID: 2225514771772088254}
   - component: {fileID: 3868674741132100553}
   - component: {fileID: 8249861367452269997}
   - component: {fileID: 7695277782340693429}
   - component: {fileID: 7850373465689108402}
+  - component: {fileID: 939687844524688376}
   m_Layer: 0
   m_Name: 1911_Pistol
   m_TagString: Untagged
@@ -398,24 +398,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2225514771772088254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8027828794721651741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cd937894fbec6a478e56cd471a001e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Gun
-  BulletPrefab: {fileID: 7317326929509857554, guid: 4d91607bd1e2354429af254e2d3cbf35, type: 3}
-  BulletSpawn: {fileID: 968360124171413466}
-  BulletVelocity: 30
-  BulletPrefabLifeTime: 3
-  BulletCapacity: 12
-  BulletCount: 0
 --- !u!114 &3868674741132100553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +480,26 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.0025701514
   m_Center: {x: 0, y: 0, z: 0.0005}
+--- !u!114 &939687844524688376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8027828794721651741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa476b48c62e614fb65381e7204b271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pistol
+  BulletPrefab: {fileID: 7317326929509857554, guid: 4d91607bd1e2354429af254e2d3cbf35, type: 3}
+  BulletSpawn: {fileID: 968360124171413466}
+  BulletVelocity: 30
+  BulletPrefabLifeTime: 3
+  BulletCapacity: 7
+  BulletCount: 0
+  AmmoCount: {fileID: 0}
+  AmmoCap: {fileID: 0}
 --- !u!1 &8411225696917831636
 GameObject:
   m_ObjectHideFlags: 0

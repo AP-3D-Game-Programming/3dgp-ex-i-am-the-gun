@@ -220,11 +220,11 @@ GameObject:
   - component: {fileID: 1385779860570529937}
   - component: {fileID: 4586929044294282131}
   - component: {fileID: 1070999944722066276}
-  - component: {fileID: 330331766943545423}
   - component: {fileID: 2976172074856618461}
   - component: {fileID: 6751170501983252991}
   - component: {fileID: 935124770086335023}
   - component: {fileID: 796081175699447516}
+  - component: {fileID: 6466475572569962953}
   m_Layer: 0
   m_Name: CombatPump_Shotgun
   m_TagString: Untagged
@@ -307,26 +307,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &330331766943545423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6260535967125609021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cd937894fbec6a478e56cd471a001e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Gun
-  BulletPrefab: {fileID: 1651018462242096468, guid: 6f901b557aaca814288649bd8ef8b500, type: 3}
-  BulletSpawn: {fileID: 3937718508790586099}
-  BulletVelocity: 30
-  BulletPrefabLifeTime: 3
-  BulletCapacity: 5
-  BulletCount: 0
-  AmmoCount: {fileID: 0}
-  AmmoCap: {fileID: 0}
 --- !u!114 &2976172074856618461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,3 +389,23 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.0025701514
   m_Center: {x: 0, y: 0, z: 0.0012832163}
+--- !u!114 &6466475572569962953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6260535967125609021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1cb3896b3b1500428de5827fdf9634e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shotgun
+  BulletPrefab: {fileID: 1651018462242096468, guid: 6f901b557aaca814288649bd8ef8b500, type: 3}
+  BulletSpawn: {fileID: 3937718508790586099}
+  BulletVelocity: 30
+  BulletPrefabLifeTime: 3
+  BulletCapacity: 8
+  BulletCount: 0
+  AmmoCount: {fileID: 0}
+  AmmoCap: {fileID: 0}

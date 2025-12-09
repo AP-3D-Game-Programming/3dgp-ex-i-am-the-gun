@@ -131,11 +131,11 @@ GameObject:
   - component: {fileID: 224716057423815182}
   - component: {fileID: 7088646920222302395}
   - component: {fileID: 7186467586386078362}
-  - component: {fileID: 2437277121947783064}
   - component: {fileID: 1664746124055305779}
   - component: {fileID: 4049078192546316898}
   - component: {fileID: 229836482450303619}
   - component: {fileID: 5419943554127154944}
+  - component: {fileID: 3028599875732528923}
   m_Layer: 0
   m_Name: UMP_SMG
   m_TagString: Untagged
@@ -218,24 +218,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2437277121947783064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3323877240406010248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cd937894fbec6a478e56cd471a001e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Gun
-  BulletPrefab: {fileID: 7317326929509857554, guid: 4d91607bd1e2354429af254e2d3cbf35, type: 3}
-  BulletSpawn: {fileID: 2909907904670480674}
-  BulletVelocity: 30
-  BulletPrefabLifeTime: 3
-  BulletCapacity: 30
-  BulletCount: 0
 --- !u!114 &1664746124055305779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,6 +300,26 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.0033920596
   m_Center: {x: 0, y: -5.1386126e-18, z: 0.00046130826}
+--- !u!114 &3028599875732528923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323877240406010248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924cca3c107a58c48aed25626d3d8061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubMachineGun
+  BulletPrefab: {fileID: 7317326929509857554, guid: 4d91607bd1e2354429af254e2d3cbf35, type: 3}
+  BulletSpawn: {fileID: 2909907904670480674}
+  BulletVelocity: 30
+  BulletPrefabLifeTime: 3
+  BulletCapacity: 20
+  BulletCount: 0
+  AmmoCount: {fileID: 0}
+  AmmoCap: {fileID: 0}
 --- !u!1 &3659488161246132104
 GameObject:
   m_ObjectHideFlags: 0

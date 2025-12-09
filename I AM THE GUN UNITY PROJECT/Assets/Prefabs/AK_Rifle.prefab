@@ -100,11 +100,11 @@ GameObject:
   - component: {fileID: 1007384941279730617}
   - component: {fileID: 7052666163292440670}
   - component: {fileID: 2075089636272922804}
-  - component: {fileID: 5111949346639121952}
   - component: {fileID: 94746119776162588}
   - component: {fileID: 2547687609585533221}
   - component: {fileID: -6857335941848735217}
   - component: {fileID: 6515406039855205921}
+  - component: {fileID: 1811393777677015304}
   m_Layer: 0
   m_Name: AK_Rifle
   m_TagString: Untagged
@@ -188,24 +188,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5111949346639121952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2105061281010239327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cd937894fbec6a478e56cd471a001e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Gun
-  BulletPrefab: {fileID: 7317326929509857554, guid: 4d91607bd1e2354429af254e2d3cbf35, type: 3}
-  BulletSpawn: {fileID: 3208762248306798372}
-  BulletVelocity: 30
-  BulletPrefabLifeTime: 3
-  BulletCapacity: 20
-  BulletCount: 0
 --- !u!114 &94746119776162588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +245,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -288,6 +270,26 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.0036308812
   m_Center: {x: 0, y: -7.87108e-18, z: 0.0010190645}
+--- !u!114 &1811393777677015304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105061281010239327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b339f44d45711b46a86f97266ac7b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rifle
+  BulletPrefab: {fileID: 7317326929509857554, guid: 4d91607bd1e2354429af254e2d3cbf35, type: 3}
+  BulletSpawn: {fileID: 3208762248306798372}
+  BulletVelocity: 30
+  BulletPrefabLifeTime: 3
+  BulletCapacity: 30
+  BulletCount: 0
+  AmmoCount: {fileID: 0}
+  AmmoCap: {fileID: 0}
 --- !u!1 &6743536059764550584
 GameObject:
   m_ObjectHideFlags: 0
