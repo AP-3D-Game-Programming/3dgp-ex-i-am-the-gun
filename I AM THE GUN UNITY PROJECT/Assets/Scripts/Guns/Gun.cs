@@ -39,11 +39,11 @@ public class Gun : MonoBehaviour
         // Shoot the bullet
         bullet.GetComponent<Rigidbody>().AddForce(BulletSpawn.forward.normalized * BulletVelocity, ForceMode.Impulse);
 
-       // Decrease ammo
-       BulletCount--;
+        // Decrease ammo
+        BulletCount--;
 
-       // Destroy the bullet after some time
-       StartCoroutine(DestroyBulletAfterTime(bullet, BulletPrefabLifeTime));
+        // Destroy the bullet after some time
+        StartCoroutine(DestroyBulletAfterTime(bullet, BulletPrefabLifeTime));
     }
 
     private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
