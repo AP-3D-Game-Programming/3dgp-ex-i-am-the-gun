@@ -12,6 +12,10 @@ public class Gun : MonoBehaviour
     public int BulletCapacity;
     public int BulletCount;
 
+    public Animator gunAnimation;
+
+    public GameObject gun;
+
     [SerializeField] private Text AmmoCount;
     [SerializeField] private Text AmmoCap;
     private void Start()
@@ -38,6 +42,7 @@ public class Gun : MonoBehaviour
 
         // Shoot the bullet
         bullet.GetComponent<Rigidbody>().AddForce(BulletSpawn.forward.normalized * BulletVelocity, ForceMode.Impulse);
+        StartCoroutine(GunRecoil());
 
         // Decrease ammo
         BulletCount--;
@@ -50,5 +55,12 @@ public class Gun : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         Destroy(bullet);
+    }
+
+    IEnumerator GunRecoil()
+    {
+        gun.GetComponent<Animator>().Play("GunRecoil");
+        yield return new WaitForSeconds(0.20f);
+        gun.GetComponent<Animator>().Play("New State");
     }
 }

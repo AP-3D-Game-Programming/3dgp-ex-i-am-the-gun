@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1988656285577064096}
   - component: {fileID: 4207259713554063129}
   - component: {fileID: 3665432588472953065}
+  - component: {fileID: -8570303461769191260}
   m_Layer: 0
   m_Name: M14_Sniper
   m_TagString: Weapon
@@ -200,8 +201,32 @@ MonoBehaviour:
   BulletPrefabLifeTime: 3
   BulletCapacity: 12
   BulletCount: 0
+  gunAnimation: {fileID: -8570303461769191260}
+  gun: {fileID: 0}
   AmmoCount: {fileID: 0}
   AmmoCap: {fileID: 0}
+--- !u!95 &-8570303461769191260
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574833526839719160}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7259bb94c96ea5548b42c601c4269c8c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2125972602494229009
 GameObject:
   m_ObjectHideFlags: 0

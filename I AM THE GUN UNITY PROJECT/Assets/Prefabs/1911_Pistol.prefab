@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 7695277782340693429}
   - component: {fileID: 7850373465689108402}
   - component: {fileID: 939687844524688376}
+  - component: {fileID: -146763343637995281}
   m_Layer: 0
   m_Name: 1911_Pistol
   m_TagString: Weapon
@@ -498,8 +499,32 @@ MonoBehaviour:
   BulletPrefabLifeTime: 3
   BulletCapacity: 7
   BulletCount: 0
+  gunAnimation: {fileID: -146763343637995281}
+  gun: {fileID: 0}
   AmmoCount: {fileID: 0}
   AmmoCap: {fileID: 0}
+--- !u!95 &-146763343637995281
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8027828794721651741}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 645c7dea153254f488660ec2971c7dc1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8411225696917831636
 GameObject:
   m_ObjectHideFlags: 0

@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: -6857335941848735217}
   - component: {fileID: 6515406039855205921}
   - component: {fileID: 1811393777677015304}
+  - component: {fileID: 7137268040514276200}
   m_Layer: 0
   m_Name: AK_Rifle
   m_TagString: Weapon
@@ -288,8 +289,32 @@ MonoBehaviour:
   BulletPrefabLifeTime: 3
   BulletCapacity: 30
   BulletCount: 0
+  gunAnimation: {fileID: 7137268040514276200}
+  gun: {fileID: 0}
   AmmoCount: {fileID: 0}
   AmmoCap: {fileID: 0}
+--- !u!95 &7137268040514276200
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105061281010239327}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1265d25663dbf44997ca4b3e8521220, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6743536059764550584
 GameObject:
   m_ObjectHideFlags: 0
