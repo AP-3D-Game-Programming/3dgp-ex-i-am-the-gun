@@ -18,6 +18,7 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private Text AmmoCount;
     [SerializeField] private Text AmmoCap;
+    [SerializeField] private float kickbackForce = 10f; 
     private void Start()
     {
         BulletCount = BulletCapacity;
@@ -43,6 +44,13 @@ public class Gun : MonoBehaviour
         // Shoot the bullet
         bullet.GetComponent<Rigidbody>().AddForce(BulletSpawn.forward.normalized * BulletVelocity, ForceMode.Impulse);
         StartCoroutine(GunRecoil());
+
+        // Apply kickback to the player
+        Player1 player = GetComponentInParent<Player1>();
+        if (player != null)
+        {
+            player.ApplyKickback(kickbackForce);
+        }
 
         // Decrease ammo
         BulletCount--;

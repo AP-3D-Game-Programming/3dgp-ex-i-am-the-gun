@@ -93,4 +93,10 @@ public class Player1 : MonoBehaviour
         playerCharacter.SetPosition(position);
         playerCamera.UpdatePosition(playerCharacter.GetCameraTarget());
     }
+
+    public void ApplyKickback(float force)
+    {
+        Vector3 kickbackDirection = playerCamera.transform.forward * -1;
+        playerCharacter.AddForce(kickbackDirection * force);
+    }
 }

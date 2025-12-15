@@ -518,4 +518,10 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
             motor.BaseVelocity = Vector3.zero;
         }
     }
+
+    public void AddForce(Vector3 force)
+    {
+        _state.Velocity += force;
+        motor.BaseVelocity += force;
+    }
 }

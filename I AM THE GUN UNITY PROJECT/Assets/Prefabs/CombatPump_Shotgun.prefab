@@ -412,6 +412,7 @@ MonoBehaviour:
   gun: {fileID: 0}
   AmmoCount: {fileID: 0}
   AmmoCap: {fileID: 0}
+  kickbackForce: 50
 --- !u!95 &-7873302824449594810
 Animator:
   serializedVersion: 7
