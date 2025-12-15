@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Sniper
   BulletPrefab: {fileID: 3896305785312621774, guid: 184fe9373e5f01c4986874972e49d69b, type: 3}
   BulletSpawn: {fileID: 5065336312502922684}
-  BulletVelocity: 30
+  BulletVelocity: 50
   BulletPrefabLifeTime: 3
   BulletCapacity: 12
   BulletCount: 0
