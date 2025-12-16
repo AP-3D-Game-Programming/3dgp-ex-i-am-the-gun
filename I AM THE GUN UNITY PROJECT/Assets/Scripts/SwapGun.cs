@@ -2,28 +2,42 @@ using UnityEngine;
 
 public class SwapGun : MonoBehaviour
 {
-    //PlayerMovement
     private UseWeapon player;
+    private bool isPlayerInside = false; //track if player is near
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<UseWeapon>();
+        // Finding Character1 as a child of Player1 or in the scene
+        player = GameObject.Find("Character1").GetComponent<UseWeapon>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.R))
+        // 1. Check input in Update (Every Frame)
+        if (isPlayerInside && Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("Near a gun: Press R to swamp.");
+            Debug.Log("Input Detected! Swapping...");
             player.ChangeWeapon(gameObject);
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // 2. Set the flag when player enters
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player entered gun range: " + other.name);
+            isPlayerInside = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // 3. Unset the flag when player leaves
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInside = false;
         }
     }
 }

@@ -1230,6 +1230,8 @@ MonoBehaviour:
   BulletPrefabLifeTime: 3
   BulletCapacity: 7
   BulletCount: 0
+  gunAnimation: {fileID: 0}
+  gun: {fileID: 0}
   AmmoCount: {fileID: 0}
   AmmoCap: {fileID: 0}
 --- !u!1 &8116993451673716407
