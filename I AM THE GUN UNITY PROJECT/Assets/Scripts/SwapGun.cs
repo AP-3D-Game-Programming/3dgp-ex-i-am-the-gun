@@ -7,8 +7,8 @@ public class SwapGun : MonoBehaviour
 
     void Start()
     {
-        // Finding Character1 as a child of Player1 or in the scene
-        player = GameObject.Find("Player1").GetComponent<UseWeapon>();
+        // Finding Player1 as a child of Player1 or in the scene
+        player = GameObject.Find("Character1").GetComponent<UseWeapon>();
     }
 
     void Update()
