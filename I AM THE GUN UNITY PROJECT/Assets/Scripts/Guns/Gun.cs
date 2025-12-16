@@ -18,7 +18,7 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private Text AmmoCount;
     [SerializeField] private Text AmmoCap;
-    [SerializeField] private float kickbackForce = 10f; 
+    [SerializeField] public float kickbackForce = 10f; 
     private void Start()
     {
         BulletCount = BulletCapacity;
@@ -30,7 +30,7 @@ public class Gun : MonoBehaviour
 
     }
 
-    public void FireWeapon()
+    public virtual void FireWeapon()
     {
         if (BulletCount <= 0) return;
 
@@ -59,13 +59,13 @@ public class Gun : MonoBehaviour
         StartCoroutine(DestroyBulletAfterTime(bullet, BulletPrefabLifeTime));
     }
 
-    private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
+    public IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
     {
         yield return new WaitForSeconds(delay);
         Destroy(bullet);
     }
 
-    IEnumerator GunRecoil()
+    public IEnumerator GunRecoil()
     {
         gun.GetComponent<Animator>().Play("GunRecoil");
         yield return new WaitForSeconds(0.20f);
