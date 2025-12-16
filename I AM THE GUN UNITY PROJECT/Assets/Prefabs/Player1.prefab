@@ -467,6 +467,9 @@ GameObject:
   - component: {fileID: 3762320789550373902}
   - component: {fileID: 4407814260753576454}
   - component: {fileID: 8627056564961952553}
+  - component: {fileID: 7506522883561149598}
+  - component: {fileID: 7142490812366532655}
+  - component: {fileID: 8620457091677648283}
   m_Layer: 7
   m_Name: Character1
   m_TagString: Player
@@ -591,6 +594,70 @@ MonoBehaviour:
   crouchHeightResponse: 15
   standCameraTargetHeight: 1
   crouchCameraTargetHeight: 0.66
+--- !u!114 &7506522883561149598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4055385223327476998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a1a22b22ef9fc4d9dd4db560b4b597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UseWeapon
+  Weapon: {fileID: 8027828794721651741}
+  camera: {fileID: 688678151044476289}
+  cartridgesCount: 3
+  CartridgesCapacity: 0
+--- !u!54 &7142490812366532655
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4055385223327476998}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &8620457091677648283
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4055385223327476998}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2.8170273, z: 1}
+  m_Center: {x: 0, y: 0.9085139, z: 0}
 --- !u!1 &4257280354816851595
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,8 +927,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7571741034112045129}
   - component: {fileID: 8072231431592062454}
-  - component: {fileID: 3337692063367850816}
-  - component: {fileID: 3800856676948375174}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -904,43 +969,6 @@ MonoBehaviour:
   cameraLean: {fileID: 4642278820763468793}
   volume: {fileID: 4905523246332516458}
   stanceVignette: {fileID: 6864971354241508969}
---- !u!114 &3337692063367850816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7562298894066929662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a1a22b22ef9fc4d9dd4db560b4b597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UseWeapon
-  Weapon: {fileID: 8027828794721651741}
-  camera: {fileID: 688678151044476289}
-  cartridgesCount: 3
-  CartridgesCapacity: 0
---- !u!65 &3800856676948375174
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7562298894066929662}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7641118894648972738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,11 +1185,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8423860664197261198, guid: d1899fca33d17ad4d95cc7c82148f230, type: 3}
 --- !u!54 &7695277782340693429
@@ -1234,6 +1262,7 @@ MonoBehaviour:
   gun: {fileID: 0}
   AmmoCount: {fileID: 0}
   AmmoCap: {fileID: 0}
+  kickbackForce: 10
 --- !u!1 &8116993451673716407
 GameObject:
   m_ObjectHideFlags: 0
