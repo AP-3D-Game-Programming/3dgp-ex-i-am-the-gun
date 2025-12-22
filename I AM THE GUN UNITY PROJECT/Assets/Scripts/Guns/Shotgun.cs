@@ -47,5 +47,6 @@ public class Shotgun : Gun
         BulletCount--;
 
         StartCoroutine(GunRecoil());
+        StartCoroutine(MuzzleFlash());
     }
 }

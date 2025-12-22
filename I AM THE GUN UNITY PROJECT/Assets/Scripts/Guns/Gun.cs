@@ -75,7 +75,7 @@ public class Gun : MonoBehaviour
         gun.GetComponent<Animator>().Play("New State");
     }
 
-    IEnumerator MuzzleFlash()
+    public IEnumerator MuzzleFlash()
     {
         muzzleFlash.SetActive(true);
         yield return new WaitForSeconds(0.05f);
