@@ -14,6 +14,8 @@ public class Gun : MonoBehaviour
 
     public Animator gunAnimation;
 
+    public GameObject muzzleFlash;
+
     public GameObject gun;
 
     [SerializeField] private Text AmmoCount;
@@ -44,6 +46,7 @@ public class Gun : MonoBehaviour
         // Shoot the bullet
         bullet.GetComponent<Rigidbody>().AddForce(BulletSpawn.forward.normalized * BulletVelocity, ForceMode.Impulse);
         StartCoroutine(GunRecoil());
+        StartCoroutine(MuzzleFlash());
 
         // Apply kickback to the player
         Player1 player = GetComponentInParent<Player1>();
@@ -70,5 +73,12 @@ public class Gun : MonoBehaviour
         gun.GetComponent<Animator>().Play("GunRecoil");
         yield return new WaitForSeconds(0.20f);
         gun.GetComponent<Animator>().Play("New State");
+    }
+
+    IEnumerator MuzzleFlash()
+    {
+        muzzleFlash.SetActive(true);
+        yield return new WaitForSeconds(0.05f);
+        muzzleFlash.SetActive(false);
     }
 }
