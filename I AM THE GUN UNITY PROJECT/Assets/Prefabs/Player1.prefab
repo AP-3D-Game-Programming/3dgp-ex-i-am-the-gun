@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 622196629535147183}
   - component: {fileID: 5149885240517121052}
   - component: {fileID: 5787600239363252057}
+  - component: {fileID: 6206133707483623384}
   m_Layer: 0
   m_Name: Main Camera1
   m_TagString: MainCamera
@@ -129,6 +130,14 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!81 &6206133707483623384
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688678151044476289}
+  m_Enabled: 1
 --- !u!1 &1269885529238226984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,6 +1268,9 @@ MonoBehaviour:
   BulletCapacity: 7
   BulletCount: 0
   gunAnimation: {fileID: 0}
+  muzzleFlash: {fileID: 0}
+  gunShot: {fileID: 0}
+  emptyMag: {fileID: 0}
   gun: {fileID: 0}
   AmmoCount: {fileID: 0}
   AmmoCap: {fileID: 0}

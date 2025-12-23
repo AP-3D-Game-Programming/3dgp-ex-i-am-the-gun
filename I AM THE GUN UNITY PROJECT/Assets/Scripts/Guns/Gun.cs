@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,10 +12,10 @@ public class Gun : MonoBehaviour
     public float BulletPrefabLifeTime = 3f;
     public int BulletCapacity;
     public int BulletCount;
-
     public Animator gunAnimation;
-
     public GameObject muzzleFlash;
+    public AudioSource gunShot;
+    public AudioClip emptyMag;
 
     public GameObject gun;
 
@@ -34,7 +35,11 @@ public class Gun : MonoBehaviour
 
     public virtual void FireWeapon()
     {
-        if (BulletCount <= 0) return;
+        if (BulletCount <= 0)
+        {
+            gunShot.PlayOneShot(emptyMag);
+            return;
+        }
 
         // Instantiate the bullet
         GameObject bullet = Instantiate(BulletPrefab, BulletSpawn.position, transform.rotation);
@@ -47,6 +52,7 @@ public class Gun : MonoBehaviour
         bullet.GetComponent<Rigidbody>().AddForce(BulletSpawn.forward.normalized * BulletVelocity, ForceMode.Impulse);
         StartCoroutine(GunRecoil());
         StartCoroutine(MuzzleFlash());
+        gunShot.PlayOneShot(gunShot.clip);
 
         // Apply kickback to the player
         Player1 player = GetComponentInParent<Player1>();

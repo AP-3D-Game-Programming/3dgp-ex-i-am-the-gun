@@ -19,7 +19,11 @@ public class Shotgun : Gun
 
     public override void FireWeapon()
     {
-        if (BulletCount <= 0) return;
+        if (BulletCount <= 0)
+        {
+            gunShot.PlayOneShot(emptyMag);
+            return;
+        }
 
         for (int i = 0; i < pelletCount; i++)
         {
@@ -48,5 +52,6 @@ public class Shotgun : Gun
 
         StartCoroutine(GunRecoil());
         StartCoroutine(MuzzleFlash());
+        gunShot.PlayOneShot(gunShot.clip);
     }
 }
