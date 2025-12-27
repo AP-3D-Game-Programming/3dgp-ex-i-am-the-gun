@@ -12,6 +12,14 @@ public class DamageManager : MonoBehaviour
         if (gun == null)
             gun = GetComponent<Gun>();
     }
+    void Update()
+    {
+        if (gun.BulletCount <= 0)
+        {
+            gun.BulletCount = 0;
+            Die();
+        }
+    }
 
     public virtual void TakeDamage(int amount)
     {
@@ -22,12 +30,6 @@ public class DamageManager : MonoBehaviour
         }
 
         gun.BulletCount -= amount;
-
-        if (gun.BulletCount <= 0)
-        {
-            gun.BulletCount = 0;
-            Die();
-        }
     }
 
     protected virtual void Die()

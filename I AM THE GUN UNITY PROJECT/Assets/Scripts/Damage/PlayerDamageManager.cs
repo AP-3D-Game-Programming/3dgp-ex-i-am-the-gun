@@ -3,7 +3,22 @@ using UnityEngine;
 public class PlayerDamageManager : DamageManager
 {
     public PlayerUpgradeManager upgradeManager;
-    public PlayerManager playerManager;
+    public UseWeapon useWeapon;
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            TakeDamage(1);
+        }
+
+        if (gun.BulletCount <= 0)
+        {
+            gun.BulletCount = 0;
+            Die();
+        }
+        gun = useWeapon.Weapon.GetComponent<Gun>();
+        Weapon = useWeapon.Weapon;
+    }
     protected override void Die()
     {
         Debug.Log("PLAYER DEAD!");
@@ -17,6 +32,11 @@ public class PlayerDamageManager : DamageManager
 
         // go to main menu (maybe move this to death screen script later, if ever get death screen)
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
+    public void TriggerDeath()
+    {
+        Die();
     }
 }
 

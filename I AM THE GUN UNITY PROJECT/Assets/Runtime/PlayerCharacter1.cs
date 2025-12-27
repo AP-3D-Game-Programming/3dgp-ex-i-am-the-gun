@@ -110,6 +110,17 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
     private bool _ungroundedDueToJump;
 
     private Collider[] _uncrouchOverlapResults;
+    [SerializeField] private PlayerDamageManager damageManager;
+    [SerializeField] private int ammoCount;
+
+    private void Awake()
+    {
+        if (damageManager == null)
+        {
+            damageManager = GetComponent<PlayerDamageManager>();
+        }
+    }
+
     public void Initialize()
     {
         _state.Stance = Stance.Stand;
@@ -523,5 +534,13 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
     {
         _state.Velocity += force;
         motor.BaseVelocity += force;
+    }
+
+    public void CheckAmmo()
+    {
+        if (ammoCount <= 0)
+        {
+            damageManager.TriggerDeath();
+        }
     }
 }
