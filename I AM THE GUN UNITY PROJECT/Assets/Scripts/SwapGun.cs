@@ -1,43 +1,72 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SwapGun : MonoBehaviour
 {
     private UseWeapon player;
-    private bool isPlayerInside = false; //track if player is near
+    private bool isPlayerInside;
+
+    private NavMeshAgent agent;
+    private Behaviour behaviorAgent;
+
+    void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        behaviorAgent = GetComponent<Behaviour>();
+    }
 
     void Start()
     {
-        // Finding Player1 as a child of Player1 or in the scene
         player = GameObject.Find("Character1").GetComponent<UseWeapon>();
     }
 
     void Update()
     {
-        // 1. Check input in Update (Every Frame)
         if (isPlayerInside && Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("Input Detected! Swapping...");
-            player.ChangeWeapon(gameObject);
-            Destroy(gameObject);
+            Pickup();
         }
     }
 
+    void Pickup()
+    {
+        Debug.Log("Swapping gun (hide world gun (Still needs to be fixed))");
+
+        // Remove AI
+        if (behaviorAgent != null)
+            behaviorAgent.enabled = false;
+
+        if (agent != null)
+        {
+            agent.isStopped = true;
+            agent.ResetPath();
+            agent.enabled = false;
+        }
+
+        // Hide gun
+        foreach (var r in GetComponentsInChildren<Renderer>())
+            r.enabled = false;
+
+        // Disable colliders so it can't be picked again
+        foreach (var c in GetComponentsInChildren<Collider>())
+            c.enabled = false;
+
+        // Swap weapon :o
+        player.ChangeWeapon(gameObject);
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
-        // 2. Set the flag when player enters
+        Debug.Log("Player entered gun range: " + other.name);
         if (other.CompareTag("Player"))
-        {
-            Debug.Log("Player entered gun range: " + other.name);
             isPlayerInside = true;
-        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // 3. Unset the flag when player leaves
+        Debug.Log("Left gun range: " + other.name);
         if (other.CompareTag("Player"))
-        {
             isPlayerInside = false;
-        }
     }
 }
