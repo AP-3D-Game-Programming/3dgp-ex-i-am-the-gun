@@ -6,6 +6,7 @@ public class PlayerDamageManager : DamageManager
     public UseWeapon useWeapon;
     void Update()
     {
+        // testing
         if (Input.GetKeyDown(KeyCode.K))
         {
             TakeDamage(1);
@@ -15,6 +16,7 @@ public class PlayerDamageManager : DamageManager
         {
             gun.BulletCount = 0;
             Die();
+            gun.BulletCount = 1; // prevent multiple death triggers
         }
         gun = useWeapon.Weapon.GetComponent<Gun>();
         Weapon = useWeapon.Weapon;
@@ -24,14 +26,14 @@ public class PlayerDamageManager : DamageManager
         Debug.Log("PLAYER DEAD!");
         
         // deletes mid-game upgrades (no carry-over)
-        upgradeManager.ClearMidGame();
+        // upgradeManager.ClearMidGame();
 
         //drops weapon on floor (little spice, hope it works)
         GameObject weapon = GameObject.FindWithTag("Weapon"); // all gun prefabs normally have this
         Instantiate(weapon, transform.position, Quaternion.identity);
 
         // go to main menu (maybe move this to death screen script later, if ever get death screen)
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
     }
 
     public void TriggerDeath()
