@@ -6,6 +6,7 @@ public class PlayerDamageManager : DamageManager
     public PlayerUpgradeManager upgradeManager;
     public UseWeapon useWeapon;
     private bool isDead;
+    public DeathScreen deathScreen;
 
     public override void Awake()
     {
@@ -46,8 +47,7 @@ public class PlayerDamageManager : DamageManager
         Debug.Log("PLAYER DEAD!");
 
         DropWeapon();
-        Cursor.lockState = CursorLockMode.None;
-        SceneManager.LoadScene("Main Menu");
+        deathScreen.Show();
     }
 
     void DropWeapon()
