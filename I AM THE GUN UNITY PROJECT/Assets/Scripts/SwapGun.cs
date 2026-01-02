@@ -42,7 +42,8 @@ public class SwapGun : MonoBehaviour
             agent.ResetPath();
             agent.enabled = false;
         }
-
+        // Swap weapon :o
+        player.ChangeWeapon(gameObject);
         // Hide gun
         foreach (var r in GetComponentsInChildren<Renderer>())
             r.enabled = false;
@@ -51,8 +52,8 @@ public class SwapGun : MonoBehaviour
         foreach (var c in GetComponentsInChildren<Collider>())
             c.enabled = false;
 
-        // Swap weapon :o
-        player.ChangeWeapon(gameObject);
+
+
     }
 
 
