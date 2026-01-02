@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CombatPump_Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 6466475572569962953, guid: 3c8837606a428af4db896f47101a68e6, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 563385621}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -192,6 +196,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 939687844524688376, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1056540400}
+    - target: {fileID: 939687844524688376, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
+      propertyPath: BulletCount
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 939687844524688376, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       propertyPath: gunAnimation
       value: 
@@ -280,6 +292,11 @@ MonoBehaviour:
   Weapon: {fileID: 1056540400}
   upgradeManager: {fileID: 0}
   useWeapon: {fileID: 1022290137}
+--- !u!1 &563385621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6260535967125609021, guid: 3c8837606a428af4db896f47101a68e6, type: 3}
+  m_PrefabInstance: {fileID: 10630283}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &833993773
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,6 +504,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa476b48c62e614fb65381e7204b271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pistol
+--- !u!1 &1091088471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 574833526839719160, guid: 519a41750be66694b8b108a045437213, type: 3}
+  m_PrefabInstance: {fileID: 1452777395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1452777395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -539,6 +561,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3665432588472953065, guid: 519a41750be66694b8b108a045437213, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1091088471}
     - target: {fileID: 6737202054683781331, guid: 519a41750be66694b8b108a045437213, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -601,7 +627,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}

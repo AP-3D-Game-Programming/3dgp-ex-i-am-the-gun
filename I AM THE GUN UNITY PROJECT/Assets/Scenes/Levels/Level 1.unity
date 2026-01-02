@@ -3899,6 +3899,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 939687844524688376, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 2070486771}
+    - target: {fileID: 939687844524688376, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
+      propertyPath: BulletCount
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 7562298894066929662, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       propertyPath: m_Name
       value: Player1
@@ -3948,6 +3956,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
+--- !u!1 &2070486771 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8027828794721651741, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
+  m_PrefabInstance: {fileID: 2070486770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

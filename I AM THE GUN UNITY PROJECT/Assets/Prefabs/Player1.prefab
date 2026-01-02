@@ -603,6 +603,8 @@ MonoBehaviour:
   crouchHeightResponse: 15
   standCameraTargetHeight: 1
   crouchCameraTargetHeight: 0.66
+  damageManager: {fileID: 0}
+  ammoCount: 0
 --- !u!114 &7506522883561149598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,6 +938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7571741034112045129}
   - component: {fileID: 8072231431592062454}
+  - component: {fileID: 8064437025726723415}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -978,6 +981,22 @@ MonoBehaviour:
   cameraLean: {fileID: 4642278820763468793}
   volume: {fileID: 4905523246332516458}
   stanceVignette: {fileID: 6864971354241508969}
+--- !u!114 &8064437025726723415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7562298894066929662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28ec59a6902cdf46aa340b11db3b211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDamageManager
+  gun: {fileID: 939687844524688376}
+  Weapon: {fileID: 8027828794721651741}
+  upgradeManager: {fileID: 0}
+  useWeapon: {fileID: 7506522883561149598}
 --- !u!1 &7641118894648972738
 GameObject:
   m_ObjectHideFlags: 0
