@@ -59,14 +59,14 @@ public class SwapGun : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Player entered gun range: " + other.name);
+        //Debug.Log("Player entered gun range: " + other.name);
         if (other.CompareTag("Player"))
             isPlayerInside = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Left gun range: " + other.name);
+        //Debug.Log("Left gun range: " + other.name);
         if (other.CompareTag("Player"))
             isPlayerInside = false;
     }

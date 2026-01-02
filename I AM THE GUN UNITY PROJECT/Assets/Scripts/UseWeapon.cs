@@ -51,6 +51,8 @@ public class UseWeapon : MonoBehaviour
         Transform gunMount = GameObject.Find("Gun Mount1").transform;
         Weapon = Instantiate(newGun, gunMount.position, gunMount.rotation, gunMount);
         weaponUtility = Weapon.GetComponent<Gun>();
+        weaponUtility.IsPlayerGun = true;
+
         weaponUtility.BulletCount = weaponUtility.BulletCapacity;
         cartridgesCount = CartridgesCapacity;
     }

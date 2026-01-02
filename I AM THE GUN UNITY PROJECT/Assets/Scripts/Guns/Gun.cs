@@ -17,6 +17,8 @@ public class Gun : MonoBehaviour
     public AudioSource gunShot;
     public AudioClip emptyMag;
 
+    public bool IsPlayerGun = false;
+
     public GameObject gun;
 
     [SerializeField] private Text AmmoCount;
@@ -28,6 +30,8 @@ public class Gun : MonoBehaviour
     }
     private void Update()
     {
+        if (!IsPlayerGun) return;
+
         AmmoCap.text = BulletCapacity.ToString();
         AmmoCount.text = BulletCount.ToString();
 
