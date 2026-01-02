@@ -7,7 +7,7 @@ public class DamageManager : MonoBehaviour
 
     public GameObject Weapon; 
 
-    protected virtual void Awake()
+    public virtual void Awake()
     {
         if (gun == null)
             gun = GetComponent<Gun>();

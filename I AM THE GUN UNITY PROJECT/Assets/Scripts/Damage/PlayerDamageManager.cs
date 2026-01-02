@@ -1,39 +1,61 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDamageManager : DamageManager
 {
     public PlayerUpgradeManager upgradeManager;
     public UseWeapon useWeapon;
+    private bool isDead;
+
+    public override void Awake()
+    {
+        CacheWeapon();
+    }
+
     void Update()
     {
-        // testing
+        // testing only
         if (Input.GetKeyDown(KeyCode.K))
         {
             TakeDamage(1);
         }
 
-        if (gun.BulletCount <= 0)
+        CacheWeapon();
+
+        if (!isDead && gun != null && gun.BulletCount <= 0)
         {
-            gun.BulletCount = 0;
             Die();
-            gun.BulletCount = 1; // prevent multiple death triggers
         }
-        gun = useWeapon.Weapon.GetComponent<Gun>();
-        Weapon = useWeapon.Weapon;
     }
+
+    void CacheWeapon()
+    {
+        if (useWeapon != null && useWeapon.Weapon != null)
+        {
+            gun = useWeapon.Weapon.GetComponent<Gun>();
+            Weapon = useWeapon.Weapon;
+        }
+    }
+
     protected override void Die()
     {
+        if (isDead) return;
+        isDead = true;
+
+        // get the game over screen in here
         Debug.Log("PLAYER DEAD!");
-        
-        // deletes mid-game upgrades (no carry-over)
-        // upgradeManager.ClearMidGame();
 
-        //drops weapon on floor (little spice, hope it works)
-        GameObject weapon = GameObject.FindWithTag("Weapon"); // all gun prefabs normally have this
-        Instantiate(weapon, transform.position, Quaternion.identity);
+        DropWeapon();
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("Main Menu");
+    }
 
-        // go to main menu (maybe move this to death screen script later, if ever get death screen)
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
+    void DropWeapon()
+    {
+        if (Weapon != null)
+        {
+            Instantiate(Weapon, transform.position, Quaternion.identity);
+        }
     }
 
     public void TriggerDeath()
@@ -41,4 +63,3 @@ public class PlayerDamageManager : DamageManager
         Die();
     }
 }
-
