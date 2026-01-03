@@ -4502,6 +4502,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7506522883561149598, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
+      propertyPath: CartridgesCapacity
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7562298894066929662, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       propertyPath: m_Name
       value: Player1
@@ -4581,3 +4585,4 @@ SceneRoots:
   - {fileID: 657225829}
   - {fileID: 2002649137}
   - {fileID: 877621226}
+  - {fileID: 418128908}
