@@ -4,9 +4,13 @@ using UnityEngine;
 public class EnemySpawnManager : MonoBehaviour
 {
     [SerializeField] GameObject[] levelEnemies;
+    [SerializeField] GameObject levelBoss;
     private GameObject[] spawners;
+    private GameObject bossSpawner;
     [SerializeField] float spawnInterval = 5;
+    [SerializeField] float bossSpawnAfter = 300;
     private float timer = 0;
+    private float bossTimer = 0;
     [SerializeField] int amountPerSpawn;
     private GameManager gameManager;
 
@@ -15,6 +19,7 @@ public class EnemySpawnManager : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         spawners = GameObject.FindGameObjectsWithTag("Spawner");
+        bossSpawner = GameObject.Find("BossSpawn");
     }
 
     // Update is called once per frame
@@ -23,14 +28,19 @@ public class EnemySpawnManager : MonoBehaviour
         if (!gameManager.gameIsPaused)
         {
             timer += Time.deltaTime;
+            bossTimer += Time.deltaTime;
 
             if (timer >= spawnInterval)
             {
                 for (int i = 0; i < amountPerSpawn; i++)
                 {
-                    Instantiate(levelEnemies[Random.Range(0, levelEnemies.Length)], spawners[Random.Range(0, spawners.Length)].transform);
+                    Instantiate(levelEnemies[Random.Range(0, levelEnemies.Length)], spawners[Random.Range(0, spawners.Length)].transform, instantiateInWorldSpace:true);
                 }
                 timer = 0;
+            }
+            if ( bossTimer >= bossSpawnAfter)
+            {
+                Instantiate(levelBoss, bossSpawner.transform, instantiateInWorldSpace: true);
             }
         }
     }
