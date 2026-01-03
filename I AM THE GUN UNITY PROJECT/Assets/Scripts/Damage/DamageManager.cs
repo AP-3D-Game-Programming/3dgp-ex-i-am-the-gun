@@ -36,7 +36,6 @@ public class DamageManager : MonoBehaviour
     {
         Debug.Log($"{name} has died.");
         // make it drop its weapon (please god, please work)
-        Weapon = GameObject.FindWithTag("Weapon"); // all gun prefabs normally have this 
         Instantiate(Weapon, transform.position, Quaternion.identity);
         // destroy enemy :skull_emoji:
         Destroy(gameObject);
