@@ -8,7 +8,7 @@ public class UseWeapon : MonoBehaviour
     private Gun weaponUtility;
 
     //Stats
-    [SerializeField] int cartridgesCount = 3;
+    public int cartridgesCount = 3;
     public int CartridgesCapacity = 3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

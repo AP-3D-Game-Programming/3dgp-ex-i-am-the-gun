@@ -23,7 +23,7 @@ public class PlayerDamageManager : DamageManager
 
         CacheWeapon();
 
-        if (!isDead && gun != null && gun.BulletCount <= 0)
+        if (!isDead && gun != null && gun.BulletCount <= 0 && useWeapon.cartridgesCount <= 0)
         {
             Die();
         }
