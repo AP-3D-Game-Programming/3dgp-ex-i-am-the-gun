@@ -6,6 +6,7 @@ public class DamageManager : MonoBehaviour
     public Gun gun;
 
     public GameObject Weapon; 
+    private bool isDead;
 
     public virtual void Awake()
     {
@@ -14,8 +15,9 @@ public class DamageManager : MonoBehaviour
     }
     void Update()
     {
-        if (gun.BulletCount <= 0)
+        if (!isDead && gun != null && gun.BulletCount <= 0)
         {
+            isDead = true;
             gun.BulletCount = 0;
             Die();
         }
