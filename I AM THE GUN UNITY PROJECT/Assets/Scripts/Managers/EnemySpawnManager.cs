@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemySpawnManager : MonoBehaviour
 {
     [SerializeField] GameObject[] levelEnemies;
-    [SerializeField] GameObject[] spawners;
+    private GameObject[] spawners;
     [SerializeField] float spawnInterval = 5;
     private float timer = 0;
     [SerializeField] int amountPerSpawn;
@@ -28,7 +28,7 @@ public class EnemySpawnManager : MonoBehaviour
             {
                 for (int i = 0; i < amountPerSpawn; i++)
                 {
-                    GameObject.Instantiate(levelEnemies[Random.Range(0, levelEnemies.Length)], spawners[Random.Range(0, spawners.Length)].transform);
+                    Instantiate(levelEnemies[Random.Range(0, levelEnemies.Length)], spawners[Random.Range(0, spawners.Length)].transform);
                 }
                 timer = 0;
             }
