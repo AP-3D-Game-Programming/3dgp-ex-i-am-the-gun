@@ -325,10 +325,12 @@ MonoBehaviour:
   muzzleFlash: {fileID: 4235275537544754358}
   gunShot: {fileID: 3399487929072313932}
   emptyMag: {fileID: 8300000, guid: 3640244827138674e8fdfab97fc5121f, type: 3}
+  IsPlayerGun: 0
   gun: {fileID: 0}
   AmmoCount: {fileID: 0}
   AmmoCap: {fileID: 0}
   kickbackForce: 10
+  fireRate: 20
 --- !u!95 &5465295303738742865
 Animator:
   serializedVersion: 7

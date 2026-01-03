@@ -414,10 +414,12 @@ MonoBehaviour:
   muzzleFlash: {fileID: 8500306794301475395}
   gunShot: {fileID: 1832510899892392550}
   emptyMag: {fileID: 8300000, guid: 3640244827138674e8fdfab97fc5121f, type: 3}
+  IsPlayerGun: 0
   gun: {fileID: 0}
   AmmoCount: {fileID: 0}
   AmmoCap: {fileID: 0}
   kickbackForce: 50
+  fireRate: 3
   pelletCount: 6
   spreadAngle: 15
 --- !u!95 &-7873302824449594810

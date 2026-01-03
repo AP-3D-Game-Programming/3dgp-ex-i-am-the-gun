@@ -24,6 +24,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private Text AmmoCount;
     [SerializeField] private Text AmmoCap;
     [SerializeField] public float kickbackForce = 10f; 
+    public float fireRate = 10f;
+    protected float nextFireTime;
     private void Start()
     {
         BulletCount = BulletCapacity;
@@ -39,6 +41,10 @@ public class Gun : MonoBehaviour
 
     public virtual void FireWeapon()
     {
+        if (!CanFire()) return;
+
+        nextFireTime = Time.time + 1f / fireRate;
+
         if (BulletCount <= 0)
         {
             gunShot.PlayOneShot(emptyMag);
@@ -90,5 +96,10 @@ public class Gun : MonoBehaviour
         muzzleFlash.SetActive(true);
         yield return new WaitForSeconds(0.05f);
         muzzleFlash.SetActive(false);
+    }
+
+    protected bool CanFire()
+    {
+        return Time.time >= nextFireTime;
     }
 }

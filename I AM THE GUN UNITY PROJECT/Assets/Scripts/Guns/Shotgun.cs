@@ -19,6 +19,10 @@ public class Shotgun : Gun
 
     public override void FireWeapon()
     {
+        if (!CanFire()) return;
+
+        nextFireTime = Time.time + 1f / fireRate;
+
         if (BulletCount <= 0)
         {
             gunShot.PlayOneShot(emptyMag);

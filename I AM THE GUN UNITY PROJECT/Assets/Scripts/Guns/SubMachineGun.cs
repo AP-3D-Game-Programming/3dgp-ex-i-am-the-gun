@@ -11,6 +11,11 @@ public class SubMachineGun : Gun
     // Update is called once per frame
     void Update()
     {
-        
+        if (!IsPlayerGun) return;
+
+        if (Input.GetButton("Fire1"))
+        {
+            FireWeapon();
+        }
     }
 }
