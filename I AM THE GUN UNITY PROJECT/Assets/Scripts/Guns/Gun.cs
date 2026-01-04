@@ -30,6 +30,10 @@ public class Gun : MonoBehaviour
     {
         BulletCount = BulletCapacity;
     }
+    private void Awake()
+    {
+        gun = gameObject;
+    }
     private void Update()
     {
         if (!IsPlayerGun) return;
