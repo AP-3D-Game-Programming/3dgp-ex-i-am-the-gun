@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Linq;
 
 public class MidGameUpgradeSelector : UpgradeSelector
@@ -20,8 +21,6 @@ public class MidGameUpgradeSelector : UpgradeSelector
             .OrderBy(x => Random.value)
             .Take(3)
             .ToArray();
-
-        uiManager.ShowChoices();
     }
 
     public override void SelectUpgrade(int choiceIndex, PlayerUpgradeManager manager)
@@ -35,7 +34,11 @@ public class MidGameUpgradeSelector : UpgradeSelector
 
         uiManager.Hide();
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(nextSceneIndex);
+        else
+            Debug.Log("No more levels in build settings!");
     }
 }

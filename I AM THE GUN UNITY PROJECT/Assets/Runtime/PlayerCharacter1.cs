@@ -44,38 +44,38 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
     [SerializeField] private Transform cameraTarget;
     [Space]
 
-    [SerializeField] private float walkSpeed = 20f;
+    [SerializeField] public float walkSpeed = 20f;
 
-    [SerializeField] private float crouchSpeed = 8f;
+    [SerializeField] public float crouchSpeed = 8f;
 
-    [SerializeField] private float walkResponse = 25f;
+    [SerializeField] public float walkResponse = 25f;
 
-    [SerializeField] private float crouchResponse = 15f;
+    [SerializeField] public float crouchResponse = 15f;
 
-    [SerializeField] private float airSpeed = 15f;
+    [SerializeField] public float airSpeed = 15f;
 
-    [SerializeField] private float airAcceleration = 70f;
+    [SerializeField] public float airAcceleration = 70f;
     [Space]
 
-    [SerializeField] private float jumpSpeed = 21f;
+    [SerializeField] public float jumpSpeed = 21f;
 
-    [SerializeField] private float coyoteTime = 0.2f;
+    [SerializeField] public float coyoteTime = 0.2f;
     [Range(0f, 1f)]
 
-    [SerializeField] private float jumpSustainGravity = 0.4f;
+    [SerializeField] public float jumpSustainGravity = 0.4f;
 
-    [SerializeField] private float gravity = -90f;
+    [SerializeField] public float gravity = -90f;
     [Space]
 
-    [SerializeField] private float slideStartSpeed = 25f;
+    [SerializeField] public float slideStartSpeed = 25f;
 
-    [SerializeField] private float slideEndSpeed = 15f;
+    [SerializeField] public float slideEndSpeed = 15f;
 
-    [SerializeField] private float slideFriction = 0.8f;
+    [SerializeField] public float slideFriction = 0.8f;
 
-    [SerializeField] private float slideSteerAcceleration = 5f;
+    [SerializeField] public float slideSteerAcceleration = 5f;
 
-    [SerializeField] private float slideGravity = -90f;
+    [SerializeField] public float slideGravity = -90f;
     [Space]
 
     [SerializeField] private float standHeight = 2f;
@@ -112,12 +112,25 @@ public class PlayerCharacter1 : MonoBehaviour, ICharacterController
     private Collider[] _uncrouchOverlapResults;
     [SerializeField] private PlayerDamageManager damageManager;
     [SerializeField] private int ammoCount;
+    private PlayerUpgradeManager upgradeManager;
 
     private void Awake()
     {
         if (damageManager == null)
         {
             damageManager = GetComponent<PlayerDamageManager>();
+        }
+    }
+
+    private void Start()
+    {
+        upgradeManager = FindObjectOfType<PlayerUpgradeManager>();
+        if (upgradeManager != null)
+        {
+            foreach (var upgrade in upgradeManager.GetMidGameUpgrades())
+            {
+                upgrade.OnApply(upgradeManager);
+            }
         }
     }
 

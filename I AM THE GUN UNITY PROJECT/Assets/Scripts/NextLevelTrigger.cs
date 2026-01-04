@@ -15,7 +15,7 @@ public class NextLevelTrigger : MonoBehaviour
 
         if (midGameUiManager != null)
             midGameUiManager.ShowChoices();
-
-        GameManager.Instance.CompleteLevel();
+        else
+            GameManager.Instance.CompleteLevel();
     }
 }

@@ -9,7 +9,7 @@ public class MidGameUIManager : MonoBehaviour
 
     public UpgradeButtonUI[] upgradeButtons;
 
-    public void ShowChoices()
+public void ShowChoices()
 {
     root.SetActive(true);
 

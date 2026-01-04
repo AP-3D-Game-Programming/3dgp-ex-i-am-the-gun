@@ -30,7 +30,8 @@ public class Player1 : MonoBehaviour
 
     private void OnDestroy()
     {
-        _inputActions.Dispose();
+        if (_inputActions != null)
+            _inputActions.Dispose();
     }
 
     void Update()

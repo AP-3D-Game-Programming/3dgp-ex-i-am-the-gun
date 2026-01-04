@@ -730,6 +730,7 @@ GameObject:
   - component: {fileID: 7571741034112045129}
   - component: {fileID: 8072231431592062454}
   - component: {fileID: 8064437025726723415}
+  - component: {fileID: 6406195354984614206}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -789,6 +790,19 @@ MonoBehaviour:
   upgradeManager: {fileID: 0}
   useWeapon: {fileID: 7506522883561149598}
   deathScreen: {fileID: 0}
+--- !u!114 &6406195354984614206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7562298894066929662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636b99cb54b345143bdcf91d0e08e6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerUpgradeManager
+  PlayerStats: {fileID: 8627056564961952553}
 --- !u!1 &8116993451673716407
 GameObject:
   m_ObjectHideFlags: 0
