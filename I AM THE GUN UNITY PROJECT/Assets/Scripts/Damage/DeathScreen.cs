@@ -23,5 +23,9 @@ public class DeathScreen : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
-    // retry level?
+    public void Retry()
+    {
+        Time.timeScale = 1f; 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
