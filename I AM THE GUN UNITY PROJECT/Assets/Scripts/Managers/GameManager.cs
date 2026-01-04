@@ -58,6 +58,29 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public async void CompleteLevel()
+{
+    // Unload the current gameplay scene
+    await SceneManager.UnloadSceneAsync(currentLevel + 1);
+
+    // Increment level
+    currentLevel++;
+
+    if (currentLevel >= SceneManager.sceneCountInBuildSettings - 1)
+    {
+        Debug.Log("All levels completed!");
+        return;
+    }
+
+    // Load next level additively
+    await SceneManager.LoadSceneAsync(currentLevel + 1, LoadSceneMode.Additive);
+
+    gameIsActive = true;
+    gameStarted = true;
+    Time.timeScale = 1f;
+}
+
+
 
 }
 

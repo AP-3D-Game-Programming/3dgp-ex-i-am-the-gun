@@ -3,21 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class NextLevelTrigger : MonoBehaviour
 {
-        public MidGameUIManager midGameUiManager;
-public PlayerUpgradeManager playerManager;
-    private void OnTriggerEnter(Collider other)
+    public MidGameUIManager midGameUiManager;
+    private bool triggered;
+
+    private void OnDestroy()
     {
-        if (other.CompareTag("Player"))
-        {
-            OnLevelEnd();
-        }
+        if (triggered || !Application.isPlaying)
+            return;
+
+        triggered = true;
+
+        if (midGameUiManager != null)
+            midGameUiManager.ShowChoices();
+
+        GameManager.Instance.CompleteLevel();
     }
-
-    public void OnLevelEnd()
-    {
-        midGameUiManager.ShowChoices();
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
 }
