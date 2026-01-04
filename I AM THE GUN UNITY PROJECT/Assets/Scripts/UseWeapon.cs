@@ -6,7 +6,6 @@ public class UseWeapon : MonoBehaviour
     public GameObject Weapon;
     [SerializeField] GameObject camera;
     private Gun weaponUtility;
-
     //Stats
     public int cartridgesCount = 3;
     public int CartridgesCapacity = 3;
@@ -14,7 +13,8 @@ public class UseWeapon : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        weaponUtility = Weapon.GetComponent<Gun>();
+        //weaponUtility = Weapon.GetComponent<Gun>();
+        weaponUtility = Camera.main.GetComponentInChildren<Gun>();
     }
 
     // Update is called once per frame
