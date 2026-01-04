@@ -13,7 +13,7 @@ public class SubMachineGun : Gun
     {
         if (!IsPlayerGun) return;
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetMouseButton(0))
         {
             FireWeapon();
         }
