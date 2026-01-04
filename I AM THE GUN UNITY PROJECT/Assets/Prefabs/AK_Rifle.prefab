@@ -295,7 +295,7 @@ MonoBehaviour:
   gunShot: {fileID: 3863240900427806820}
   emptyMag: {fileID: 8300000, guid: 3640244827138674e8fdfab97fc5121f, type: 3}
   IsPlayerGun: 0
-  gun: {fileID: 0}
+  gun: {fileID: 2105061281010239327}
   AmmoCount: {fileID: 0}
   AmmoCap: {fileID: 0}
   kickbackForce: 20

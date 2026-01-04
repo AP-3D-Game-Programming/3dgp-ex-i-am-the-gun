@@ -64,9 +64,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: b2eea48bb70e7944bbad9cd1b8673ed2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b2eea48bb70e7944bbad9cd1b8673ed2, type: 3}
       propertyPath: m_Name
       value: SniperBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b2eea48bb70e7944bbad9cd1b8673ed2, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7071182760956848314, guid: b2eea48bb70e7944bbad9cd1b8673ed2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -76,6 +84,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: da4db2e2a65f08940b464264d76f4ec6, type: 2}
+    - target: {fileID: 8513859187771203891, guid: b2eea48bb70e7944bbad9cd1b8673ed2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

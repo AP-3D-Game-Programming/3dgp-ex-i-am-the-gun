@@ -7,10 +7,12 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == shooter)
-            return;
+        if (collision.transform.root.gameObject == shooter)
+        return;
 
-        DamageManager dmg = collision.gameObject.GetComponent<DamageManager>();
+
+        DamageManager dmg = collision.gameObject.GetComponentInParent<DamageManager>();
+        Debug.Log("Bullet hit " + collision.gameObject.name);
         if (dmg != null)
         {
             dmg.TakeDamage(damage);
