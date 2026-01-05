@@ -5,7 +5,9 @@ public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent agent;
 
-    public Transform player;
+    public GameObject player;
+
+    public Transform playerLocation;
 
     public LayerMask whatIsGround, whatIsPlayer;
 
@@ -16,19 +18,24 @@ public class EnemyAI : MonoBehaviour
     bool walkPointSet;
     public float walkPointRange;
 
-    //Attacking
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
-    public GameObject projectile;
-
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    //Attacking
+    public Gun enemyGun;
+    public float fireCooldown = 1.2f;
+    private float nextFireTime;
+
+
     private void Awake()
     {
-        player = GameObject.Find("Player1").transform;
+        player = GameObject.Find("Player1");
+        playerLocation = player.transform;
         agent = GetComponent<NavMeshAgent>();
+
+        enemyGun = GetComponentInChildren<Gun>();
+        enemyGun.IsPlayerGun = false;
     }
 
     private void Update()
@@ -69,32 +76,27 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
+        agent.SetDestination(playerLocation.position);
     }
 
     private void AttackPlayer()
+{
+    // Stop moving
+    agent.SetDestination(transform.position);
+
+    // Look at player (Y locked)
+    Vector3 lookDir = playerLocation.position - transform.position;
+    lookDir.y = 0;
+    transform.rotation = Quaternion.LookRotation(lookDir);
+
+    // Fire weapon with cooldown
+    if (Time.time >= nextFireTime)
     {
-        //Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
-
-        transform.LookAt(player);
-
-        if (!alreadyAttacked)
-        {
-            ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///End of attack code
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
+        enemyGun.BulletSpawn.LookAt(playerLocation.position);
+        enemyGun.FireWeapon();
+        nextFireTime = Time.time + fireCooldown;
     }
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
-    }
+}
 
     public void TakeDamage(int damage)
     {

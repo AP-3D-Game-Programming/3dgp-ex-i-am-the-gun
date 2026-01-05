@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 8072231431592062454}
   - component: {fileID: 8064437025726723415}
   - component: {fileID: 6406195354984614206}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1045,6 +1045,7 @@ MonoBehaviour:
   Weapon: {fileID: 0}
   upgradeManager: {fileID: 0}
   useWeapon: {fileID: 7506522883561149598}
+  isDead: 0
   deathScreen: {fileID: 0}
 --- !u!114 &6406195354984614206
 MonoBehaviour:
