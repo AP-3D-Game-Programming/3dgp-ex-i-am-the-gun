@@ -36,6 +36,7 @@ public class UseWeapon : MonoBehaviour
                 {
                     cartridgesCount -= 1;
                     weaponUtility.BulletCount = weaponUtility.BulletCapacity;
+                    weaponUtility.AddAmmoUI();
                 }
                 else
                 {

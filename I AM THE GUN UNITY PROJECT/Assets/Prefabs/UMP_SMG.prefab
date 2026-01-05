@@ -327,10 +327,10 @@ MonoBehaviour:
   emptyMag: {fileID: 8300000, guid: 3640244827138674e8fdfab97fc5121f, type: 3}
   IsPlayerGun: 0
   gun: {fileID: 3323877240406010248}
-  AmmoCount: {fileID: 0}
-  AmmoCap: {fileID: 0}
   kickbackForce: 10
   fireRate: 20
+  bulletUiPrefab: {fileID: 8232291687630459294, guid: 73d4784dbb1813047aa50deedae24f08, type: 3}
+  ammoUiContainer: {fileID: 0}
 --- !u!95 &5465295303738742865
 Animator:
   serializedVersion: 7

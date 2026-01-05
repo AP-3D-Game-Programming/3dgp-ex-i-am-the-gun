@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -21,26 +22,54 @@ public class Gun : MonoBehaviour
 
     public GameObject gun;
 
-    [SerializeField] private Text AmmoCount;
-    [SerializeField] private Text AmmoCap;
     [SerializeField] public float kickbackForce = 10f; 
     public float fireRate = 10f;
     protected float nextFireTime;
-    private void Start()
+
+    //AmmoUI
+    [SerializeField] private GameObject bulletUiPrefab;
+    [SerializeField] private Transform ammoUiContainer;
+    public int TotalBullets
     {
-        BulletCount = BulletCapacity;
+        get
+        {
+            UseWeapon useWeapon = GetComponentInParent<UseWeapon>();
+            if (useWeapon != null)
+            {
+                return BulletCount + useWeapon.cartridgesCount * BulletCapacity;
+            }
+            return BulletCount;
+        }
     }
+    private List<GameObject> bulletUiStack = new List<GameObject>();
+
     private void Awake()
     {
+        ClearAmmoUI();
+        if (ammoUiContainer == null)
+        {
+            // Option A: Find by tag
+            GameObject container = GameObject.FindWithTag("AmmoStack");
+            if (container != null)
+            {
+                ammoUiContainer = container.transform;
+            }
+        }
+
+        BulletCount = BulletCapacity;
         gun = gameObject;
+        AddAmmoUI();
     }
+    
+    //private void Start()
+    //{
+    //    BulletCount = BulletCapacity;
+    //    gun = gameObject;
+    //    AddAmmoUI();
+    //}
     private void Update()
     {
         if (!IsPlayerGun) return;
-
-        AmmoCap.text = BulletCapacity.ToString();
-        AmmoCount.text = BulletCount.ToString();
-
     }
 
     public virtual void FireWeapon()
@@ -77,9 +106,40 @@ public class Gun : MonoBehaviour
 
         // Decrease ammo
         BulletCount--;
+        RemoveAmmoUI();
 
         // Destroy the bullet after some time
         StartCoroutine(DestroyBulletAfterTime(bullet, BulletPrefabLifeTime));
+    }
+
+    public void AddAmmoUI()
+    {
+        ClearAmmoUI();
+        int totalBullets = TotalBullets;
+        for (int i = 0; i < totalBullets; i++)
+        {
+            GameObject bulletUI = Instantiate(bulletUiPrefab, ammoUiContainer);
+            bulletUiStack.Add(bulletUI);
+        }
+        
+    }
+
+    private void RemoveAmmoUI()
+    {
+        if (bulletUiStack.Count == 0) return;
+
+        GameObject bullet = bulletUiStack[bulletUiStack.Count - 1];
+        bulletUiStack.RemoveAt(bulletUiStack.Count - 1);
+        Destroy(bullet);
+    }
+
+    private void ClearAmmoUI()
+    {
+        foreach (GameObject bullet in bulletUiStack)
+        {
+            Destroy(bullet);
+        }
+        bulletUiStack.Clear();
     }
 
     public IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)

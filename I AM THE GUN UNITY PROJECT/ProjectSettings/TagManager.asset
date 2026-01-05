@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Weapon
   - Spawner
+  - AmmoStack
   layers:
   - Default
   - TransparentFX

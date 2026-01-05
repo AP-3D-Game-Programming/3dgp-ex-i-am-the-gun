@@ -416,10 +416,10 @@ MonoBehaviour:
   emptyMag: {fileID: 8300000, guid: 3640244827138674e8fdfab97fc5121f, type: 3}
   IsPlayerGun: 0
   gun: {fileID: 6260535967125609021}
-  AmmoCount: {fileID: 0}
-  AmmoCap: {fileID: 0}
   kickbackForce: 50
   fireRate: 3
+  bulletUiPrefab: {fileID: 8232291687630459294, guid: 73d4784dbb1813047aa50deedae24f08, type: 3}
+  ammoUiContainer: {fileID: 0}
   pelletCount: 6
   spreadAngle: 15
 --- !u!95 &-7873302824449594810
