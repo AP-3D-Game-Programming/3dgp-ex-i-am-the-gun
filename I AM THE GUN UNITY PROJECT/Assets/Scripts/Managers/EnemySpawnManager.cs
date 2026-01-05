@@ -13,6 +13,7 @@ public class EnemySpawnManager : MonoBehaviour
     private float bossTimer = 0;
     [SerializeField] int amountPerSpawn;
     private GameManager gameManager;
+    private bool bossHasSpawned = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,13 +35,14 @@ public class EnemySpawnManager : MonoBehaviour
             {
                 for (int i = 0; i < amountPerSpawn; i++)
                 {
-                    Instantiate(levelEnemies[Random.Range(0, levelEnemies.Length)], spawners[Random.Range(0, spawners.Length)].transform, instantiateInWorldSpace:true);
+                    Instantiate(levelEnemies[Random.Range(0, levelEnemies.Length)], spawners[Random.Range(0, spawners.Length)].transform.position, Quaternion.identity);
                 }
                 timer = 0;
             }
-            if ( bossTimer >= bossSpawnAfter)
+            if ( bossTimer >= bossSpawnAfter && bossHasSpawned == false)
             {
-                Instantiate(levelBoss, bossSpawner.transform, instantiateInWorldSpace: true);
+                Instantiate(levelBoss, bossSpawner.transform.position, Quaternion.identity);
+                bossHasSpawned = true;
             }
         }
     }
