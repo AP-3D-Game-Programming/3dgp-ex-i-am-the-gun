@@ -2124,7 +2124,7 @@ PrefabInstance:
     - target: {fileID: 8064437025726723415, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       propertyPath: deathScreen
       value: 
-      objectReference: {fileID: 1431417892}
+      objectReference: {fileID: 1709311226}
     - target: {fileID: 8064437025726723415, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       propertyPath: upgradeManager
       value: 
@@ -2149,74 +2149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909c13999fa63b2419c6dfd024186a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCharacter1
---- !u!1001 &1431417891
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 239820501915873845, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
-      propertyPath: m_Name
-      value: DeathScreenManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.62633
-      objectReference: {fileID: 0}
-    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 18.32966
-      objectReference: {fileID: 0}
-    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
---- !u!114 &1431417892 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3369227131243881806, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
-  m_PrefabInstance: {fileID: 1431417891}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 138973cd8465735439fd966a68767957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DeathScreen
 --- !u!1 &1461197508
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,6 +2567,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1709311226 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3369227131243881806, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+  m_PrefabInstance: {fileID: 2086604589}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138973cd8465735439fd966a68767957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathScreen
 --- !u!1 &1736456129
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,6 +2930,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636b99cb54b345143bdcf91d0e08e6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUpgradeManager
+--- !u!1001 &2086604589
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 239820501915873845, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_Name
+      value: DeathScreenManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626284098255234568, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425466771418929812, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.23431
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.5206
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498203120129893182, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820757217054808546, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820757217054808546, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c4b845ca2d323054380dd2af124a1eea, type: 3}
 --- !u!114 &1612506625498415365 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3508807024795800946, guid: 0b10b6c7776733e4bab1101ff1592952, type: 3}
@@ -3063,6 +3079,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2086604589}
   - {fileID: 1461197510}
   - {fileID: 1282641285}
   - {fileID: 1185289437}
@@ -3074,7 +3091,6 @@ SceneRoots:
   - {fileID: 455354938}
   - {fileID: 1124888283}
   - {fileID: 1954318583}
-  - {fileID: 1431417891}
   - {fileID: 927647306}
   - {fileID: 1943649028}
   - {fileID: 5907336297080357627}
