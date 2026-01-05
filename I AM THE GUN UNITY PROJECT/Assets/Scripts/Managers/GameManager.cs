@@ -82,6 +82,12 @@ public class GameManager : MonoBehaviour
     Time.timeScale = 1f;
 }
 
+    public void ResetGame()
+    {
+        gameIsPaused = false;
+        gameIsActive = false;
+        currentLevel = -1;
+    }
 
 
 }

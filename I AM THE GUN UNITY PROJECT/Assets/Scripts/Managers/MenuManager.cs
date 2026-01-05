@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
@@ -37,6 +38,8 @@ public class MenuManager : MonoBehaviour
         startButton?.SetActive(false);
 
         resumeButton?.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void PauseToggle()
@@ -72,11 +75,23 @@ public class MenuManager : MonoBehaviour
     {
         menuScreen?.gameObject.SetActive(false);
 
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ResetGame();
+        }
+
         if (GameManager.Instance != null && GameManager.Instance.gameIsPaused)
         {
             GameManager.Instance.TogglePause();
         }
-        await SceneManager.LoadSceneAsync(0);
+        PlayerUpgradeManager playerUpgradeManager = FindAnyObjectByType<PlayerUpgradeManager>();
+        if (playerUpgradeManager != null)
+        {
+            playerUpgradeManager.ClearMidGame();
+        }
+        SceneManager.LoadScene("Main Menu");
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         ResetUI();
     }
 

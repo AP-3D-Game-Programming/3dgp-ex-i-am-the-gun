@@ -2318,8 +2318,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df157fbe204e35c4e9f15cd0efd6f117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnManager
-  levelEnemies: []
+  levelEnemies:
+  - {fileID: 6724336856105427313, guid: cb7ca5a867f202f4d9bf5ac8063df54d, type: 3}
+  - {fileID: 436363733179620221, guid: 1bdef959519e3ca4790785a90eb614bf, type: 3}
+  - {fileID: 6946010340870833335, guid: be5ef1738eacf4e449d17de295b4d9c7, type: 3}
+  levelBoss: {fileID: 6724336856105427313, guid: e1e4e26d1b4e1f24e9ae10780ee50cdc, type: 3}
   spawnInterval: 5
+  bossSpawnAfter: 300
   amountPerSpawn: 3
 --- !u!1001 &926161494
 PrefabInstance:
@@ -4541,7 +4546,7 @@ PrefabInstance:
     - target: {fileID: 939687844524688376, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       propertyPath: gun
       value: 
-      objectReference: {fileID: 2070486771}
+      objectReference: {fileID: 0}
     - target: {fileID: 939687844524688376, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       propertyPath: BulletCount
       value: 21
@@ -4611,11 +4616,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
---- !u!1 &2070486771 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8027828794721651741, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
-  m_PrefabInstance: {fileID: 2070486770}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

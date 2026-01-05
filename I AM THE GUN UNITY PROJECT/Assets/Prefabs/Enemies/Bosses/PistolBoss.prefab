@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 1016306084264218365}
   - component: {fileID: 8984767002021243572}
   - component: {fileID: 8270524485589131888}
+  - component: {fileID: 1571016294955871201}
   m_Layer: 0
   m_Name: PistolBoss
   m_TagString: Untagged
@@ -259,6 +260,19 @@ MonoBehaviour:
   gun: {fileID: 0}
   target: {fileID: 0}
   fireCooldown: 0.5
+--- !u!114 &1571016294955871201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6724336856105427313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb795aaf2b85d554498eb22883070230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NextLevelTrigger
+  midGameUiManager: {fileID: 0}
 --- !u!1001 &651334246147765945
 PrefabInstance:
   m_ObjectHideFlags: 0

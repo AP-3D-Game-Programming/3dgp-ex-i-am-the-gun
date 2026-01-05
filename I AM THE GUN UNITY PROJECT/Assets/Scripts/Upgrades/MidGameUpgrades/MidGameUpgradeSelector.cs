@@ -34,11 +34,6 @@ public class MidGameUpgradeSelector : UpgradeSelector
 
         uiManager.Hide();
 
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-
-        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
-            SceneManager.LoadScene(nextSceneIndex);
-        else
-            Debug.Log("No more levels in build settings!");
+        GameManager.Instance.CompleteLevel();
     }
 }

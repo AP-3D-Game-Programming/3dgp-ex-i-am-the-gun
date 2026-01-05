@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 8688528022761070564}
   - component: {fileID: 3115991387991452252}
   - component: {fileID: 1930959713418806626}
+  - component: {fileID: 377289587052626025}
   m_Layer: 0
   m_Name: SniperBoss
   m_TagString: Untagged
@@ -259,6 +260,19 @@ MonoBehaviour:
   gun: {fileID: 8707202080111952334}
   target: {fileID: 0}
   fireCooldown: 0.5
+--- !u!114 &377289587052626025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6946010340870833335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb795aaf2b85d554498eb22883070230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NextLevelTrigger
+  midGameUiManager: {fileID: 0}
 --- !u!1001 &5334524394646513959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -313,7 +327,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3665432588472953065, guid: 519a41750be66694b8b108a045437213, type: 3}
       propertyPath: fireRate
-      value: 3
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665432588472953065, guid: 519a41750be66694b8b108a045437213, type: 3}
+      propertyPath: kickbackForce
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3665432588472953065, guid: 519a41750be66694b8b108a045437213, type: 3}
       propertyPath: BulletCapacity

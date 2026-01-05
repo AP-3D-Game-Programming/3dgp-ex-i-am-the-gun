@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 1686925152184877155}
   - component: {fileID: 7332916271797068842}
   - component: {fileID: 7761183956316204270}
+  - component: {fileID: -113084638384201164}
   m_Layer: 0
   m_Name: AKBoss
   m_TagString: Untagged
@@ -678,6 +679,19 @@ MonoBehaviour:
   gun: {fileID: 4152204799352519028}
   target: {fileID: 0}
   fireCooldown: 0.5
+--- !u!114 &-113084638384201164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909531886281224175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb795aaf2b85d554498eb22883070230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NextLevelTrigger
+  midGameUiManager: {fileID: 0}
 --- !u!1 &6026258868899406504
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5784458495534675238}
   - component: {fileID: 5069335611042114281}
   - component: {fileID: 6014291260445195716}
+  - component: {fileID: -4698058521394446189}
   m_Layer: 0
   m_Name: SMGBoss
   m_TagString: Untagged
@@ -146,6 +147,19 @@ MonoBehaviour:
   gun: {fileID: 2907888980307780462}
   target: {fileID: 0}
   fireCooldown: 0.5
+--- !u!114 &-4698058521394446189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146034085897172463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb795aaf2b85d554498eb22883070230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NextLevelTrigger
+  midGameUiManager: {fileID: 0}
 --- !u!1 &4858803021151446396
 GameObject:
   m_ObjectHideFlags: 0
