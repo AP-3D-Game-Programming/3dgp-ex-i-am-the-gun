@@ -48,7 +48,6 @@ public class Gun : MonoBehaviour
         ClearAmmoUI();
         if (ammoUiContainer == null)
         {
-            // Option A: Find by tag
             GameObject container = GameObject.FindWithTag("AmmoStack");
             if (container != null)
             {
@@ -61,12 +60,6 @@ public class Gun : MonoBehaviour
         AddAmmoUI();
     }
     
-    //private void Start()
-    //{
-    //    BulletCount = BulletCapacity;
-    //    gun = gameObject;
-    //    AddAmmoUI();
-    //}
     private void Update()
     {
         if (!IsPlayerGun) return;
