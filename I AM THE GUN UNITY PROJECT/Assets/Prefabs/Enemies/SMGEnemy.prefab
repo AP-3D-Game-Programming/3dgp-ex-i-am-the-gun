@@ -307,6 +307,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3028599875732528923, guid: 21178b3e28bd5704686efe3242af8b9f, type: 3}
+      propertyPath: BulletCount
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3323877240406010248, guid: 21178b3e28bd5704686efe3242af8b9f, type: 3}
       propertyPath: m_Name
       value: UMP_SMG

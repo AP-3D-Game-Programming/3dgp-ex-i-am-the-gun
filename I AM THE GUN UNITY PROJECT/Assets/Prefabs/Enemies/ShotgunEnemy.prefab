@@ -311,6 +311,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CombatPump_Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 6466475572569962953, guid: 3c8837606a428af4db896f47101a68e6, type: 3}
+      propertyPath: BulletCount
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
