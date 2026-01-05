@@ -109,7 +109,7 @@ MonoBehaviour:
     m_Bits: 7
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
   health: 0
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 10

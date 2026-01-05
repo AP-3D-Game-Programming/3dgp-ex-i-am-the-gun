@@ -7,8 +7,6 @@ public class EnemyAI : MonoBehaviour
 
     public GameObject player;
 
-    public Transform playerLocation;
-
     public LayerMask whatIsGround, whatIsPlayer;
 
     public float health;
@@ -32,8 +30,7 @@ public class EnemyAI : MonoBehaviour
     private void Awake()
     {
         agent.updateRotation = false;
-        player = GameObject.Find("Player1");
-        playerLocation = player.transform;
+        player = GameObject.Find("Character1");
         agent = GetComponent<NavMeshAgent>();
 
         enemyGun = GetComponentInChildren<Gun>();
@@ -47,68 +44,69 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         //Check for sight and attack range
+        player = GameObject.Find("Character1");
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange && HasLineOfSight() && InFOV()) AttackPlayer();
+        if (playerInAttackRange && playerInSightRange) AttackPlayer();
     }
 
-    private void Patroling()
-    {
-        if (!walkPointSet) SearchWalkPoint();
-
-        if (walkPointSet)
-            agent.SetDestination(walkPoint);
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        //Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
-    }
     private void SearchWalkPoint()
     {
-        //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        Vector3 randomPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, 2f, NavMesh.AllAreas))
+        {
+            walkPoint = hit.position;
             walkPointSet = true;
+        }
     }
+   private void Patroling()
+{
+    if (!walkPointSet) SearchWalkPoint();
 
-    private void ChasePlayer()
+    if (walkPointSet)
     {
-        agent.SetDestination(playerLocation.position);
-
-        Vector3 dir = playerLocation.position - gunPivot.position;
-        transform.rotation = Quaternion.Slerp(
-            transform.rotation,
-            Quaternion.LookRotation(dir),
-            Time.deltaTime * 6f
-        );
-
-        AimAtPlayer();
+        agent.SetDestination(walkPoint);
+        RotateTowards(walkPoint, 4f); // slower rotation while patrolling
     }
 
-    private void AttackPlayer()
+    Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+    if (distanceToWalkPoint.magnitude < 1f)
+        walkPointSet = false;
+}
+
+
+private void ChasePlayer()
+{
+    agent.SetDestination(player.transform.position);
+
+    // Rotate toward movement direction (so it faces where it’s walking)
+    Vector3 velocity = agent.desiredVelocity;
+    velocity.y = 0;
+    if (velocity != Vector3.zero)
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(velocity), Time.deltaTime * 8f);
+
+    AimAtPlayer();
+}
+
+
+
+   private void AttackPlayer()
 {
     // Stop moving
     agent.SetDestination(transform.position);
 
-    // Look at player (Y locked)
-    Vector3 lookDir = playerLocation.position - transform.position;
-    lookDir.y = 0;
-    Quaternion targetRot = Quaternion.LookRotation(lookDir);
-    transform.rotation = Quaternion.Slerp(
-        transform.rotation,
-        targetRot,
-        Time.deltaTime * 8f
-    );
+    // Turn faster to fully face the player
+    RotateTowards(player.transform.position, 12f); // fast rotation while attacking
 
+    // Aim gun (can tilt up/down)
     AimAtPlayer();
 
     // Fire weapon with cooldown
@@ -118,6 +116,8 @@ public class EnemyAI : MonoBehaviour
         nextFireTime = Time.time + fireCooldown;
     }
 }
+
+
 
     public void TakeDamage(int damage)
     {
@@ -139,28 +139,17 @@ public class EnemyAI : MonoBehaviour
     }
     private void AimAtPlayer()
 {
-    Vector3 dir = playerLocation.position - gunPivot.position;
+    Vector3 dir = player.transform.position - gunPivot.position;
     gunPivot.rotation = Quaternion.LookRotation(dir);
 }
 
-bool HasLineOfSight()
+private void RotateTowards(Vector3 target, float speed = 6f)
 {
-    Vector3 origin = gunPivot.position;
-    Vector3 dir = (playerLocation.position - origin).normalized;
-
-    if (Physics.Raycast(origin, dir, out RaycastHit hit, attackRange))
-    {
-        return hit.transform == playerLocation;
-    }
-    return false;
+    Vector3 dir = target - transform.position;
+    dir.y = 0; // lock Y rotation
+    if (dir == Vector3.zero) return;
+    Quaternion targetRot = Quaternion.LookRotation(dir);
+    transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * speed);
 }
-
-bool InFOV()
-{
-    Vector3 dirToPlayer = (playerLocation.position - transform.position).normalized;
-    return Vector3.Angle(transform.forward, dirToPlayer) < 60f;
-}
-
-
 
 }

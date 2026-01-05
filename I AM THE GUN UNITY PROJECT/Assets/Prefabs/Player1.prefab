@@ -378,7 +378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 64.5, y: 13.7}
+  m_AnchoredPosition: {x: 64.5, y: 13.700012}
   m_SizeDelta: {x: 100, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &4982774216071834327
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 5474457519535303038}
   - component: {fileID: 7639202621979957864}
   - component: {fileID: 8670109669477005667}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule1
   m_TagString: Player
   m_Icon: {fileID: 0}
