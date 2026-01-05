@@ -5,7 +5,7 @@ public class PlayerDamageManager : DamageManager
 {
     public PlayerUpgradeManager upgradeManager;
     public UseWeapon useWeapon;
-    private bool isDead;
+    public bool isDead;
     public DeathScreen deathScreen;
 
     public override void Awake()

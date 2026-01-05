@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,7 @@ public class DeathScreen : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Main Menu");
+        GameObject.Find("Player1").GetComponent<PlayerDamageManager>().isDead = false;
     }
 
     public void Retry()
