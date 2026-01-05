@@ -1576,7 +1576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2992854948976060227, guid: cb7ca5a867f202f4d9bf5ac8063df54d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.25
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 2992854948976060227, guid: cb7ca5a867f202f4d9bf5ac8063df54d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1584,7 +1584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2992854948976060227, guid: cb7ca5a867f202f4d9bf5ac8063df54d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.49
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 3395783792744706914, guid: cb7ca5a867f202f4d9bf5ac8063df54d, type: 3}
       propertyPath: m_IsTrigger
@@ -1630,9 +1630,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6304396927076681245, guid: cb7ca5a867f202f4d9bf5ac8063df54d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6724336856105427313, guid: cb7ca5a867f202f4d9bf5ac8063df54d, type: 3}
       propertyPath: m_Name
       value: PistolEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857034375079728252, guid: cb7ca5a867f202f4d9bf5ac8063df54d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9166950535942546787, guid: cb7ca5a867f202f4d9bf5ac8063df54d, type: 3}
       propertyPath: m_UseGravity
@@ -2878,6 +2886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   gameIsPaused: 0
   currentLevel: 0
+  player: {fileID: 0}
 --- !u!4 &1943649028
 Transform:
   m_ObjectHideFlags: 0
