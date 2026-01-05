@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   agent: {fileID: 5213407566311108839}
   player: {fileID: 0}
+  playerLocation: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 7
@@ -112,12 +113,13 @@ MonoBehaviour:
   health: 0
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 10
-  timeBetweenAttacks: 5
-  projectile: {fileID: 7317326929509857554, guid: 4d91607bd1e2354429af254e2d3cbf35, type: 3}
   sightRange: 50
   attackRange: 30
   playerInSightRange: 0
   playerInAttackRange: 0
+  enemyGun: {fileID: 0}
+  fireCooldown: 1.2
+  gunPivot: {fileID: 3044235190939206999}
 --- !u!114 &5069335611042114281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,7 +168,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &4858803021151446396
@@ -367,6 +369,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924cca3c107a58c48aed25626d3d8061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SubMachineGun
+--- !u!4 &3044235190939206999 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2909907904670480674, guid: 21178b3e28bd5704686efe3242af8b9f, type: 3}
+  m_PrefabInstance: {fileID: 170391405444791413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3205879767881946621 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3323877240406010248, guid: 21178b3e28bd5704686efe3242af8b9f, type: 3}

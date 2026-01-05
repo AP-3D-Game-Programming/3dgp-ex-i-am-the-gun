@@ -27,15 +27,21 @@ public class EnemyAI : MonoBehaviour
     public float fireCooldown = 1.2f;
     private float nextFireTime;
 
+    public Transform gunPivot;
 
     private void Awake()
     {
+        agent.updateRotation = false;
         player = GameObject.Find("Player1");
         playerLocation = player.transform;
         agent = GetComponent<NavMeshAgent>();
 
         enemyGun = GetComponentInChildren<Gun>();
+
         enemyGun.IsPlayerGun = false;
+
+        gunPivot = enemyGun.BulletSpawn;
+
     }
 
     private void Update()
@@ -46,7 +52,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (playerInAttackRange && playerInSightRange && HasLineOfSight() && InFOV()) AttackPlayer();
     }
 
     private void Patroling()
@@ -77,6 +83,15 @@ public class EnemyAI : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(playerLocation.position);
+
+        Vector3 dir = playerLocation.position - gunPivot.position;
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            Quaternion.LookRotation(dir),
+            Time.deltaTime * 6f
+        );
+
+        AimAtPlayer();
     }
 
     private void AttackPlayer()
@@ -87,12 +102,18 @@ public class EnemyAI : MonoBehaviour
     // Look at player (Y locked)
     Vector3 lookDir = playerLocation.position - transform.position;
     lookDir.y = 0;
-    transform.rotation = Quaternion.LookRotation(lookDir);
+    Quaternion targetRot = Quaternion.LookRotation(lookDir);
+    transform.rotation = Quaternion.Slerp(
+        transform.rotation,
+        targetRot,
+        Time.deltaTime * 8f
+    );
+
+    AimAtPlayer();
 
     // Fire weapon with cooldown
     if (Time.time >= nextFireTime)
     {
-        enemyGun.BulletSpawn.LookAt(playerLocation.position);
         enemyGun.FireWeapon();
         nextFireTime = Time.time + fireCooldown;
     }
@@ -116,4 +137,30 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
+    private void AimAtPlayer()
+{
+    Vector3 dir = playerLocation.position - gunPivot.position;
+    gunPivot.rotation = Quaternion.LookRotation(dir);
+}
+
+bool HasLineOfSight()
+{
+    Vector3 origin = gunPivot.position;
+    Vector3 dir = (playerLocation.position - origin).normalized;
+
+    if (Physics.Raycast(origin, dir, out RaycastHit hit, attackRange))
+    {
+        return hit.transform == playerLocation;
+    }
+    return false;
+}
+
+bool InFOV()
+{
+    Vector3 dirToPlayer = (playerLocation.position - transform.position).normalized;
+    return Vector3.Angle(transform.forward, dirToPlayer) < 60f;
+}
+
+
+
 }
