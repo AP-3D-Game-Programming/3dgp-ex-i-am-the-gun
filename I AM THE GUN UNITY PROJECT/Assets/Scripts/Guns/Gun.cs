@@ -29,35 +29,11 @@ public class Gun : MonoBehaviour
     //AmmoUI
     [SerializeField] private GameObject bulletUiPrefab;
     [SerializeField] private Transform ammoUiContainer;
-    public int TotalBullets
-    {
-        get
-        {
-            UseWeapon useWeapon = GetComponentInParent<UseWeapon>();
-            if (useWeapon != null)
-            {
-                return BulletCount + useWeapon.cartridgesCount * BulletCapacity;
-            }
-            return BulletCount;
-        }
-    }
     private List<GameObject> bulletUiStack = new List<GameObject>();
 
     private void Awake()
     {
-        ClearAmmoUI();
-        if (ammoUiContainer == null)
-        {
-            GameObject container = GameObject.FindWithTag("AmmoStack");
-            if (container != null)
-            {
-                ammoUiContainer = container.transform;
-            }
-        }
-
-        BulletCount = BulletCapacity;
         gun = gameObject;
-        AddAmmoUI();
     }
     
     private void Update()
@@ -108,8 +84,7 @@ public class Gun : MonoBehaviour
     public void AddAmmoUI()
     {
         ClearAmmoUI();
-        int totalBullets = TotalBullets;
-        for (int i = 0; i < totalBullets; i++)
+        for (int i = 0; i < BulletCount; i++)
         {
             GameObject bulletUI = Instantiate(bulletUiPrefab, ammoUiContainer);
             bulletUiStack.Add(bulletUI);
@@ -117,7 +92,7 @@ public class Gun : MonoBehaviour
         
     }
 
-    private void RemoveAmmoUI()
+    public void RemoveAmmoUI()
     {
         if (bulletUiStack.Count == 0) return;
 
@@ -126,7 +101,7 @@ public class Gun : MonoBehaviour
         Destroy(bullet);
     }
 
-    private void ClearAmmoUI()
+    public void ClearAmmoUI()
     {
         foreach (GameObject bullet in bulletUiStack)
         {
@@ -158,5 +133,23 @@ public class Gun : MonoBehaviour
     protected bool CanFire()
     {
         return Time.time >= nextFireTime;
+    }
+
+    public void OnEquippedByPlayer(UseWeapon owner)
+    {
+        ClearAmmoUI();
+        IsPlayerGun = true;
+
+        if (ammoUiContainer == null)
+        {
+            GameObject container = GameObject.FindWithTag("AmmoStack");
+            if (container != null)
+            {
+                ammoUiContainer = container.transform;
+            }
+        }
+
+        BulletCount = BulletCapacity;
+        AddAmmoUI();
     }
 }

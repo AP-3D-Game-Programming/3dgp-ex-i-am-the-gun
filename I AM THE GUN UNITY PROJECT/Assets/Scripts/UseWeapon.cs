@@ -13,8 +13,11 @@ public class UseWeapon : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //weaponUtility = Weapon.GetComponent<Gun>();
-        weaponUtility = Camera.main.GetComponentInChildren<Gun>();
+        if (Weapon != null)
+        {
+            weaponUtility = Weapon.GetComponent<Gun>();
+            weaponUtility.OnEquippedByPlayer(this);
+        }
     }
 
     // Update is called once per frame
@@ -48,13 +51,28 @@ public class UseWeapon : MonoBehaviour
 
     public void ChangeWeapon(GameObject newGun)
     {
-        Destroy(Weapon);
+        //Destroy(Weapon);
+        //Transform gunMount = GameObject.Find("Gun Mount1").transform;
+        //Weapon = Instantiate(newGun, gunMount.position, gunMount.rotation, gunMount);
+        //weaponUtility = Weapon.GetComponent<Gun>();
+        //weaponUtility.IsPlayerGun = true;
+
+        //weaponUtility.BulletCount = weaponUtility.BulletCapacity;
+        //cartridgesCount = CartridgesCapacity;
+
+        if (weaponUtility != null)
+        {
+            weaponUtility.ClearAmmoUI(); 
+            Destroy(Weapon);
+        }
+
         Transform gunMount = GameObject.Find("Gun Mount1").transform;
         Weapon = Instantiate(newGun, gunMount.position, gunMount.rotation, gunMount);
-        weaponUtility = Weapon.GetComponent<Gun>();
-        weaponUtility.IsPlayerGun = true;
 
-        weaponUtility.BulletCount = weaponUtility.BulletCapacity;
+        weaponUtility = Weapon.GetComponent<Gun>();
+
         cartridgesCount = CartridgesCapacity;
+
+        weaponUtility.OnEquippedByPlayer(this);
     }
 }

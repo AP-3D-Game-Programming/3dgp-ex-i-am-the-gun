@@ -53,6 +53,7 @@ public class Shotgun : Gun
         }
 
         BulletCount--;
+        RemoveAmmoUI();
 
         StartCoroutine(GunRecoil());
         StartCoroutine(MuzzleFlash());
