@@ -337,6 +337,10 @@ PrefabInstance:
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 8300000, guid: a791811fe08330f4b84fc9665695f7c8, type: 3}
+    - target: {fileID: 3868674741132100553, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6665834642826395572, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -349,6 +353,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 280cbbcd09f578044802aefa52af1656, type: 2}
+    - target: {fileID: 7850373465689108402, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8027828794721651741, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}
       propertyPath: m_Name
       value: 1911_Pistol

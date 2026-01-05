@@ -38,6 +38,7 @@ public class DamageManager : MonoBehaviour
     {
         Debug.Log($"{name} has died.");
         // make it drop its weapon (please god, please work)
+        Weapon.GetComponent<SwapGun>().enabled = true;
         Instantiate(Weapon, transform.position, Quaternion.identity);
         // destroy enemy :skull_emoji:
         Destroy(gameObject);

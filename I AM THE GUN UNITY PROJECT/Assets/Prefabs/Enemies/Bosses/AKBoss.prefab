@@ -310,7 +310,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4434474825239881507}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e639db274d5efa24ca84713d2b88bc89, type: 3}
   m_Name: 
@@ -408,7 +408,7 @@ MonoBehaviour:
   gunShot: {fileID: 1522278720241195032}
   emptyMag: {fileID: 8300000, guid: 3640244827138674e8fdfab97fc5121f, type: 3}
   IsPlayerGun: 0
-  gun: {fileID: 0}
+  gun: {fileID: 4434474825239881507}
   AmmoCount: {fileID: 0}
   AmmoCap: {fileID: 0}
   kickbackForce: 20
