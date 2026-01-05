@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 8984767002021243572}
   - component: {fileID: 8270524485589131888}
   - component: {fileID: 1571016294955871201}
+  - component: {fileID: 7060490523783382181}
   m_Layer: 0
   m_Name: PistolBoss
   m_TagString: Untagged
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3290945f036131142b60a5fb3f43d119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
-  agent: {fileID: 0}
+  agent: {fileID: 7060490523783382181}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
@@ -224,11 +225,11 @@ MonoBehaviour:
     m_Bits: 128
   health: 0
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
+  walkPointRange: 10
   timeBetweenAttacks: 0
-  projectile: {fileID: 0}
-  sightRange: 0
-  attackRange: 0
+  projectile: {fileID: 9127295173015719586, guid: b6344b8e3ad57cb4b88562758f38df82, type: 3}
+  sightRange: 50
+  attackRange: 30
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!114 &8984767002021243572
@@ -243,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc50f8359c4437444806904bc3fd20c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageManager
-  gun: {fileID: 0}
+  gun: {fileID: 3873287774948208712}
   Weapon: {fileID: 7377620538696825508}
 --- !u!114 &8270524485589131888
 MonoBehaviour:
@@ -257,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef51523be6fff84c8b14ec9971ea64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIFireController
-  gun: {fileID: 0}
+  gun: {fileID: 3873287774948208712}
   target: {fileID: 0}
   fireCooldown: 0.5
 --- !u!114 &1571016294955871201
@@ -273,6 +274,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevelTrigger
   midGameUiManager: {fileID: 0}
+--- !u!195 &7060490523783382181
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6724336856105427313}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &651334246147765945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -419,10 +442,10 @@ MonoBehaviour:
   emptyMag: {fileID: 8300000, guid: 3640244827138674e8fdfab97fc5121f, type: 3}
   IsPlayerGun: 0
   gun: {fileID: 7377620538696825508}
-  AmmoCount: {fileID: 0}
-  AmmoCap: {fileID: 0}
   kickbackForce: 10
   fireRate: 10
+  bulletUiPrefab: {fileID: 0}
+  ammoUiContainer: {fileID: 0}
   pelletCount: 7
   spreadAngle: 15
 --- !u!95 &8429778147746485846 stripped

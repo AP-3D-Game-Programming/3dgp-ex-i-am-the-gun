@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 3115991387991452252}
   - component: {fileID: 1930959713418806626}
   - component: {fileID: 377289587052626025}
+  - component: {fileID: 664506820727110332}
   m_Layer: 0
   m_Name: SniperBoss
   m_TagString: Untagged
@@ -214,21 +215,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3290945f036131142b60a5fb3f43d119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
-  agent: {fileID: 0}
+  agent: {fileID: 664506820727110332}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 7
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 8
   health: 0
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
-  timeBetweenAttacks: 0
-  projectile: {fileID: 0}
-  sightRange: 0
-  attackRange: 0
+  walkPointRange: 10
+  timeBetweenAttacks: 20
+  projectile: {fileID: 3896305785312621774, guid: 184fe9373e5f01c4986874972e49d69b, type: 3}
+  sightRange: 50
+  attackRange: 30
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!114 &3115991387991452252
@@ -273,6 +274,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevelTrigger
   midGameUiManager: {fileID: 0}
+--- !u!195 &664506820727110332
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6946010340870833335}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &5334524394646513959
 PrefabInstance:
   m_ObjectHideFlags: 0

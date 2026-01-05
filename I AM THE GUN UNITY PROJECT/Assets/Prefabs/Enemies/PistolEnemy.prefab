@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 1016306084264218365}
   - component: {fileID: 8984767002021243572}
   - component: {fileID: 8270524485589131888}
+  - component: {fileID: 3472877901092957557}
   m_Layer: 0
   m_Name: PistolEnemy
   m_TagString: Untagged
@@ -213,21 +214,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3290945f036131142b60a5fb3f43d119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
-  agent: {fileID: 0}
+  agent: {fileID: 3472877901092957557}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 7
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 8
   health: 0
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
-  timeBetweenAttacks: 0
-  projectile: {fileID: 0}
-  sightRange: 0
-  attackRange: 0
+  walkPointRange: 10
+  timeBetweenAttacks: 8
+  projectile: {fileID: 7317326929509857554, guid: 4d91607bd1e2354429af254e2d3cbf35, type: 3}
+  sightRange: 50
+  attackRange: 30
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!114 &8984767002021243572
@@ -259,6 +260,28 @@ MonoBehaviour:
   gun: {fileID: 288353617806275905}
   target: {fileID: 0}
   fireCooldown: 0.5
+--- !u!195 &3472877901092957557
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6724336856105427313}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &651334246147765945
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -409,10 +409,10 @@ MonoBehaviour:
   emptyMag: {fileID: 8300000, guid: 3640244827138674e8fdfab97fc5121f, type: 3}
   IsPlayerGun: 0
   gun: {fileID: 4434474825239881507}
-  AmmoCount: {fileID: 0}
-  AmmoCap: {fileID: 0}
   kickbackForce: 20
   fireRate: 15
+  bulletUiPrefab: {fileID: 0}
+  ammoUiContainer: {fileID: 0}
 --- !u!95 &4877519587052399380
 Animator:
   serializedVersion: 7
@@ -547,6 +547,7 @@ GameObject:
   - component: {fileID: 7332916271797068842}
   - component: {fileID: 7761183956316204270}
   - component: {fileID: -113084638384201164}
+  - component: {fileID: -6114636313466455619}
   m_Layer: 0
   m_Name: AKBoss
   m_TagString: Untagged
@@ -633,21 +634,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3290945f036131142b60a5fb3f43d119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
-  agent: {fileID: 0}
+  agent: {fileID: -6114636313466455619}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 7
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 8
   health: 0
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
-  timeBetweenAttacks: 0
-  projectile: {fileID: 0}
-  sightRange: 0
-  attackRange: 0
+  walkPointRange: 10
+  timeBetweenAttacks: 8
+  projectile: {fileID: 7317326929509857554, guid: 4d91607bd1e2354429af254e2d3cbf35, type: 3}
+  sightRange: 50
+  attackRange: 30
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!114 &7332916271797068842
@@ -692,6 +693,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevelTrigger
   midGameUiManager: {fileID: 0}
+--- !u!195 &-6114636313466455619
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909531886281224175}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &6026258868899406504
 GameObject:
   m_ObjectHideFlags: 0
