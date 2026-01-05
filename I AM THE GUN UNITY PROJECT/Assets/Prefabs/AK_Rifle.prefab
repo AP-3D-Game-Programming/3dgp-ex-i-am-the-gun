@@ -289,7 +289,7 @@ MonoBehaviour:
   BulletVelocity: 30
   BulletPrefabLifeTime: 3
   BulletCapacity: 30
-  BulletCount: 0
+  BulletCount: 30
   gunAnimation: {fileID: 7137268040514276200}
   muzzleFlash: {fileID: 4843983242413016073}
   gunShot: {fileID: 3863240900427806820}

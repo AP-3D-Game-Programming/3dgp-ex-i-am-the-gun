@@ -409,7 +409,7 @@ MonoBehaviour:
   BulletVelocity: 30
   BulletPrefabLifeTime: 3
   BulletCapacity: 8
-  BulletCount: 0
+  BulletCount: 8
   gunAnimation: {fileID: -7873302824449594810}
   muzzleFlash: {fileID: 8500306794301475395}
   gunShot: {fileID: 1832510899892392550}
