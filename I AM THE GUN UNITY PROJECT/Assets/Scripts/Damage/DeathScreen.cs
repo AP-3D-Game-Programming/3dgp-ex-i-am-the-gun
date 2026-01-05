@@ -6,6 +6,7 @@ public class DeathScreen : MonoBehaviour
     public GameObject screen;
     void Awake()
     {
+        GameObject.Find("Player1").GetComponent<PlayerDamageManager>().deathScreen = this;
         screen.SetActive(false);
     }
 
