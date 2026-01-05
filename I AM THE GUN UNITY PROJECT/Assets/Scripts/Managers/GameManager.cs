@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
     if (currentLevel >= SceneManager.sceneCountInBuildSettings - 1)
     {
         Debug.Log("All levels completed!");
+        SceneManager.LoadScene("Main Menu");
+        Time.timeScale = 1f;
         return;
     }
 
