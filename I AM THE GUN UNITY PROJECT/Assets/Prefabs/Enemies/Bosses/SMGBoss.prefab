@@ -209,7 +209,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4858803021151446396}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -333,6 +333,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: UMP_SMG
       objectReference: {fileID: 0}
+    - target: {fileID: 4334078605107693981, guid: 21178b3e28bd5704686efe3242af8b9f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 280cbbcd09f578044802aefa52af1656, type: 2}
+    - target: {fileID: 4998775184956801088, guid: 21178b3e28bd5704686efe3242af8b9f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 280cbbcd09f578044802aefa52af1656, type: 2}
+    - target: {fileID: 7186467586386078362, guid: 21178b3e28bd5704686efe3242af8b9f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: da4db2e2a65f08940b464264d76f4ec6, type: 2}
+    - target: {fileID: 7570892713063784587, guid: 21178b3e28bd5704686efe3242af8b9f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 280cbbcd09f578044802aefa52af1656, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

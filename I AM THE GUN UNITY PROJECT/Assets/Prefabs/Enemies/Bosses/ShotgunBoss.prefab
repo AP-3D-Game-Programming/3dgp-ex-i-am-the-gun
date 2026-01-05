@@ -209,7 +209,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4082142741354830230}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -281,6 +281,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6321750725306948857}
     m_Modifications:
+    - target: {fileID: 1070999944722066276, guid: 3c8837606a428af4db896f47101a68e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: da4db2e2a65f08940b464264d76f4ec6, type: 2}
+    - target: {fileID: 1070999944722066276, guid: 3c8837606a428af4db896f47101a68e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 280cbbcd09f578044802aefa52af1656, type: 2}
     - target: {fileID: 1385779860570529937, guid: 3c8837606a428af4db896f47101a68e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.69
@@ -321,6 +329,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2755674483471506001, guid: 3c8837606a428af4db896f47101a68e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 280cbbcd09f578044802aefa52af1656, type: 2}
+    - target: {fileID: 5825288046813541676, guid: 3c8837606a428af4db896f47101a68e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: da4db2e2a65f08940b464264d76f4ec6, type: 2}
     - target: {fileID: 6260535967125609021, guid: 3c8837606a428af4db896f47101a68e6, type: 3}
       propertyPath: m_Name
       value: CombatPump_Shotgun
