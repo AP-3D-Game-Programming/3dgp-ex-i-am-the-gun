@@ -211,6 +211,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8027828794721651741, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
+    - {fileID: 1038106111300511305, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6054280474496660931, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       insertIndex: -1
@@ -1117,6 +1118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   gameIsPaused: 0
   currentLevel: 0
+  player: {fileID: 0}
 --- !u!4 &774197481
 Transform:
   m_ObjectHideFlags: 0
@@ -1261,6 +1263,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8027828794721651741, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
+    - {fileID: 1038106111300511305, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6054280474496660931, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       insertIndex: -1
@@ -1620,7 +1623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7562298894066929662, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7571741034112045129, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2080,7 +2083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7562298894066929662, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7571741034112045129, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       propertyPath: m_LocalPosition.x
