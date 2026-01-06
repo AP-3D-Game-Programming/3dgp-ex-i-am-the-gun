@@ -139,7 +139,7 @@ private void ChasePlayer()
     }
     private void AimAtPlayer()
 {
-    Vector3 dir = player.transform.position - gunPivot.position;
+    Vector3 dir = player.transform.position - gunPivot.position + new Vector3(0, 1.5f, 0);
     gunPivot.rotation = Quaternion.LookRotation(dir);
 }
 
