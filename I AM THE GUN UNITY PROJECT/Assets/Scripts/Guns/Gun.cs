@@ -43,8 +43,15 @@ public class Gun : MonoBehaviour
 
     public virtual void FireWeapon()
     {
+        if (!IsPlayerGun && GetComponentInParent<AIFireController>() == null)
+        {
+            return;
+        }
         if (!CanFire()) return;
-
+        if (IsPlayerGun)
+        {
+            BulletSpawn.localRotation = Quaternion.identity;
+        }
         nextFireTime = Time.time + 1f / fireRate;
 
         if (BulletCount <= 0)
@@ -53,31 +60,30 @@ public class Gun : MonoBehaviour
             return;
         }
 
-        // Instantiate the bullet
+        //Instantiate bullet
         GameObject bullet = Instantiate(BulletPrefab, BulletSpawn.position, transform.rotation);
 
-        // Assign shooter to avoid self-damage
+        //Assign shooter to avoid self dmg
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.shooter = gameObject;
 
-        // Shoot the bullet
+        //Shoot bullet
         bullet.GetComponent<Rigidbody>().AddForce(BulletSpawn.forward.normalized * BulletVelocity, ForceMode.Impulse);
         StartCoroutine(GunRecoil());
         StartCoroutine(MuzzleFlash());
         gunShot.PlayOneShot(gunShot.clip);
 
-        // Apply kickback to the player
+        //Recoil
         Player1 player = GetComponentInParent<Player1>();
         if (player != null)
         {
             player.ApplyKickback(kickbackForce);
         }
 
-        // Decrease ammo
         BulletCount--;
         RemoveAmmoUI();
 
-        // Destroy the bullet after some time
+        //Destroy bullet
         StartCoroutine(DestroyBulletAfterTime(bullet, BulletPrefabLifeTime));
     }
 

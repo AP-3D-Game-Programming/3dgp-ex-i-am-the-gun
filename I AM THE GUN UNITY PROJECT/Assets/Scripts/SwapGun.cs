@@ -30,30 +30,54 @@ public class SwapGun : MonoBehaviour
 
     void Pickup()
     {
-        Debug.Log("Swapping gun (hide world gun (Still needs to be fixed))");
+        //Disconnect AI from gun
+        AIFireController aiController = GetComponentInParent<AIFireController>();
+        if (aiController != null)
+        {
+            aiController.gun = null;
+            aiController.target = null;
+        }
 
-        // Remove AI
-        if (behaviorAgent != null)
-            behaviorAgent.enabled = false;
-
+        //Kill AI brain + movement
+        if (behaviorAgent != null) behaviorAgent.enabled = false;
         if (agent != null)
         {
             agent.isStopped = true;
             agent.ResetPath();
             agent.enabled = false;
         }
-        // Swap weapon :o
-        player.ChangeWeapon(gameObject);
-        // Hide gun
-        foreach (var r in GetComponentsInChildren<Renderer>())
-            r.enabled = false;
 
-        // Disable colliders so it can't be picked again
+        //Convert gun to player ownership
+        Gun gunScript = GetComponent<Gun>();
+        if (gunScript != null)
+        {
+            gunScript.IsPlayerGun = true;
+            gunScript.enabled = true;
+
+            //Reset bullet rotation
+            if (gunScript.BulletSpawn != null)
+                gunScript.BulletSpawn.localRotation = Quaternion.identity;
+        }
+
+        //Swap
+        player.ChangeWeapon(gameObject);
+        if (gunScript != null)
+    {
+        gunScript.enabled = false; 
+        gunScript.IsPlayerGun = false; 
+    }
+
+        //Clean up AI shell
+        //Hide original gun mesh
+        foreach (var r in GetComponentsInChildren<Renderer>())
+        {
+            if (r.gameObject.name.Contains("Muzzle") || r.gameObject.name.Contains("Flash")) continue;
+            r.enabled = false;
+        }
+
+        //Disable pickup triggers
         foreach (var c in GetComponentsInChildren<Collider>())
             c.enabled = false;
-
-
-
     }
 
 

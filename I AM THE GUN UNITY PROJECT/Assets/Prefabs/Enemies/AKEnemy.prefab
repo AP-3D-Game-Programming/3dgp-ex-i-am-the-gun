@@ -635,7 +635,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   agent: {fileID: -1326074305349888808}
   player: {fileID: 0}
-  playerLocation: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 7
@@ -644,9 +643,9 @@ MonoBehaviour:
     m_Bits: 136
   health: 0
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 10
-  sightRange: 50
-  attackRange: 30
+  walkPointRange: 200
+  sightRange: 150
+  attackRange: 50
   playerInSightRange: 0
   playerInAttackRange: 0
   enemyGun: {fileID: 0}
@@ -680,6 +679,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AIFireController
   gun: {fileID: 4152204799352519028}
   target: {fileID: 0}
+  aimPivot: {fileID: 0}
+  aimSpeed: 15
   fireCooldown: 0.5
 --- !u!195 &-1326074305349888808
 NavMeshAgent:
@@ -691,7 +692,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 15
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
