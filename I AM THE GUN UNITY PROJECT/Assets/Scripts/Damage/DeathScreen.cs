@@ -19,12 +19,17 @@ public class DeathScreen : MonoBehaviour
 
 
     public void Show()
-    {
-        screen.SetActive(true);
+{
+    screen.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
+    Cursor.lockState = CursorLockMode.None;
+    Cursor.visible = true;
+
+    PlayerDamageManager player = FindFirstObjectByType<PlayerDamageManager>();
+    if (player != null)
+        player.isDead = true;
+}
+
 
     public void GoToMainMenu()
     {
@@ -42,6 +47,8 @@ public class DeathScreen : MonoBehaviour
     player.useWeapon.cartridgesCount = player.useWeapon.CartridgesCapacity;
     player.useWeapon.Weapon.GetComponent<Gun>().BulletCount = player.useWeapon.Weapon.GetComponent<Gun>().BulletCapacity; 
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    Cursor.lockState = CursorLockMode.Locked;
+    Cursor.visible = false;
 }
 
 }

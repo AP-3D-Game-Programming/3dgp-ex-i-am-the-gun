@@ -14,6 +14,16 @@ public class PlayerDamageManager : DamageManager
         CacheWeapon();
     }
 
+    void Start()
+{
+    if (deathScreen == null)
+        deathScreen = FindFirstObjectByType<DeathScreen>();
+    isDead = false;
+    if (useWeapon != null && useWeapon.Weapon != null)
+        gun = useWeapon.Weapon.GetComponent<Gun>();
+
+}
+
     void Update()
     {
         CacheWeapon();
