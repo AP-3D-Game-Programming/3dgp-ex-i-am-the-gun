@@ -82,6 +82,7 @@ public class PlayerDamageManager : DamageManager
 
         useWeapon.cartridgesCount--;
         gun.BulletCount = gun.BulletCapacity;
+        gun.AddAmmoUI();
         Debug.Log($"Reloaded! Cartridges left: {useWeapon.cartridgesCount}, Bullets refilled to: {gun.BulletCount}");
 
         isReloading = false;
