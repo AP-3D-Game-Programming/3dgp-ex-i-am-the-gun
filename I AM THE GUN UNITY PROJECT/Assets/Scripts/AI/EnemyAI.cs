@@ -27,6 +27,9 @@ public class EnemyAI : MonoBehaviour
 
     public Transform gunPivot;
 
+    //GameManager
+    private GameManager gameManager;
+
     private void Awake()
     {
         agent.updateRotation = false;
@@ -39,18 +42,23 @@ public class EnemyAI : MonoBehaviour
 
         gunPivot = enemyGun.BulletSpawn;
 
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
     }
 
     private void Update()
     {
-        //Check for sight and attack range
-        player = GameObject.Find("Character1");
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        if (!gameManager.gameIsPaused)
+        {
+            //Check for sight and attack range
+            player = GameObject.Find("Character1");
+            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+            if (!playerInSightRange && !playerInAttackRange) Patrolling();
+            if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+            if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        }
     }
 
     private void SearchWalkPoint()
@@ -66,7 +74,7 @@ public class EnemyAI : MonoBehaviour
             walkPointSet = true;
         }
     }
-   private void Patroling()
+   private void Patrolling()
 {
     if (!walkPointSet) SearchWalkPoint();
 
