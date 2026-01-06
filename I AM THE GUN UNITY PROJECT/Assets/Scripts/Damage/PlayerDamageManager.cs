@@ -63,6 +63,10 @@ public class PlayerDamageManager : DamageManager
             gun.BulletCount -= amount;
             gun.BulletCount = Mathf.Max(gun.BulletCount, 0);
             Debug.Log($"{name} took {amount} damage! Bullets left: {gun.BulletCount}");
+            for (int i = 0; i < amount; i++)
+            {
+                gun.RemoveAmmoUI();
+            }
         }
         else
         {
