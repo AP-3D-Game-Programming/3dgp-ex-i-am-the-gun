@@ -13,8 +13,15 @@ public class Player1 : MonoBehaviour
     [SerializeField] private StanceVignette1 stanceVignette;
 
     private PlayerInputActions _inputActions;
+
+
+    //GameManager
+    private GameManager gameManager;
+
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         Cursor.lockState = CursorLockMode.Locked;
 
         _inputActions = new PlayerInputActions();
@@ -36,37 +43,40 @@ public class Player1 : MonoBehaviour
 
     void Update()
     {
-        var input = _inputActions.Gameplay;
-        var deltaTime = Time.deltaTime;
-
-        //Get camera input en update the value
-        var cameraInput = new CameraInput { Look =  input.Look.ReadValue<Vector2>() };
-        playerCamera.UpdateRotation(cameraInput);
-
-        // Get character input and update it
-        var characterInput = new CharacterInput
+        if (!gameManager.gameIsPaused)
         {
-            Rotation    = playerCamera.transform.rotation,
-            Move        = input.Move.ReadValue<Vector2>(),
-            Jump        = input.Jump.WasPressedThisFrame(),
-            JumpSustain = input.Jump.IsPressed(),
-            Crouch      = input.Crouch.WasPressedThisFrame()
-                ? CrouchInput.Toggle
-                : CrouchInput.None
-        };
-        playerCharacter.UpdateInput(characterInput);
-        playerCharacter.UpdateBody(deltaTime);
+            var input = _inputActions.Gameplay;
+            var deltaTime = Time.deltaTime;
 
-        #if UNITY_EDITOR
-        if(Keyboard.current.tKey.wasPressedThisFrame)
-        {
-            var ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-            if (Physics.Raycast(ray, out var hit))
+            //Get camera input en update the value
+            var cameraInput = new CameraInput { Look = input.Look.ReadValue<Vector2>() };
+            playerCamera.UpdateRotation(cameraInput);
+
+            // Get character input and update it
+            var characterInput = new CharacterInput
             {
-                Teleport(hit.point);
+                Rotation = playerCamera.transform.rotation,
+                Move = input.Move.ReadValue<Vector2>(),
+                Jump = input.Jump.WasPressedThisFrame(),
+                JumpSustain = input.Jump.IsPressed(),
+                Crouch = input.Crouch.WasPressedThisFrame()
+                    ? CrouchInput.Toggle
+                    : CrouchInput.None
+            };
+            playerCharacter.UpdateInput(characterInput);
+            playerCharacter.UpdateBody(deltaTime);
+
+#if UNITY_EDITOR
+            if (Keyboard.current.tKey.wasPressedThisFrame)
+            {
+                var ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+                if (Physics.Raycast(ray, out var hit))
+                {
+                    Teleport(hit.point);
+                }
             }
+#endif
         }
-        #endif
     }
 
     void LateUpdate()
