@@ -1,49 +1,89 @@
-using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] levelEnemies;
-    [SerializeField] GameObject levelBoss;
+    [Header("Enemies")]
+    [SerializeField] private GameObject[] levelEnemies;
+    [SerializeField] private GameObject levelBoss;
+
+    [Header("Spawners")]
     private GameObject[] spawners;
     private GameObject bossSpawner;
-    [SerializeField] float spawnInterval = 5;
-    [SerializeField] float bossSpawnAfter = 300;
-    private float timer = 0;
-    private float bossTimer = 0;
-    [SerializeField] int amountPerSpawn;
-    private GameManager gameManager;
+
+    [Header("Spawn Timing")]
+    [SerializeField] private float spawnInterval = 5f;
+    [SerializeField] private float bossSpawnAfter = 300f;
+    [SerializeField] private int amountPerSpawn = 3;
+
+    private float timer = 0f;
+    private float bossTimer = 0f;
     private bool bossHasSpawned = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private GameManager gameManager;
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         spawners = GameObject.FindGameObjectsWithTag("Spawner");
         bossSpawner = GameObject.Find("BossSpawn");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!gameManager.gameIsPaused)
-        {
-            timer += Time.deltaTime;
-            bossTimer += Time.deltaTime;
+        if (gameManager.gameIsPaused)
+            return;
 
-            if (timer >= spawnInterval)
+        timer += Time.deltaTime;
+        bossTimer += Time.deltaTime;
+
+        if (timer >= spawnInterval)
+        {
+            SpawnEnemies();
+            timer = 0f;
+        }
+
+        if (bossTimer >= bossSpawnAfter && !bossHasSpawned)
+        {
+            SpawnBoss();
+            bossHasSpawned = true;
+        }
+    }
+
+    private void SpawnEnemies()
+    {
+        for (int i = 0; i < amountPerSpawn; i++)
+        {
+            GameObject enemyPrefab = levelEnemies[Random.Range(0, levelEnemies.Length)];
+            GameObject spawner = spawners[Random.Range(0, spawners.Length)];
+
+            SpawnOnNavMesh(enemyPrefab, spawner.transform.position);
+        }
+    }
+
+    private void SpawnBoss()
+    {
+        SpawnOnNavMesh(levelBoss, bossSpawner.transform.position);
+    }
+
+    private void SpawnOnNavMesh(GameObject prefab, Vector3 spawnPosition)
+    {
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(spawnPosition, out hit, 10f, NavMesh.AllAreas))
+        {
+            GameObject enemy = Instantiate(prefab, hit.position, Quaternion.identity);
+
+            // Extra safety: force agent to snap correctly
+            NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
+            if (agent != null)
             {
-                for (int i = 0; i < amountPerSpawn; i++)
-                {
-                    Instantiate(levelEnemies[Random.Range(0, levelEnemies.Length)], spawners[Random.Range(0, spawners.Length)].transform.position, Quaternion.identity);
-                }
-                timer = 0;
+                agent.Warp(hit.position);
             }
-            if ( bossTimer >= bossSpawnAfter && bossHasSpawned == false)
-            {
-                Instantiate(levelBoss, bossSpawner.transform.position, Quaternion.identity);
-                bossHasSpawned = true;
-            }
+        }
+        else
+        {
+            Debug.LogWarning("Failed to find NavMesh near spawn point: " + spawnPosition);
         }
     }
 }
