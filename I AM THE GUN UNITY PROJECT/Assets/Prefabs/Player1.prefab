@@ -601,9 +601,9 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!65 &8620457091677648283
 BoxCollider:
@@ -1193,6 +1193,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2342646635014902266, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695277782340693429, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695277782340693429, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8027828794721651741, guid: bdd951d2c3d7d4b4f8483d2a9e3f2930, type: 3}

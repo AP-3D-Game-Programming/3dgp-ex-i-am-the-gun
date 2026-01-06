@@ -11,7 +11,8 @@ public class Bullet : MonoBehaviour
         return;
 
 
-        DamageManager dmg = collision.gameObject.GetComponentInParent<DamageManager>();
+        DamageManager dmg = collision.transform.root.GetComponent<DamageManager>();
+        Debug.Log(dmg);
         Debug.Log("Bullet hit " + collision.gameObject.name);
         if (dmg != null)
         {
