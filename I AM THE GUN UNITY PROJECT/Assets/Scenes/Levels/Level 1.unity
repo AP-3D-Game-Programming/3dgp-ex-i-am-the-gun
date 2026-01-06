@@ -2083,8 +2083,8 @@ MonoBehaviour:
   - {fileID: 6946010340870833335, guid: be5ef1738eacf4e449d17de295b4d9c7, type: 3}
   levelBoss: {fileID: 6724336856105427313, guid: e1e4e26d1b4e1f24e9ae10780ee50cdc, type: 3}
   spawnInterval: 5
-  bossSpawnAfter: 300
-  amountPerSpawn: 3
+  bossSpawnAfter: 180
+  amountPerSpawn: 5
 --- !u!1001 &926161494
 PrefabInstance:
   m_ObjectHideFlags: 0
