@@ -5003,7 +5003,7 @@ PrefabInstance:
       objectReference: {fileID: 418128909}
     - target: {fileID: 9091583687101953469, guid: 032ed610cd992b0409f67e2880c01f9f, type: 3}
       propertyPath: sensitivity
-      value: 0.02
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
